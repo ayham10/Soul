@@ -15,19 +15,45 @@ export default function ShopPage() {
   return (
     <>
       <style>{`
-        .shop-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        @media (min-width: 720px) { .shop-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
+        .shop-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; max-width: 460px; margin: 0 auto; }
+        @media (min-width: 640px) { .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: none; } }
+        @media (min-width: 920px) { .shop-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
         .filter-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
         .filter-chip {
           font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-          padding: 9px 18px; cursor: pointer; background: transparent; color: var(--muted);
+          min-height: 40px; padding: 9px 18px; cursor: pointer; background: transparent; color: var(--muted);
           border: 1px solid var(--line); transition: all 0.25s;
         }
         .filter-chip:hover { color: var(--cream); border-color: rgba(198,161,91,0.5); }
         .filter-chip.active { background: var(--gold); color: #1a140a; border-color: var(--gold); }
+        @media (max-width: 639px) {
+          .shop-header { padding: 118px 18px 18px !important; }
+          .filter-wrap { padding: 10px 18px 34px !important; }
+          .filter-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            max-width: 460px;
+            margin: 0 auto;
+          }
+          .filter-chip {
+            min-height: 46px;
+            padding: 10px 12px;
+            font-size: 10.5px;
+            letter-spacing: 1.4px;
+          }
+          .filter-chip:first-child { grid-column: 1 / -1; }
+          .shop-products-wrap { padding: 0 18px 92px !important; }
+        }
+        @media (max-width: 340px) {
+          .shop-header,
+          .filter-wrap,
+          .shop-products-wrap { padding-left: 16px !important; padding-right: 16px !important; }
+          .filter-chip { font-size: 10px; letter-spacing: 1px; }
+        }
       `}</style>
 
-      <header style={{ textAlign: "center", padding: "124px 20px 16px" }}>
+      <header className="shop-header" style={{ textAlign: "center", padding: "124px 20px 16px" }}>
         <div className="eyebrow">{t.shop.eyebrow}</div>
         <h1 style={{ fontSize: "clamp(40px, 8vw, 78px)", color: "var(--cream)", margin: "14px 0 16px" }}>
           {t.shop.title} <em style={{ color: "var(--gold)" }}>{t.shop.titleEm}</em>
@@ -37,7 +63,7 @@ export default function ShopPage() {
         </p>
       </header>
 
-      <div style={{ padding: "10px 22px 34px" }}>
+      <div className="filter-wrap" style={{ padding: "10px 22px 34px" }}>
         <div className="filter-row">
           {families.map((f) => (
             <button key={f} className={`filter-chip${active === f ? " active" : ""}`} onClick={() => setActive(f)}>
@@ -47,7 +73,7 @@ export default function ShopPage() {
         </div>
       </div>
 
-      <section className="wrap" style={{ padding: "0 22px 110px" }}>
+      <section className="wrap shop-products-wrap" style={{ padding: "0 22px 110px" }}>
         <div className="shop-grid">
           {list.map((p) => (
             <ProductCard key={p.slug} product={p} />

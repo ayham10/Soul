@@ -21,6 +21,26 @@ export default function CartDrawer() {
 
   return (
     <>
+      <style>{`
+        .cart-close {
+          width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
+        }
+        .cart-item-name { overflow-wrap: break-word; }
+        @media (max-width: 420px) {
+          .cart-header { padding: 20px 18px !important; }
+          .cart-body { padding: 8px 18px !important; }
+          .cart-item { gap: 13px !important; }
+          .cart-thumb { width: 68px !important; height: 86px !important; }
+          .cart-footer { padding: 22px 18px !important; }
+        }
+        @media (max-width: 340px) {
+          .cart-header { padding-inline: 16px !important; }
+          .cart-body { padding-inline: 16px !important; }
+          .cart-item { gap: 12px !important; }
+          .cart-thumb { width: 62px !important; height: 80px !important; }
+          .cart-footer { padding-inline: 16px !important; }
+        }
+      `}</style>
       <div
         onClick={() => setOpen(false)}
         style={{
@@ -41,17 +61,17 @@ export default function CartDrawer() {
           display: "flex", flexDirection: "column",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "22px 24px", borderBottom: "1px solid var(--line)" }}>
+        <div className="cart-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "22px 24px", borderBottom: "1px solid var(--line)" }}>
           <div>
             <div className="eyebrow">{t.cart.selection}</div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, color: "var(--cream)", marginTop: 2 }}>
               {t.cart.bag} {count > 0 && <span style={{ color: "var(--gold)" }}>({count})</span>}
             </div>
           </div>
-          <button onClick={() => setOpen(false)} aria-label="Close cart" style={{ background: "none", border: "none", color: "var(--muted)", cursor: "pointer", fontSize: 26, lineHeight: 1 }}>×</button>
+          <button className="cart-close" onClick={() => setOpen(false)} aria-label="Close cart" style={{ background: "none", border: "none", color: "var(--muted)", cursor: "pointer", fontSize: 26, lineHeight: 1 }}>×</button>
         </div>
 
-        <div style={{ flex: 1, overflowY: "auto", padding: "8px 24px" }}>
+        <div className="cart-body" style={{ flex: 1, overflowY: "auto", padding: "8px 24px" }}>
           {items.length === 0 ? (
             <div style={{ textAlign: "center", padding: "80px 0", color: "var(--muted)" }}>
               <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: "#6f6655", marginBottom: 10 }}>{t.cart.empty}</div>
@@ -61,14 +81,14 @@ export default function CartDrawer() {
             </div>
           ) : (
             items.map((i) => (
-              <div key={`${i.slug}-${i.ml}`} style={{ display: "flex", gap: 16, padding: "20px 0", borderBottom: "1px solid var(--line)" }}>
-                <div style={{ position: "relative", width: 72, height: 90, background: "var(--noir-card)", flexShrink: 0 }}>
+              <div className="cart-item" key={`${i.slug}-${i.ml}`} style={{ display: "flex", gap: 16, padding: "20px 0", borderBottom: "1px solid var(--line)" }}>
+                <div className="cart-thumb" style={{ position: "relative", width: 72, height: 90, background: "var(--noir-card)", flexShrink: 0 }}>
                   <Image src={i.image} alt={i.name} fill style={{ objectFit: "cover" }} sizes="72px" />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, color: "var(--cream)" }}>{i.name}</div>
-                    <button onClick={() => remove(i.slug, i.ml)} aria-label="Remove" style={{ background: "none", border: "none", color: "#6f6655", cursor: "pointer", fontSize: 16 }}>×</button>
+                    <div className="cart-item-name" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 19, color: "var(--cream)" }}>{i.name}</div>
+                    <button onClick={() => remove(i.slug, i.ml)} aria-label="Remove" style={{ background: "none", border: "none", color: "#6f6655", cursor: "pointer", fontSize: 16, width: 32, height: 32, flex: "0 0 auto" }}>×</button>
                   </div>
                   <div style={{ fontSize: 10.5, letterSpacing: 2, textTransform: "uppercase", color: "var(--muted)", margin: "3px 0 12px" }}>
                     {t.cart.edp} · {i.ml}ml
@@ -88,7 +108,7 @@ export default function CartDrawer() {
         </div>
 
         {items.length > 0 && (
-          <div style={{ padding: 24, borderTop: "1px solid var(--line)" }}>
+          <div className="cart-footer" style={{ padding: 24, borderTop: "1px solid var(--line)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 18 }}>
               <span style={{ fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "var(--muted)" }}>{t.cart.subtotal}</span>
               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: "var(--cream)" }}>${total}</span>
@@ -107,6 +127,6 @@ export default function CartDrawer() {
 }
 
 const qtyBtn: React.CSSProperties = {
-  width: 30, height: 30, background: "none", border: "none",
+  width: 38, height: 38, background: "none", border: "none",
   color: "var(--cream)", cursor: "pointer", fontSize: 16, lineHeight: 1,
 };

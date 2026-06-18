@@ -52,7 +52,10 @@ export default function Navbar() {
       <style>{`
         .nav-links { display: flex; gap: 34px; align-items: center; }
         .nav-actions { display: flex; align-items: center; gap: 16px; }
-        .nav-burger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 6px; }
+        .nav-burger {
+          display: none; background: none; border: none; cursor: pointer; flex-direction: column;
+          align-items: center; justify-content: center; gap: 5px; min-width: 44px; min-height: 44px; padding: 8px;
+        }
         .nav-link {
           position: relative; font-family: 'Jost', sans-serif;
           font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
@@ -66,6 +69,7 @@ export default function Navbar() {
           .nav-links { display: none; }
           .nav-lang-desktop { display: none; }
           .nav-burger { display: flex; }
+          .nav-actions { gap: 8px; }
         }
         .mobile-panel {
           position: fixed; inset: 0; z-index: 1200;
@@ -121,7 +125,7 @@ export default function Navbar() {
           <button
             onClick={() => setCartOpen(true)}
             aria-label="Open cart"
-            style={{ background: "none", border: "none", cursor: "pointer", position: "relative", color: textColor, display: "flex", alignItems: "center" }}
+            style={{ background: "none", border: "none", cursor: "pointer", position: "relative", color: textColor, display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44 }}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3">
               <path d="M6 7h12l-1 13H7L6 7z" strokeLinejoin="round" />
