@@ -16,35 +16,58 @@ export default function HomePage() {
   return (
     <>
       <style>{`
+        .hero-section { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
+        .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+        .hero-content {
+          position: relative; z-index: 2; height: 100%; max-width: 1280px; margin: 0 auto;
+          display: flex; flex-direction: column; justify-content: center;
+          padding: 0 clamp(22px, 5vw, 64px);
+        }
         .hero-title { font-size: clamp(48px, 11vw, 128px); }
         .hero-sub { font-size: clamp(13px, 1.6vw, 16px); }
+        .hero-scroll { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 2; text-align: center; }
         .split { display: grid; grid-template-columns: 1fr; gap: 0; }
         @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
         .trio { display: grid; grid-template-columns: 1fr; gap: 28px; }
         @media (min-width: 760px) { .trio { grid-template-columns: repeat(3, 1fr); } }
-        .grid-products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .grid-products { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; max-width: 460px; margin: 0 auto; }
+        @media (min-width: 640px) { .grid-products { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: none; } }
         @media (min-width: 900px) { .grid-products { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
+        @media (max-width: 560px) {
+          .hero-section { min-height: 640px; }
+          .hero-content { justify-content: flex-end; padding: 0 20px 92px; }
+          .hero-title { font-size: clamp(44px, 15vw, 64px); line-height: 0.96; }
+          .hero-sub { font-size: 14px; line-height: 1.75; margin-top: 22px !important; }
+          .hero-scroll { display: none; }
+        }
+        @media (max-width: 340px) {
+          .hero-section { min-height: 600px; }
+          .hero-content { padding-inline: 18px; padding-bottom: 82px; }
+          .hero-title { font-size: 42px; }
+        }
       `}</style>
 
       {/* ============ HERO ============ */}
-      <section style={{ position: "relative", height: "100svh", minHeight: 560, overflow: "hidden" }}>
+      <section className="hero-section">
         <video
-          autoPlay muted loop playsInline poster="/images/hero.png"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/hero.png"
+          aria-hidden="true"
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/background.mp4" type="video/mp4" />
         </video>
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(90deg, rgba(7,6,5,0.86) 0%, rgba(7,6,5,0.5) 42%, rgba(7,6,5,0.15) 70%, rgba(7,6,5,0.45) 100%)",
+          background: "linear-gradient(90deg, rgba(7,6,5,0.82) 0%, rgba(7,6,5,0.48) 42%, rgba(7,6,5,0.18) 70%, rgba(7,6,5,0.48) 100%)",
         }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(7,6,5,0.9) 0%, transparent 32%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(7,6,5,0.92) 0%, rgba(7,6,5,0.38) 42%, transparent 76%)" }} />
 
-        <div style={{
-          position: "relative", zIndex: 2, height: "100%", maxWidth: 1280, margin: "0 auto",
-          display: "flex", flexDirection: "column", justifyContent: "center",
-          padding: "0 clamp(22px, 5vw, 64px)",
-        }}>
+        <div className="hero-content">
           <div className="eyebrow" style={{ animation: "fadeUp 0.8s ease both", color: "var(--gold-light)" }}>
             {t.hero.eyebrow}
           </div>
@@ -60,7 +83,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div style={{ position: "absolute", bottom: 26, left: "50%", transform: "translateX(-50%)", zIndex: 2, textAlign: "center" }}>
+        <div className="hero-scroll">
           <div style={{ fontSize: 9, letterSpacing: 3, textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginBottom: 8 }}>{t.hero.scroll}</div>
           <div style={{ width: 1, height: 40, background: "linear-gradient(to bottom, var(--gold), transparent)", margin: "0 auto" }} />
         </div>

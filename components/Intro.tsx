@@ -223,6 +223,19 @@ export default function Intro() {
         pointerEvents: fadeOut ? "none" : "auto",
       }}
     >
+      <style>{`
+        .intro-discover-row {
+          width: min(calc(100% - 32px), 520px);
+          justify-content: center;
+        }
+        .intro-discover-line {
+          width: clamp(24px, 7vw, 60px);
+        }
+        @media (max-width: 340px) {
+          .intro-discover-row { gap: 10px !important; }
+          .intro-discover-text { font-size: 10px !important; letter-spacing: 0.28em !important; }
+        }
+      `}</style>
       <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, display: "block" }} />
 
       {/* Logo reveal */}
@@ -241,12 +254,12 @@ export default function Intro() {
         }}>
           S<span style={{ color: "#c6a15b" }}>O</span>UL
         </div>
-        <div style={{ marginTop: 18, display: "flex", alignItems: "center", gap: 14 }}>
-          <span style={{ width: "clamp(28px,8vw,60px)", height: 1, background: "linear-gradient(to right, transparent, #c6a15b)" }} />
-          <span style={{ fontSize: "clamp(10px,2.6vw,13px)", letterSpacing: "0.42em", textTransform: "uppercase", color: "#c6a15b", whiteSpace: "nowrap" }}>
+        <div className="intro-discover-row" style={{ marginTop: 18, display: "flex", alignItems: "center", gap: 14 }}>
+          <span className="intro-discover-line" style={{ height: 1, background: "linear-gradient(to right, transparent, #c6a15b)" }} />
+          <span className="intro-discover-text" style={{ fontSize: "clamp(10px,2.6vw,13px)", letterSpacing: "0.42em", textTransform: "uppercase", color: "#c6a15b", whiteSpace: "nowrap" }}>
             {t.intro.discover}
           </span>
-          <span style={{ width: "clamp(28px,8vw,60px)", height: 1, background: "linear-gradient(to left, transparent, #c6a15b)" }} />
+          <span className="intro-discover-line" style={{ height: 1, background: "linear-gradient(to left, transparent, #c6a15b)" }} />
         </div>
       </div>
 
@@ -257,7 +270,7 @@ export default function Intro() {
           position: "absolute", bottom: 26, insetInlineEnd: 26, zIndex: 2,
           background: "transparent", border: "1px solid rgba(198,161,91,0.4)", color: "#c6a15b",
           fontFamily: "'Jost', sans-serif", fontSize: 10.5, letterSpacing: "0.25em", textTransform: "uppercase",
-          padding: "9px 20px", cursor: "pointer",
+          minHeight: 44, padding: "9px 20px", cursor: "pointer",
         }}
       >
         {t.intro.skip}

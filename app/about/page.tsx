@@ -14,10 +14,24 @@ export default function AboutPage() {
         @media (min-width: 900px) { .about-split { grid-template-columns: 1fr 1fr; } }
         .values { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
         @media (min-width: 760px) { .values { grid-template-columns: repeat(3, 1fr); } }
+        .about-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 96px); }
+        .value-card { background: var(--noir-card); padding: 44px 34px; }
+        @media (max-width: 560px) {
+          .about-hero { min-height: 460px !important; }
+          .about-copy { padding: 44px 18px 52px; }
+          .about-media { min-height: 340px !important; }
+          .value-card { padding: 36px 24px; }
+          .about-cta { padding: 0 18px 90px !important; }
+        }
+        @media (max-width: 340px) {
+          .about-copy { padding-left: 16px; padding-right: 16px; }
+          .value-card { padding-left: 20px; padding-right: 20px; }
+          .about-cta { padding-left: 16px !important; padding-right: 16px !important; }
+        }
       `}</style>
 
       {/* Hero */}
-      <section style={{ position: "relative", height: "62svh", minHeight: 420, overflow: "hidden" }}>
+      <section className="about-hero" style={{ position: "relative", height: "62svh", minHeight: 420, overflow: "hidden" }}>
         <Image src="/images/atmosphere.png" alt="Soul ingredients" fill priority style={{ objectFit: "cover" }} sizes="100vw" />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(7,6,5,0.6), rgba(7,6,5,0.55) 50%, var(--noir) 100%)" }} />
         <div style={{ position: "relative", zIndex: 2, height: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 22px" }}>
@@ -42,7 +56,7 @@ export default function AboutPage() {
 
       {/* Split story */}
       <section className="about-split" style={{ borderTop: "1px solid var(--line)", background: "var(--noir-soft)" }}>
-        <Reveal style={{ display: "flex", flexDirection: "column", justifyContent: "center", padding: "clamp(48px, 7vw, 96px)" }}>
+        <Reveal className="about-copy">
           <div className="eyebrow">{a.sEyebrow}</div>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 46px)", color: "var(--cream)", margin: "16px 0 22px" }}>
             {a.sTitle} <em style={{ color: "var(--gold)" }}>{a.sTitleEm}</em>
@@ -50,7 +64,7 @@ export default function AboutPage() {
           <p style={{ color: "var(--muted)", lineHeight: 1.95, fontSize: 15, marginBottom: 18 }}>{a.sp1}</p>
           <p style={{ color: "var(--muted)", lineHeight: 1.95, fontSize: 15 }}>{a.sp2}</p>
         </Reveal>
-        <div style={{ position: "relative", minHeight: 380, order: -1 }}>
+        <div className="about-media" style={{ position: "relative", minHeight: 380, order: -1 }}>
           <Image src="/images/hero.png" alt="Soul perfume" fill style={{ objectFit: "cover" }} sizes="(max-width: 900px) 100vw, 50vw" />
         </div>
       </section>
@@ -65,7 +79,7 @@ export default function AboutPage() {
         </Reveal>
         <div className="values">
           {a.values.map((v) => (
-            <div key={v.t} style={{ background: "var(--noir-card)", padding: "44px 34px" }}>
+            <div key={v.t} className="value-card">
               <h3 style={{ fontSize: 24, color: "var(--cream)", marginBottom: 14 }}>{v.t}</h3>
               <p style={{ color: "var(--muted)", lineHeight: 1.85, fontSize: 14 }}>{v.d}</p>
             </div>
@@ -74,7 +88,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section style={{ textAlign: "center", padding: "0 22px 110px" }}>
+      <section className="about-cta" style={{ textAlign: "center", padding: "0 22px 110px" }}>
         <Link href="/shop" className="btn-gold">{a.cta}</Link>
       </section>
     </>

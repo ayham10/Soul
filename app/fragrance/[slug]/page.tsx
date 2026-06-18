@@ -12,9 +12,9 @@ import ProductCard from "@/components/ProductCard";
 
 function NoteRow({ label, items }: { label: string; items: string[] }) {
   return (
-    <div style={{ display: "flex", gap: 18, padding: "16px 0", borderBottom: "1px solid var(--line)" }}>
-      <div style={{ width: 96, flexShrink: 0, fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "var(--gold)", paddingTop: 3 }}>{label}</div>
-      <div style={{ color: "var(--cream)", fontSize: 15, fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic" }}>{items.join(" · ")}</div>
+    <div className="note-row">
+      <div className="note-label">{label}</div>
+      <div className="note-items">{items.join(" · ")}</div>
     </div>
   );
 }
@@ -55,12 +55,14 @@ export default function FragrancePage() {
       <style>{`
         .detail { display: grid; grid-template-columns: 1fr; gap: 0; }
         .detail-img { position: relative; height: 54vh; min-height: 320px; border-bottom: 1px solid var(--line); }
+        .detail-info { padding: clamp(34px, 6vw, 80px) clamp(20px, 5vw, 70px); display: flex; flex-direction: column; justify-content: center; }
         @media (min-width: 940px) {
           .detail { grid-template-columns: 1fr 1fr; }
           .detail-img { height: min(86vh, 760px); min-height: 420px; border-bottom: none; border-inline-end: 1px solid var(--line); }
         }
-        .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        @media (min-width: 760px) { .related-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
+        .related-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; max-width: 460px; margin: 0 auto; }
+        @media (min-width: 640px) { .related-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: none; } }
+        @media (min-width: 940px) { .related-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
 
         /* Purchase controls — mobile-first, fully responsive */
         .size-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -73,6 +75,28 @@ export default function FragrancePage() {
         @media (min-width: 520px) {
           .buy-row { flex-direction: row; }
           .qty-box { width: 150px; flex: 0 0 auto; }
+        }
+        .note-row { display: flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+        .note-label { width: 96px; flex-shrink: 0; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); padding-top: 3px; }
+        .note-items { color: var(--cream); font-size: 15px; line-height: 1.6; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+        .related-section { padding: 90px 22px 110px; }
+        @media (max-width: 639px) {
+          .detail-img { height: 58svh; min-height: 350px; }
+          .detail-info { padding: 34px 18px 54px; }
+          .detail-title { font-size: clamp(40px, 12vw, 52px) !important; line-height: 0.98; text-wrap: balance; }
+          .size-opt { min-height: 74px; }
+          .note-row { gap: 12px; }
+          .note-label { width: 76px; font-size: 9.5px; letter-spacing: 1.6px; }
+          .note-items { font-size: 16px; }
+          .product-perks { gap: 14px !important; }
+          .related-section { padding: 78px 18px 94px; }
+        }
+        @media (max-width: 340px) {
+          .detail-info { padding-left: 16px; padding-right: 16px; }
+          .detail-img { min-height: 330px; }
+          .note-row { flex-direction: column; gap: 6px; }
+          .note-label { width: auto; }
+          .related-section { padding-left: 16px; padding-right: 16px; }
         }
       `}</style>
 
@@ -87,14 +111,14 @@ export default function FragrancePage() {
           </div>
 
           {/* Info */}
-          <div style={{ padding: "clamp(34px, 6vw, 80px) clamp(20px, 5vw, 70px)", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div className="detail-info">
             <nav style={{ fontSize: 11, letterSpacing: 1, color: "var(--muted)", marginBottom: 22 }}>
               <Link href="/shop" style={{ color: "var(--muted)", textDecoration: "none" }}>{t.product.breadcrumb}</Link>
               <span style={{ margin: "0 8px" }}>/</span>
               <span style={{ color: "var(--cream)" }}>{L.name}</span>
             </nav>
 
-            <h1 style={{ fontSize: "clamp(38px, 6vw, 66px)", color: "var(--cream)" }}>{L.name}</h1>
+            <h1 className="detail-title" style={{ fontSize: "clamp(38px, 6vw, 66px)", color: "var(--cream)" }}>{L.name}</h1>
             <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", fontSize: 20, color: "var(--gold)", marginTop: 8 }}>
               {L.tagline}
             </p>
@@ -145,7 +169,7 @@ export default function FragrancePage() {
               <NoteRow label={t.product.base} items={L.notes.base} />
             </div>
 
-            <div style={{ display: "flex", gap: 24, marginTop: 28, flexWrap: "wrap" }}>
+            <div className="product-perks" style={{ display: "flex", gap: 24, marginTop: 28, flexWrap: "wrap" }}>
               {t.product.perks.map((p) => (
                 <div key={p} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "var(--muted)" }}>
                   <span style={{ color: "var(--gold)" }}>✦</span> {p}
@@ -157,7 +181,7 @@ export default function FragrancePage() {
 
         {/* Related */}
         {related.length > 0 && (
-          <section className="wrap" style={{ padding: "90px 22px 110px" }}>
+          <section className="wrap related-section">
             <h2 style={{ fontSize: "clamp(28px, 4vw, 44px)", color: "var(--cream)", textAlign: "center", marginBottom: 40 }}>
               {t.product.related} <em style={{ color: "var(--gold)" }}>{t.product.relatedEm}</em>
             </h2>

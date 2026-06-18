@@ -21,6 +21,18 @@ export default function Footer() {
           color: var(--cream); font-family: 'Jost', sans-serif; font-size: 13px; padding: 12px 4px;
         }
         .news-input::placeholder { color: #6f6655; }
+        .news-submit {
+          display: inline-flex; align-items: center; justify-content: center;
+          min-width: 44px; min-height: 44px;
+        }
+        @media (max-width: 560px) {
+          .footer-grid { padding: 58px 18px 38px; gap: 38px; }
+          .footer-bottom { padding-inline: 18px !important; align-items: flex-start !important; }
+        }
+        @media (max-width: 340px) {
+          .footer-grid { padding-left: 16px; padding-right: 16px; }
+          .footer-bottom { padding-left: 16px !important; padding-right: 16px !important; }
+        }
       `}</style>
 
       <div className="footer-grid">
@@ -62,14 +74,14 @@ export default function Footer() {
           </p>
           <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid var(--line)" }}>
             <input className="news-input" type="email" placeholder={t.footer.email} aria-label={t.footer.email} />
-            <button aria-label="Subscribe" style={{ background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: "0 4px" }}>
+            <button className="news-submit" aria-label="Subscribe" style={{ background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: "0 4px" }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
           </div>
         </div>
       </div>
 
-      <div style={{
+      <div className="footer-bottom" style={{
         borderTop: "1px solid var(--line)", padding: "20px 22px", maxWidth: 1280, margin: "0 auto",
         display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "space-between",
       }}>
