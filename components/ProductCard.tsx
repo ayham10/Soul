@@ -1,11 +1,15 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Product } from "@/lib/products";
+import { Product, localize } from "@/lib/products";
 import { useCart } from "@/lib/cart";
+import { useLang } from "@/lib/lang";
+import { famLabel, genderLabel } from "@/lib/i18n";
 
 export default function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
+  const { t, lang } = useLang();
+  const L = localize(product, lang);
 
   return (
     <div className="product-card" style={{ position: "relative", background: "var(--noir-card)", border: "1px solid var(--line)" }}>
@@ -23,41 +27,41 @@ export default function ProductCard({ product }: { product: Product }) {
         <div style={{ position: "relative", aspectRatio: "4 / 5", overflow: "hidden", background: "#0e0c0b" }}>
           <Image
             src={product.image}
-            alt={product.name}
+            alt={L.name}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
             className="pc-img"
             style={{ objectFit: "cover" }}
           />
           <span style={{
-            position: "absolute", top: 14, left: 14, fontSize: 9, letterSpacing: 2,
+            position: "absolute", top: 14, insetInlineStart: 14, fontSize: 9, letterSpacing: 2,
             textTransform: "uppercase", color: "var(--cream)", background: "rgba(0,0,0,0.45)",
             border: "1px solid var(--line)", padding: "5px 10px", backdropFilter: "blur(4px)",
-          }}>{product.family}</span>
+          }}>{famLabel(product.family, lang)}</span>
           {product.bestseller && (
             <span style={{
-              position: "absolute", top: 14, right: 14, fontSize: 9, letterSpacing: 2,
+              position: "absolute", top: 14, insetInlineEnd: 14, fontSize: 9, letterSpacing: 2,
               textTransform: "uppercase", color: "#1a140a", background: "var(--gold)", padding: "5px 10px",
-            }}>Bestseller</span>
+            }}>★</span>
           )}
         </div>
       </Link>
 
       <div style={{ padding: "20px 20px 22px" }}>
         <div style={{ fontSize: 9.5, letterSpacing: 2.5, textTransform: "uppercase", color: "var(--muted)", marginBottom: 7 }}>
-          {product.gender}
+          {genderLabel(product.gender, lang)}
         </div>
         <Link href={`/fragrance/${product.slug}`} style={{ textDecoration: "none" }}>
-          <h3 style={{ fontSize: 25, color: "var(--cream)", marginBottom: 6 }}>{product.name}</h3>
+          <h3 style={{ fontSize: 25, color: "var(--cream)", marginBottom: 6 }}>{L.name}</h3>
         </Link>
-        <p style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.6, minHeight: 40 }}>{product.tagline}</p>
+        <p style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.6, minHeight: 40 }}>{L.tagline}</p>
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 16 }}>
           <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, color: "var(--gold)" }}>${product.price}</span>
           <button
             className="quick-add"
             onClick={() =>
-              add({ slug: product.slug, name: product.name, image: product.image, ml: 50, price: product.price })
+              add({ slug: product.slug, name: L.name, image: product.image, ml: 50, price: product.price })
             }
             style={{
               fontSize: 10, letterSpacing: 2, textTransform: "uppercase", fontFamily: "'Jost', sans-serif",
@@ -67,7 +71,7 @@ export default function ProductCard({ product }: { product: Product }) {
             onMouseEnter={(e) => { e.currentTarget.style.background = "var(--gold)"; e.currentTarget.style.color = "#1a140a"; e.currentTarget.style.borderColor = "var(--gold)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--cream)"; e.currentTarget.style.borderColor = "rgba(233,225,211,0.35)"; }}
           >
-            Add to Bag
+            {t.product.addToBag}
           </button>
         </div>
       </div>

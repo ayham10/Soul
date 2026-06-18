@@ -1,9 +1,14 @@
 "use client";
 import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
-import { products, families } from "@/lib/products";
+import { families } from "@/lib/products";
+import { useProducts } from "@/lib/store";
+import { useLang } from "@/lib/lang";
+import { famLabel } from "@/lib/i18n";
 
 export default function ShopPage() {
+  const { products } = useProducts();
+  const { t, lang } = useLang();
   const [active, setActive] = useState("All");
   const list = active === "All" ? products : products.filter((p) => p.family === active);
 
@@ -23,12 +28,12 @@ export default function ShopPage() {
       `}</style>
 
       <header style={{ textAlign: "center", padding: "124px 20px 16px" }}>
-        <div className="eyebrow">Eau de Parfum</div>
+        <div className="eyebrow">{t.shop.eyebrow}</div>
         <h1 style={{ fontSize: "clamp(40px, 8vw, 78px)", color: "var(--cream)", margin: "14px 0 16px" }}>
-          The <em style={{ color: "var(--gold)" }}>Collection</em>
+          {t.shop.title} <em style={{ color: "var(--gold)" }}>{t.shop.titleEm}</em>
         </h1>
         <p style={{ color: "var(--muted)", maxWidth: 520, margin: "0 auto", lineHeight: 1.8, fontSize: 14.5 }}>
-          Six fragrances, composed in Grasse. Filter by olfactory family to find your signature.
+          {t.shop.sub}
         </p>
       </header>
 
@@ -36,7 +41,7 @@ export default function ShopPage() {
         <div className="filter-row">
           {families.map((f) => (
             <button key={f} className={`filter-chip${active === f ? " active" : ""}`} onClick={() => setActive(f)}>
-              {f}
+              {famLabel(f, lang)}
             </button>
           ))}
         </div>
@@ -49,7 +54,7 @@ export default function ShopPage() {
           ))}
         </div>
         {list.length === 0 && (
-          <p style={{ textAlign: "center", color: "var(--muted)", padding: "60px 0" }}>No fragrances in this family yet.</p>
+          <p style={{ textAlign: "center", color: "var(--muted)", padding: "60px 0" }}>{t.shop.empty}</p>
         )}
       </section>
     </>

@@ -3,18 +3,37 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCart } from "@/lib/cart";
+import { useLang } from "@/lib/lang";
+import { Lang } from "@/lib/i18n";
 
-const LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "The Collection" },
-  { href: "/about", label: "Our Story" },
-];
+function LangButton({ lang, toggle, onClick }: { lang: Lang; toggle: () => void; onClick?: () => void }) {
+  return (
+    <button
+      onClick={() => { toggle(); onClick?.(); }}
+      aria-label="Switch language"
+      style={{
+        fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: "1.5px",
+        background: "transparent", border: "1px solid rgba(198,161,91,0.45)", color: "var(--gold)",
+        padding: "6px 13px", cursor: "pointer", lineHeight: 1.2,
+      }}
+    >
+      {lang === "en" ? "العربية" : "EN"}
+    </button>
+  );
+}
 
 export default function Navbar() {
   const pathname = usePathname();
   const { count, setOpen: setCartOpen } = useCart();
+  const { t, lang, toggle } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const links = [
+    { href: "/", label: t.nav.home },
+    { href: "/shop", label: t.nav.collection },
+    { href: "/about", label: t.nav.story },
+  ];
 
   const overHero = pathname === "/";
 
@@ -31,38 +50,37 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        .nav-links { display: flex; gap: 36px; align-items: center; }
-        .nav-actions { display: flex; align-items: center; gap: 20px; }
+        .nav-links { display: flex; gap: 34px; align-items: center; }
+        .nav-actions { display: flex; align-items: center; gap: 16px; }
         .nav-burger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 6px; }
         .nav-link {
           position: relative; font-family: 'Jost', sans-serif;
           font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
           text-decoration: none; transition: color 0.25s; padding: 4px 0;
         }
-        .nav-link::after {
-          content: ''; position: absolute; left: 0; bottom: -2px; height: 1px; width: 0;
-          background: var(--gold); transition: width 0.3s ease;
-        }
+        .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 1px; width: 0; background: var(--gold); transition: width 0.3s ease; }
         .nav-link:hover { color: var(--gold) !important; }
-        .nav-link:hover::after { width: 100%; }
-        .nav-link.active::after { width: 100%; }
-        @media (max-width: 860px) {
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-lang-desktop { display: inline-flex; }
+        @media (max-width: 880px) {
           .nav-links { display: none; }
+          .nav-lang-desktop { display: none; }
           .nav-burger { display: flex; }
         }
         .mobile-panel {
           position: fixed; inset: 0; z-index: 1200;
           background: rgba(8,7,6,0.98); backdrop-filter: blur(8px);
-          display: flex; flex-direction: column; padding: 110px 28px 40px;
+          display: flex; flex-direction: column; padding: 104px 28px 40px;
           transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
         }
+        [dir="rtl"] .mobile-panel { transform: translateX(-100%); }
         .mobile-panel.open { transform: translateX(0); }
         .mobile-link {
           font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 300;
           color: var(--cream); text-decoration: none; padding: 18px 0;
           border-bottom: 1px solid rgba(198,161,91,0.14);
         }
-        .mobile-link:active { color: var(--gold); }
+        [dir="rtl"] .mobile-link { font-family: 'Noto Naskh Arabic', serif; }
       `}</style>
 
       <nav
@@ -80,13 +98,13 @@ export default function Navbar() {
           <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 500, letterSpacing: 6, color: textColor }}>
             S<span style={{ color: "var(--gold)" }}>O</span>UL
           </div>
-          <div style={{ fontSize: 7.5, letterSpacing: 4, textTransform: "uppercase", color: "var(--gold)", marginTop: 2, textAlign: "center" }}>
-            Maison de Parfum
+          <div style={{ fontSize: 7.5, letterSpacing: lang === "ar" ? 0 : 4, textTransform: "uppercase", color: "var(--gold)", marginTop: 2, textAlign: "center" }}>
+            {t.nav.tagline}
           </div>
         </Link>
 
         <div className="nav-links">
-          {LINKS.map((l) => (
+          {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -99,6 +117,7 @@ export default function Navbar() {
         </div>
 
         <div className="nav-actions">
+          <span className="nav-lang-desktop"><LangButton lang={lang} toggle={toggle} /></span>
           <button
             onClick={() => setCartOpen(true)}
             aria-label="Open cart"
@@ -110,7 +129,7 @@ export default function Navbar() {
             </svg>
             {count > 0 && (
               <span style={{
-                position: "absolute", top: -6, right: -8, background: "var(--gold)", color: "#1a140a",
+                position: "absolute", top: -6, insetInlineEnd: -8, background: "var(--gold)", color: "#1a140a",
                 fontSize: 9, fontWeight: 700, minWidth: 16, height: 16, borderRadius: 8,
                 display: "flex", alignItems: "center", justifyContent: "center", padding: "0 4px",
                 fontFamily: "'Jost', sans-serif",
@@ -127,16 +146,19 @@ export default function Navbar() {
       </nav>
 
       <div className={`mobile-panel${menuOpen ? " open" : ""}`}>
-        {LINKS.map((l) => (
+        {links.map((l) => (
           <Link key={l.href} href={l.href} className="mobile-link" onClick={() => setMenuOpen(false)}>
             {l.label}
           </Link>
         ))}
-        <Link href="/shop" className="btn-gold" style={{ marginTop: 36 }} onClick={() => setMenuOpen(false)}>
-          Shop the Collection
+        <Link href="/shop" className="btn-gold" style={{ marginTop: 32 }} onClick={() => setMenuOpen(false)}>
+          {t.nav.shopCta}
         </Link>
-        <div style={{ marginTop: "auto", fontSize: 10, letterSpacing: 3, textTransform: "uppercase", color: "var(--muted)" }}>
-          Crafted in Grasse · Worldwide Shipping
+        <div style={{ marginTop: 24 }}>
+          <LangButton lang={lang} toggle={toggle} onClick={() => setMenuOpen(false)} />
+        </div>
+        <div style={{ marginTop: "auto", fontSize: 10, color: "var(--muted)" }}>
+          {t.nav.brandSub}
         </div>
       </div>
     </>

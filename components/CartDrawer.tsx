@@ -2,10 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cart";
+import { useLang } from "@/lib/lang";
 import { SHOP_WHATSAPP } from "@/lib/products";
 
 export default function CartDrawer() {
   const { items, open, setOpen, total, setQty, remove, count } = useCart();
+  const { t, dir } = useLang();
 
   const checkout = () => {
     const lines = items
@@ -28,21 +30,22 @@ export default function CartDrawer() {
         }}
       />
       <aside
+        dir={dir}
         aria-hidden={!open}
         style={{
-          position: "fixed", top: 0, right: 0, bottom: 0, zIndex: 1600,
+          position: "fixed", top: 0, insetInlineEnd: 0, bottom: 0, zIndex: 1600,
           width: "min(420px, 100vw)", background: "var(--noir-soft)",
-          borderLeft: "1px solid var(--line)",
-          transform: open ? "translateX(0)" : "translateX(100%)",
+          borderInlineStart: "1px solid var(--line)",
+          transform: open ? "translateX(0)" : (dir === "rtl" ? "translateX(-100%)" : "translateX(100%)"),
           transition: "transform 0.4s cubic-bezier(0.22,1,0.36,1)",
           display: "flex", flexDirection: "column",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "22px 24px", borderBottom: "1px solid var(--line)" }}>
           <div>
-            <div className="eyebrow">Your Selection</div>
+            <div className="eyebrow">{t.cart.selection}</div>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, color: "var(--cream)", marginTop: 2 }}>
-              Shopping Bag {count > 0 && <span style={{ color: "var(--gold)" }}>({count})</span>}
+              {t.cart.bag} {count > 0 && <span style={{ color: "var(--gold)" }}>({count})</span>}
             </div>
           </div>
           <button onClick={() => setOpen(false)} aria-label="Close cart" style={{ background: "none", border: "none", color: "var(--muted)", cursor: "pointer", fontSize: 26, lineHeight: 1 }}>×</button>
@@ -51,9 +54,9 @@ export default function CartDrawer() {
         <div style={{ flex: 1, overflowY: "auto", padding: "8px 24px" }}>
           {items.length === 0 ? (
             <div style={{ textAlign: "center", padding: "80px 0", color: "var(--muted)" }}>
-              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: "#6f6655", marginBottom: 10 }}>Your bag is empty</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: "#6f6655", marginBottom: 10 }}>{t.cart.empty}</div>
               <Link href="/shop" onClick={() => setOpen(false)} className="footer-link" style={{ color: "var(--gold)", fontSize: 12, letterSpacing: 1 }}>
-                Discover the collection →
+                {t.cart.discover}
               </Link>
             </div>
           ) : (
@@ -68,7 +71,7 @@ export default function CartDrawer() {
                     <button onClick={() => remove(i.slug, i.ml)} aria-label="Remove" style={{ background: "none", border: "none", color: "#6f6655", cursor: "pointer", fontSize: 16 }}>×</button>
                   </div>
                   <div style={{ fontSize: 10.5, letterSpacing: 2, textTransform: "uppercase", color: "var(--muted)", margin: "3px 0 12px" }}>
-                    Eau de Parfum · {i.ml}ml
+                    {t.cart.edp} · {i.ml}ml
                   </div>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <div style={{ display: "flex", alignItems: "center", border: "1px solid var(--line)" }}>
@@ -87,14 +90,14 @@ export default function CartDrawer() {
         {items.length > 0 && (
           <div style={{ padding: 24, borderTop: "1px solid var(--line)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 18 }}>
-              <span style={{ fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "var(--muted)" }}>Subtotal</span>
+              <span style={{ fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "var(--muted)" }}>{t.cart.subtotal}</span>
               <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: "var(--cream)" }}>${total}</span>
             </div>
             <button onClick={checkout} className="btn-gold" style={{ width: "100%" }}>
-              Checkout via WhatsApp
+              {t.cart.checkout}
             </button>
             <p style={{ fontSize: 10.5, color: "#5b5345", textAlign: "center", marginTop: 12, letterSpacing: 0.5 }}>
-              Complimentary shipping & samples on every order.
+              {t.cart.note}
             </p>
           </div>
         )}

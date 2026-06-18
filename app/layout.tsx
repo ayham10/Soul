@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart";
+import { LangProvider } from "@/lib/lang";
+import { ProductsProvider } from "@/lib/store";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
+import Intro from "@/components/Intro";
 
 export const metadata: Metadata = {
   title: "Soul — Maison de Parfum | Niche Luxury Fragrance",
@@ -27,12 +30,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <CartProvider>
-          <Navbar />
-          <CartDrawer />
-          <main>{children}</main>
-          <Footer />
-        </CartProvider>
+        <LangProvider>
+          <ProductsProvider>
+            <CartProvider>
+              <Intro />
+              <Navbar />
+              <CartDrawer />
+              <main>{children}</main>
+              <Footer />
+            </CartProvider>
+          </ProductsProvider>
+        </LangProvider>
       </body>
     </html>
   );
