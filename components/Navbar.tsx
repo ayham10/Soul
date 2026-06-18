@@ -14,7 +14,7 @@ function LangButton({ lang, toggle, onClick }: { lang: Lang; toggle: () => void;
       style={{
         fontFamily: "'Jost', sans-serif", fontSize: 11, letterSpacing: "1.5px",
         background: "transparent", border: "1px solid rgba(198,161,91,0.45)", color: "var(--gold)",
-        padding: "6px 13px", cursor: "pointer", lineHeight: 1.2,
+        minHeight: 44, padding: "0 13px", cursor: "pointer", lineHeight: 1.2,
       }}
     >
       {lang === "en" ? "العربية" : "EN"}

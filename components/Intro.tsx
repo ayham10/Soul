@@ -257,7 +257,7 @@ export default function Intro() {
           position: "absolute", bottom: 26, insetInlineEnd: 26, zIndex: 2,
           background: "transparent", border: "1px solid rgba(198,161,91,0.4)", color: "#c6a15b",
           fontFamily: "'Jost', sans-serif", fontSize: 10.5, letterSpacing: "0.25em", textTransform: "uppercase",
-          padding: "9px 20px", cursor: "pointer",
+          minHeight: 44, padding: "9px 20px", cursor: "pointer",
         }}
       >
         {t.intro.skip}

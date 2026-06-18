@@ -21,7 +21,7 @@ export default function ShopPage() {
         .filter-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
         .filter-chip {
           font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-          min-height: 40px; padding: 9px 18px; cursor: pointer; background: transparent; color: var(--muted);
+          min-height: 44px; padding: 9px 18px; cursor: pointer; background: transparent; color: var(--muted);
           border: 1px solid var(--line); transition: all 0.25s;
         }
         .filter-chip:hover { color: var(--cream); border-color: rgba(198,161,91,0.5); }

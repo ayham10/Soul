@@ -200,7 +200,8 @@ a { color: inherit; }
   background: transparent;
   color: var(--cream);
   border: 1px solid rgba(233, 225, 211, 0.35);
-  padding: 10px 16px;
+  min-height: 44px;
+  padding: 0 16px;
   cursor: pointer;
   transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, opacity 0.3s ease, transform 0.3s ease;
 }

@@ -127,6 +127,6 @@ export default function CartDrawer() {
 }
 
 const qtyBtn: React.CSSProperties = {
-  width: 38, height: 38, background: "none", border: "none",
+  width: 44, height: 44, background: "none", border: "none",
   color: "var(--cream)", cursor: "pointer", fontSize: 16, lineHeight: 1,
 };
