@@ -23,7 +23,7 @@ async function saveSharedCatalog(products: Product[]) {
   });
   if (!response.ok) throw new Error("Unable to save product catalogue");
   const data = await response.json().catch(() => null);
-  if (data?.storage !== "redis") {
+  if (data?.storage !== "supabase" && data?.storage !== "redis") {
     throw new Error("A durable catalogue database is not configured.");
   }
 }
@@ -32,7 +32,7 @@ function warnSharedSaveFailed(error: unknown) {
   console.error(error);
   if (typeof window !== "undefined") {
     window.alert(
-      "Product updated on this device, but it is not saved for all users yet. Configure Upstash Redis / Vercel KV environment variables so admin changes appear on every phone and browser."
+      "Product updated on this device, but it is not saved for all users yet. Configure Supabase environment variables so admin changes appear on every phone and browser."
     );
   }
 }

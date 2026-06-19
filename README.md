@@ -35,23 +35,33 @@ Open http://localhost:3000.
 ## Shared admin catalogue
 
 Admin edits need durable storage to appear for every customer on every device.
-Create an Upstash Redis database (or Vercel KV store) and add these environment
-variables to the deployment:
+Create a Supabase project, open **SQL Editor**, and run:
 
-```bash
-UPSTASH_REDIS_REST_URL=...
-UPSTASH_REDIS_REST_TOKEN=...
+```sql
+create table if not exists public.soul_catalog (
+  id text primary key,
+  products jsonb not null,
+  updated_at timestamptz not null default now()
+);
+
+insert into public.soul_catalog (id, products)
+values ('default', '[]'::jsonb)
+on conflict (id) do nothing;
+
+alter table public.soul_catalog enable row level security;
 ```
 
-Vercel KV names are also supported:
+Then add these environment variables to the deployment:
 
 ```bash
-KV_REST_API_URL=...
-KV_REST_API_TOKEN=...
+SUPABASE_URL=...
+SUPABASE_SERVICE_ROLE_KEY=...
 ```
 
-Without these variables, `/admin` can still update the catalogue locally for
-testing, but production serverless deployments may not share or persist those
-changes across users.
+`SUPABASE_URL` is the project URL. `SUPABASE_SERVICE_ROLE_KEY` is the secret
+service-role key from Supabase project settings; keep it server-side only and do
+not expose it in browser code. Without these variables, `/admin` can still update
+the catalogue locally for testing, but production deployments will not share or
+persist those changes across users.
 
 The cart is front-end only — for real payments, wire the checkout to a provider such as Stripe.
