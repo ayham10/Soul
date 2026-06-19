@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cart";
 import { useLang } from "@/lib/lang";
-import { SHOP_WHATSAPP } from "@/lib/products";
+import { SHOP_WHATSAPP, formatPrice } from "@/lib/products";
 
 export default function CartDrawer() {
   const { items, open, setOpen, total, setQty, remove, count } = useCart();
@@ -11,10 +11,10 @@ export default function CartDrawer() {
 
   const checkout = () => {
     const lines = items
-      .map((i) => `• ${i.name} — ${i.ml}ml × ${i.qty} — $${i.price * i.qty}`)
+      .map((i) => `• ${i.name} — ${i.ml}ml × ${i.qty} — ${formatPrice(i.price * i.qty)}`)
       .join("\n");
     const msg = encodeURIComponent(
-      `Hello Soul,\n\nI'd like to order:\n${lines}\n\nTotal: $${total}\n\nName:\nDelivery address:`
+      `Hello Soul,\n\nI'd like to order:\n${lines}\n\nTotal: ${formatPrice(total)}\n\nName:\nDelivery address:`
     );
     window.open(`https://wa.me/${SHOP_WHATSAPP}?text=${msg}`, "_blank");
   };
@@ -99,7 +99,7 @@ export default function CartDrawer() {
                       <span style={{ minWidth: 28, textAlign: "center", fontSize: 13, color: "var(--cream)" }}>{i.qty}</span>
                       <button onClick={() => setQty(i.slug, i.ml, i.qty + 1)} aria-label="Increase" style={qtyBtn}>+</button>
                     </div>
-                    <div style={{ color: "var(--gold)", fontSize: 14, fontFamily: "'Jost', sans-serif" }}>${i.price * i.qty}</div>
+                    <div style={{ color: "var(--gold)", fontSize: 14, fontFamily: "'Jost', sans-serif" }}>{formatPrice(i.price * i.qty)}</div>
                   </div>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function CartDrawer() {
           <div className="cart-footer" style={{ padding: 24, borderTop: "1px solid var(--line)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 18 }}>
               <span style={{ fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "var(--muted)" }}>{t.cart.subtotal}</span>
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: "var(--cream)" }}>${total}</span>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: "var(--cream)" }}>{formatPrice(total)}</span>
             </div>
             <button onClick={checkout} className="btn-gold" style={{ width: "100%" }}>
               {t.cart.checkout}

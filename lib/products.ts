@@ -16,7 +16,7 @@ export interface Product {
   tagline_ar?: string;
   description: string;
   description_ar?: string;
-  price: number;         // base price for 50ml (USD)
+  price: number;         // base price for 50ml (ILS)
   image: string;
   accent: string;        // accent color derived from the bottle
   notes: Note;
@@ -35,6 +35,10 @@ export const SIZES = [
   { ml: 50, multiplier: 1 },
   { ml: 100, multiplier: 1.6 },
 ];
+
+export function formatPrice(price: number): string {
+  return `₪${Math.round(price)}`;
+}
 
 export const products: Product[] = [
   {

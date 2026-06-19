@@ -6,7 +6,7 @@ export interface CartItem {
   name: string;
   image: string;
   ml: number;
-  price: number;   // unit price for the chosen size
+  price: number;   // unit price in ILS for the chosen size
   qty: number;
 }
 

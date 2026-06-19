@@ -2,7 +2,7 @@
 
 A mobile-first, luxury perfume storefront built with **Next.js 16** (App Router) and React 19.
 Cinematic video hero, an olfactory-family shop filter, product pages with a notes pyramid,
-and a client-side shopping bag that checks out via WhatsApp.
+and a shopping bag that checks out via WhatsApp.
 
 ## Getting started
 
@@ -21,14 +21,15 @@ Open http://localhost:3000.
 - `app/about/page.tsx` — brand story
 - `components/` — `Navbar`, `Footer`, `CartDrawer`, `ProductCard`, `Reveal`
 - `lib/products.ts` — the fragrance catalogue (edit products here)
+- `app/api/products/route.ts` — shared product catalogue API for admin edits
 - `lib/cart.tsx` — shopping bag context (persists to `localStorage`)
 - `public/images/` — product & lifestyle imagery
 - `public/videos/background.mp4` — looping hero background
 
 ## Customising
 
-- **Products:** edit `lib/products.ts`.
+- **Products:** edit `lib/products.ts` for defaults, or use `/admin` to update the shared catalogue.
 - **Checkout number:** set `SHOP_WHATSAPP` in `lib/products.ts` to the shop's real WhatsApp number.
-- **Hero video:** replace `public/videos/background.mp4` (and the `public/images/hero.png` poster).
+- **Hero video:** replace `public/videos/background.mp4`.
 
 The cart is front-end only — for real payments, wire the checkout to a provider such as Stripe.

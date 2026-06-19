@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Product, localize } from "@/lib/products";
+import { Product, formatPrice, localize } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 import { useLang } from "@/lib/lang";
 import { famLabel, genderLabel } from "@/lib/i18n";
@@ -19,7 +19,7 @@ export default function ProductCard({ product }: { product: Product }) {
             src={product.image}
             alt={L.name}
             fill
-            sizes="(max-width: 639px) calc(100vw - 36px), (max-width: 899px) 46vw, (max-width: 1280px) 31vw, 370px"
+            sizes="(max-width: 639px) 46vw, (max-width: 899px) 46vw, (max-width: 1280px) 31vw, 370px"
             className="pc-img"
             style={{ objectFit: "cover" }}
           />
@@ -40,7 +40,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="product-tagline">{L.tagline}</p>
 
         <div className="product-purchase-row">
-          <span className="product-price">${product.price}</span>
+          <span className="product-price">{formatPrice(product.price)}</span>
           <button
             className="quick-add product-add-button"
             onClick={() =>

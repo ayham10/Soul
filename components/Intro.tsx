@@ -14,7 +14,7 @@ const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t 
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 
 // Timeline (ms)
-const T = { drift: 1300, gather: 3300, hold: 4600, spray: 5700, logo: 5300, exit: 7100, end: 7950 };
+const T = { drift: 320, gather: 980, hold: 1250, spray: 1580, logo: 1050, exit: 2550, end: 3000 };
 
 const GOLD = ["#f6e3ab", "#e3c789", "#c6a15b", "#fff6da", "#d8b164"];
 
@@ -32,7 +32,7 @@ export default function Intro() {
     doneRef.current = true;
     setFadeOut(true);
     try { sessionStorage.setItem("soul-intro-shown", "1"); } catch {}
-    window.setTimeout(() => setVisible(false), 900);
+    window.setTimeout(() => setVisible(false), 450);
   };
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function Intro() {
 
     if (prefersReduced) {
       setShowLogo(true);
-      const tm = window.setTimeout(finish, 2200);
+      const tm = window.setTimeout(finish, 900);
       return () => { window.clearTimeout(tm); document.body.style.overflow = ""; };
     }
 
@@ -99,7 +99,7 @@ export default function Intro() {
       return out;
     };
 
-    const count = Math.max(360, Math.min(1100, Math.floor((W * H) / 2300)));
+    const count = Math.max(180, Math.min(520, Math.floor((W * H) / 4200)));
     const targets = buildTargets(count);
     const cx = W / 2, cy = H * 0.46;
 
@@ -219,7 +219,7 @@ export default function Intro() {
       dir={dir}
       style={{
         position: "fixed", inset: 0, zIndex: 4000, background: "#060504",
-        opacity: fadeOut ? 0 : 1, transition: "opacity 0.9s ease",
+        opacity: fadeOut ? 0 : 1, transition: "opacity 0.45s ease",
         pointerEvents: fadeOut ? "none" : "auto",
       }}
     >
@@ -244,7 +244,7 @@ export default function Intro() {
           position: "absolute", inset: 0, display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center", textAlign: "center", pointerEvents: "none",
           opacity: showLogo ? 1 : 0, transform: showLogo ? "translateY(0)" : "translateY(12px)",
-          transition: "opacity 1.4s ease, transform 1.6s cubic-bezier(0.22,1,0.36,1)",
+          transition: "opacity 0.7s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1)",
         }}
       >
         <div style={{
