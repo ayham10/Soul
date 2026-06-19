@@ -32,4 +32,26 @@ Open http://localhost:3000.
 - **Checkout number:** set `SHOP_WHATSAPP` in `lib/products.ts` to the shop's real WhatsApp number.
 - **Hero video:** replace `public/videos/background.mp4`.
 
+## Shared admin catalogue
+
+Admin edits need durable storage to appear for every customer on every device.
+Create an Upstash Redis database (or Vercel KV store) and add these environment
+variables to the deployment:
+
+```bash
+UPSTASH_REDIS_REST_URL=...
+UPSTASH_REDIS_REST_TOKEN=...
+```
+
+Vercel KV names are also supported:
+
+```bash
+KV_REST_API_URL=...
+KV_REST_API_TOKEN=...
+```
+
+Without these variables, `/admin` can still update the catalogue locally for
+testing, but production serverless deployments may not share or persist those
+changes across users.
+
 The cart is front-end only — for real payments, wire the checkout to a provider such as Stripe.
