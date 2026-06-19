@@ -47,7 +47,6 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
         if (response.ok) {
           const data = await response.json();
           if (active && Array.isArray(data.products) && data.products.length) {
-            // eslint-disable-next-line react-hooks/set-state-in-effect
             setItems(data.products);
             try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data.products)); } catch {}
           }
@@ -60,7 +59,6 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
           if (raw) {
             const parsed = JSON.parse(raw);
             if (active && Array.isArray(parsed) && parsed.length) {
-              // eslint-disable-next-line react-hooks/set-state-in-effect
               setItems(parsed);
             }
           }
