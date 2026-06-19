@@ -86,6 +86,9 @@ export default function Footer() {
         display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "space-between",
       }}>
         <span style={{ fontSize: 11, color: "#5b5345", letterSpacing: 1 }}>© {new Date().getFullYear()} {t.footer.rights}</span>
+        <span style={{ fontSize: 11, color: "#5b5345", letterSpacing: 1.4 }}>
+          Owner: Sqr Daghash · Developer: Ayham Huss
+        </span>
         <span style={{ fontSize: 11, color: "#5b5345", letterSpacing: 2 }}>@soul.parfum</span>
       </div>
     </footer>

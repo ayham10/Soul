@@ -15,6 +15,7 @@ export default function HomePage() {
 
   return (
     <>
+      <link rel="preload" href="/videos/background.mp4" as="video" type="video/mp4" />
       <style>{`
         .hero-section { position: relative; height: 100svh; min-height: 560px; overflow: hidden; }
         .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
@@ -30,9 +31,11 @@ export default function HomePage() {
         @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
         .trio { display: grid; grid-template-columns: 1fr; gap: 28px; }
         @media (min-width: 760px) { .trio { grid-template-columns: repeat(3, 1fr); } }
-        .grid-products { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; max-width: 460px; margin: 0 auto; }
-        @media (min-width: 640px) { .grid-products { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: none; } }
+        .grid-products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+        .grid-products > .reveal { height: 100%; }
+        @media (min-width: 640px) { .grid-products { gap: 20px; } }
         @media (min-width: 900px) { .grid-products { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
+        @media (max-width: 340px) { .grid-products { gap: 10px; } }
         @media (max-width: 560px) {
           .hero-section { min-height: 640px; }
           .hero-content { justify-content: flex-end; padding: 0 20px 92px; }
@@ -55,8 +58,7 @@ export default function HomePage() {
           muted
           loop
           playsInline
-          preload="metadata"
-          poster="/images/hero.png"
+          preload="auto"
           aria-hidden="true"
         >
           <source src="/videos/background.mp4" type="video/mp4" />

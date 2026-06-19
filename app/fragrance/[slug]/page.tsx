@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { SIZES, localize } from "@/lib/products";
+import { SIZES, formatPrice, localize } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useCart } from "@/lib/cart";
 import { useLang } from "@/lib/lang";
@@ -60,8 +60,8 @@ export default function FragrancePage() {
           .detail { grid-template-columns: 1fr 1fr; }
           .detail-img { height: min(86vh, 760px); min-height: 420px; border-bottom: none; border-inline-end: 1px solid var(--line); }
         }
-        .related-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; max-width: 460px; margin: 0 auto; }
-        @media (min-width: 640px) { .related-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: none; } }
+        .related-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+        @media (min-width: 640px) { .related-grid { gap: 20px; } }
         @media (min-width: 940px) { .related-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
 
         /* Purchase controls — mobile-first, fully responsive */
@@ -97,6 +97,7 @@ export default function FragrancePage() {
           .note-row { flex-direction: column; gap: 6px; }
           .note-label { width: auto; }
           .related-section { padding-left: 16px; padding-right: 16px; }
+          .related-grid { gap: 10px; }
         }
       `}</style>
 
@@ -140,7 +141,7 @@ export default function FragrancePage() {
                   }}
                 >
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22 }}>{s.ml}ml</div>
-                  <div style={{ fontSize: 11, color: "var(--muted)", marginTop: 2 }}>${Math.round(product.price * s.multiplier)}</div>
+                  <div style={{ fontSize: 11, color: "var(--muted)", marginTop: 2 }}>{formatPrice(product.price * s.multiplier)}</div>
                 </button>
               ))}
             </div>
@@ -154,7 +155,7 @@ export default function FragrancePage() {
                 <button onClick={() => setQty((q) => q + 1)} aria-label="Increase">+</button>
               </div>
               <button className="btn-gold add-btn" onClick={addToCart}>
-                {t.product.addToBag} · ${price * qty}
+                {t.product.addToBag} · {formatPrice(price * qty)}
               </button>
             </div>
             <button onClick={() => { addToCart(); setOpen(true); }} className="btn-ghost" style={{ width: "100%", minHeight: 52 }}>

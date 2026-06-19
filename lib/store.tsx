@@ -15,6 +15,15 @@ interface ProductsContextType {
 const ProductsContext = createContext<ProductsContextType | null>(null);
 const STORAGE_KEY = "soul-catalog-v1";
 
+async function saveSharedCatalog(products: Product[]) {
+  const response = await fetch("/api/products", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ products }),
+  });
+  if (!response.ok) throw new Error("Unable to save product catalogue");
+}
+
 export function slugify(name: string): string {
   return (
     name
@@ -31,15 +40,37 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        if (Array.isArray(parsed) && parsed.length) setItems(parsed);
+    let active = true;
+    const load = async () => {
+      try {
+        const response = await fetch("/api/products", { cache: "no-store" });
+        if (response.ok) {
+          const data = await response.json();
+          if (active && Array.isArray(data.products) && data.products.length) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setItems(data.products);
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data.products)); } catch {}
+          }
+        } else {
+          throw new Error("Catalogue request failed");
+        }
+      } catch {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (active && Array.isArray(parsed) && parsed.length) {
+              // eslint-disable-next-line react-hooks/set-state-in-effect
+              setItems(parsed);
+            }
+          }
+        } catch {}
+      } finally {
+        if (active) setReady(true);
       }
-    } catch {}
-    setReady(true);
+    };
+    load();
+    return () => { active = false; };
   }, []);
 
   const add = useCallback((p: Product) => {
@@ -51,6 +82,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
       while (existing.has(slug)) slug = `${baseSlug}-${i++}`;
       const next = [{ ...p, slug }, ...prev];
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
+      saveSharedCatalog(next).catch(() => {});
       return next;
     });
   }, []);
@@ -59,6 +91,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
     setItems((prev) => {
       const next = prev.map((x) => (x.slug === slug ? { ...p, slug } : x));
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
+      saveSharedCatalog(next).catch(() => {});
       return next;
     });
   }, []);
@@ -67,12 +100,14 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
     setItems((prev) => {
       const next = prev.filter((x) => x.slug !== slug);
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
+      saveSharedCatalog(next).catch(() => {});
       return next;
     });
   }, []);
 
   const reset = useCallback(() => {
     try { localStorage.removeItem(STORAGE_KEY); } catch {}
+    saveSharedCatalog(seed).catch(() => {});
     setItems(seed);
   }, []);
 

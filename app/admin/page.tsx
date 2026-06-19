@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Product, ADMIN_PASSCODE, families } from "@/lib/products";
+import { Product, ADMIN_PASSCODE, families, formatPrice } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
 
@@ -161,7 +161,7 @@ export default function AdminPage() {
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "var(--cream)" }}>
                   {p.name} {p.bestseller && <span style={{ color: "var(--gold)", fontSize: 14 }}>★</span>}
                 </div>
-                <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: 1 }}>{p.family} · {p.gender} · ${p.price}</div>
+                <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: 1 }}>{p.family} · {p.gender} · {formatPrice(p.price)}</div>
               </div>
               <div style={{ display: "flex", gap: 8 }}>
                 <button onClick={() => startEdit(p)} style={miniBtn}>{A.edit}</button>

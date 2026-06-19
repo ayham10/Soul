@@ -15,8 +15,8 @@ export default function ShopPage() {
   return (
     <>
       <style>{`
-        .shop-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; max-width: 460px; margin: 0 auto; }
-        @media (min-width: 640px) { .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: none; } }
+        .shop-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+        @media (min-width: 640px) { .shop-grid { gap: 20px; } }
         @media (min-width: 920px) { .shop-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
         .filter-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
         .filter-chip {
@@ -50,6 +50,7 @@ export default function ShopPage() {
           .filter-wrap,
           .shop-products-wrap { padding-left: 16px !important; padding-right: 16px !important; }
           .filter-chip { font-size: 10px; letter-spacing: 1px; }
+          .shop-grid { gap: 10px; }
         }
       `}</style>
 
