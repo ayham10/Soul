@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
+import { SHOP_WHATSAPP } from "@/lib/products";
 
 export default function HomePage() {
   const { products } = useProducts();
@@ -12,6 +13,9 @@ export default function HomePage() {
 
   const bestsellers = products.filter((p) => p.bestseller);
   const featured = (bestsellers.length ? bestsellers : products).slice(0, 3);
+  const wellnessMessage = encodeURIComponent(
+    "مرحباً Soul، أريد الاستفسار عن رذاذ راحة العضلات والمفاصل: السعر، التوفر، وطريقة الاستخدام والتوصيل."
+  );
 
   return (
     <>
@@ -31,6 +35,28 @@ export default function HomePage() {
         @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
         .trio { display: grid; grid-template-columns: 1fr; gap: 28px; }
         @media (min-width: 760px) { .trio { grid-template-columns: repeat(3, 1fr); } }
+        .wellness-shell {
+          position: relative; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+          background: radial-gradient(90% 65% at 70% 12%, rgba(198,161,91,0.16), transparent 58%), var(--noir-soft);
+        }
+        .wellness-grid {
+          display: grid; grid-template-columns: 1fr; gap: 0; max-width: 1280px; margin: 0 auto;
+        }
+        .wellness-copy { padding: clamp(58px, 8vw, 110px) clamp(20px, 5vw, 64px); }
+        .wellness-card {
+          position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 520px;
+          padding: clamp(26px, 5vw, 54px); border-inline-start: 1px solid var(--line); overflow: hidden;
+        }
+        .wellness-card::after {
+          content: ""; position: absolute; inset: 0;
+          background: linear-gradient(to top, rgba(7,6,5,0.92), rgba(7,6,5,0.44) 48%, rgba(7,6,5,0.12));
+        }
+        .wellness-card-content { position: relative; z-index: 2; max-width: 430px; }
+        .wellness-bullets { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 24px 0 26px; }
+        @media (min-width: 900px) {
+          .wellness-grid { grid-template-columns: 0.92fr 1.08fr; }
+          .wellness-card { min-height: 610px; }
+        }
         .grid-products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
         .grid-products > .reveal { height: 100%; }
         @media (min-width: 640px) { .grid-products { gap: 20px; } }
@@ -42,6 +68,8 @@ export default function HomePage() {
           .hero-title { font-size: clamp(44px, 15vw, 64px); line-height: 0.96; }
           .hero-sub { font-size: 14px; line-height: 1.75; margin-top: 22px !important; }
           .hero-scroll { display: none; }
+          .wellness-copy { padding: 58px 18px 46px; }
+          .wellness-card { min-height: 460px; border-inline-start: none; border-top: 1px solid var(--line); padding: 24px 18px; }
         }
         @media (max-width: 340px) {
           .hero-section { min-height: 600px; }
@@ -159,6 +187,58 @@ export default function HomePage() {
               <p style={{ color: "var(--muted)", lineHeight: 1.8, fontSize: 14, maxWidth: 300, margin: "0 auto" }}>{c.d}</p>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* ============ WELLNESS / BODY CARE ============ */}
+      <section className="wellness-shell">
+        <div className="wellness-grid">
+          <Reveal className="wellness-copy">
+            <div className="eyebrow">{t.wellness.eyebrow}</div>
+            <h2 style={{ fontSize: "clamp(32px, 5.5vw, 58px)", color: "var(--cream)", margin: "16px 0 20px" }}>
+              {t.wellness.title} <em style={{ color: "var(--gold)" }}>{t.wellness.titleEm}</em>
+            </h2>
+            <p style={{ color: "var(--muted)", lineHeight: 1.9, fontSize: 15, maxWidth: 560, marginBottom: 28 }}>
+              {t.wellness.sub}
+            </p>
+            <a
+              href={`https://wa.me/${SHOP_WHATSAPP}?text=${wellnessMessage}`}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-gold"
+            >
+              {t.wellness.cta}
+            </a>
+          </Reveal>
+
+          <Reveal className="wellness-card">
+            <Image src="/images/atmosphere.png" alt="" fill style={{ objectFit: "cover" }} sizes="(max-width: 900px) 100vw, 55vw" />
+            <div className="wellness-card-content">
+              <div style={{
+                display: "inline-flex", color: "#1a140a", background: "var(--gold)", fontSize: 9,
+                letterSpacing: 2, textTransform: "uppercase", padding: "7px 11px", marginBottom: 18,
+              }}>
+                {t.wellness.badge}
+              </div>
+              <h3 style={{ fontSize: "clamp(30px, 4vw, 46px)", color: "#fff", marginBottom: 12 }}>
+                {t.wellness.cardTitle}
+              </h3>
+              <p style={{ color: "rgba(255,255,255,0.74)", lineHeight: 1.8, fontSize: 14.5 }}>
+                {t.wellness.cardSub}
+              </p>
+              <div className="wellness-bullets">
+                {t.wellness.bullets.map((item) => (
+                  <div key={item} style={{ display: "flex", alignItems: "center", gap: 10, color: "var(--cream)", fontSize: 13 }}>
+                    <span style={{ color: "var(--gold)" }}>✦</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <p style={{ color: "rgba(255,255,255,0.52)", lineHeight: 1.7, fontSize: 11.5 }}>
+                {t.wellness.note}
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

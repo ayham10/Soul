@@ -31,6 +31,10 @@ interface Dict {
   featured: { eyebrow: string; title: string; titleEm: string; sub: string; viewAll: string };
   storyBlock: { eyebrow: string; title: string; titleEm: string; p1: string; p2: string; cta: string };
   trio: { eyebrow: string; items: { t: string; d: string }[] };
+  wellness: {
+    eyebrow: string; title: string; titleEm: string; sub: string; badge: string;
+    cardTitle: string; cardSub: string; bullets: string[]; note: string; cta: string;
+  };
   cta: { eyebrow: string; title: string; titleEm: string; sub: string; btn: string };
   shop: { eyebrow: string; title: string; titleEm: string; sub: string; empty: string };
   product: {
@@ -78,6 +82,18 @@ export const translations: Record<Lang, Dict> = {
       { t: "Rare Materials", d: "Natural oud, rose absolute and ambergris — sourced, never synthesised." },
       { t: "Cruelty-Free", d: "Vegan formulas, recyclable glass, refillable by design." },
     ] },
+    wellness: {
+      eyebrow: "Wellness Atelier",
+      title: "Beyond fragrance,",
+      titleEm: "body care",
+      sub: "A dedicated space for premium care essentials that support daily rituals after training, long workdays, or moments when the body needs attention.",
+      badge: "Coming Soon",
+      cardTitle: "Muscle & Joint Comfort Spray",
+      cardSub: "A refined topical spray concept for everyday muscle, joint, and post-activity comfort.",
+      bullets: ["Fast, clean application", "Designed for active routines", "Premium care presentation"],
+      note: "For external comfort use only. Not a substitute for medical advice; consult a healthcare professional for injuries, persistent pain, or medical conditions.",
+      cta: "Ask on WhatsApp",
+    },
     cta: { eyebrow: "Not sure where to begin?", title: "Find the scent that", titleEm: "feels like you", sub: "Every order ships with a curated set of samples, so you can fall in love before you commit.", btn: "Explore the Collection" },
     shop: { eyebrow: "Eau de Parfum", title: "The", titleEm: "Collection", sub: "Fragrances composed in Grasse. Filter by olfactory family to find your signature.", empty: "No fragrances in this family yet." },
     product: {
@@ -129,6 +145,18 @@ export const translations: Record<Lang, Dict> = {
       { t: "مكوّنات نادرة", d: "عود طبيعي وخلاصة ورد وعنبر — مصدرها الطبيعة، لا التصنيع." },
       { t: "خالٍ من القسوة", d: "تركيبات نباتية، زجاج قابل لإعادة التدوير، وقابل لإعادة التعبئة." },
     ] },
+    wellness: {
+      eyebrow: "أتيليه العناية",
+      title: "ما بعد العطر،",
+      titleEm: "عناية بالجسم",
+      sub: "مساحة مخصصة لمنتجات عناية راقية تناسب الروتين اليومي بعد التمرين أو أيام العمل الطويلة أو عند حاجة الجسم للاهتمام.",
+      badge: "قريباً",
+      cardTitle: "رذاذ راحة للعضلات والمفاصل",
+      cardSub: "فكرة رذاذ موضعي راقٍ لراحة العضلات والمفاصل بعد النشاط اليومي.",
+      bullets: ["استخدام سريع ونظيف", "مصمم للروتين النشط", "تقديم فاخر يليق بالعلامة"],
+      note: "للاستخدام الخارجي للراحة فقط. لا يُعد بديلاً عن الاستشارة الطبية؛ يُرجى استشارة مختص عند الإصابات أو الألم المستمر أو الحالات الطبية.",
+      cta: "اسأل عبر واتساب",
+    },
     cta: { eyebrow: "لا تعرف من أين تبدأ؟", title: "اعثر على العطر الذي", titleEm: "يشبهك", sub: "كل طلب يصلك مع مجموعة عيّنات منتقاة، لتقع في الحب قبل أن تقرّر.", btn: "استكشف المجموعة" },
     shop: { eyebrow: "أو دو بارفان", title: "", titleEm: "المجموعة", sub: "عطور مُركّبة في غراس. صنّف حسب العائلة العطرية لتجد عطرك.", empty: "لا توجد عطور في هذه العائلة بعد." },
     product: {
