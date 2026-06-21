@@ -22,6 +22,19 @@ async function saveSharedCatalog(products: Product[]) {
     body: JSON.stringify({ products }),
   });
   if (!response.ok) throw new Error("Unable to save product catalogue");
+  const data = await response.json().catch(() => null);
+  if (data?.storage !== "supabase" && data?.storage !== "redis") {
+    throw new Error("A durable catalogue database is not configured.");
+  }
+}
+
+function warnSharedSaveFailed(error: unknown) {
+  console.error(error);
+  if (typeof window !== "undefined") {
+    window.alert(
+      "Product updated on this device, but it is not saved for all users yet. Configure Supabase environment variables so admin changes appear on every phone and browser."
+    );
+  }
 }
 
 export function slugify(name: string): string {
@@ -80,7 +93,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
       while (existing.has(slug)) slug = `${baseSlug}-${i++}`;
       const next = [{ ...p, slug }, ...prev];
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
-      saveSharedCatalog(next).catch(() => {});
+      saveSharedCatalog(next).catch(warnSharedSaveFailed);
       return next;
     });
   }, []);
@@ -89,7 +102,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
     setItems((prev) => {
       const next = prev.map((x) => (x.slug === slug ? { ...p, slug } : x));
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
-      saveSharedCatalog(next).catch(() => {});
+      saveSharedCatalog(next).catch(warnSharedSaveFailed);
       return next;
     });
   }, []);
@@ -98,14 +111,14 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
     setItems((prev) => {
       const next = prev.filter((x) => x.slug !== slug);
       try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
-      saveSharedCatalog(next).catch(() => {});
+      saveSharedCatalog(next).catch(warnSharedSaveFailed);
       return next;
     });
   }, []);
 
   const reset = useCallback(() => {
     try { localStorage.removeItem(STORAGE_KEY); } catch {}
-    saveSharedCatalog(seed).catch(() => {});
+    saveSharedCatalog(seed).catch(warnSharedSaveFailed);
     setItems(seed);
   }, []);
 
