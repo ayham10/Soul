@@ -39,6 +39,7 @@ export default function HomePage() {
           position: relative; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
           background: radial-gradient(90% 65% at 70% 12%, rgba(198,161,91,0.16), transparent 58%), var(--noir-soft);
         }
+        .wellness-shell .reveal { opacity: 1; }
         .wellness-grid {
           display: grid; grid-template-columns: 1fr; gap: 0; max-width: 1280px; margin: 0 auto;
         }
