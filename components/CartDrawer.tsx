@@ -11,10 +11,25 @@ export default function CartDrawer() {
 
   const checkout = () => {
     const lines = items
-      .map((i) => `• ${i.name} — ${i.ml}ml × ${i.qty} — ${formatPrice(i.price * i.qty)}`)
+      .map((i, index) =>
+        `${index + 1}. ${i.name}\n` +
+        `   الحجم: ${i.ml} مل\n` +
+        `   الكمية: ${i.qty}\n` +
+        `   السعر: ${formatPrice(i.price * i.qty)}`
+      )
       .join("\n");
     const msg = encodeURIComponent(
-      `Hello Soul,\n\nI'd like to order:\n${lines}\n\nTotal: ${formatPrice(total)}\n\nName:\nDelivery address:`
+      `مرحباً Soul،\n\n` +
+      `أرغب بإتمام الطلب التالي:\n\n` +
+      `${lines}\n\n` +
+      `المجموع: ${formatPrice(total)}\n\n` +
+      `بيانات العميل:\n` +
+      `الاسم:\n` +
+      `رقم الهاتف:\n` +
+      `المدينة:\n` +
+      `العنوان الكامل:\n` +
+      `ملاحظات إضافية:\n\n` +
+      `يرجى تأكيد توفر الطلب وطريقة التوصيل.`
     );
     window.open(`https://wa.me/${SHOP_WHATSAPP}?text=${msg}`, "_blank");
   };

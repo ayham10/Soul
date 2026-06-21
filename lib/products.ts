@@ -24,9 +24,8 @@ export interface Product {
   bestseller?: boolean;
 }
 
-// Whatsapp number used for the demo checkout / order flow.
-// Replace with the shop's real number before going live.
-export const SHOP_WHATSAPP = "972500000000";
+// WhatsApp requires international format without the leading local zero.
+export const SHOP_WHATSAPP = "972532286019";
 
 // Passcode for the /admin product manager (demo). Change before going live.
 export const ADMIN_PASSCODE = "soul2024";
