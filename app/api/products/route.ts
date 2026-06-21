@@ -15,9 +15,9 @@ type StorageMode = "supabase" | "redis" | "filesystem";
 
 function supabaseConfig() {
   const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  return url && serviceRoleKey
-    ? { url: url.replace(/\/$/, ""), serviceRoleKey }
+  const secretKey = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+  return url && secretKey
+    ? { url: url.replace(/\/$/, ""), secretKey }
     : null;
 }
 
@@ -30,8 +30,8 @@ function redisConfig() {
 function supabaseHeaders(config: ReturnType<typeof supabaseConfig>) {
   if (!config) throw new Error("Supabase is not configured");
   return {
-    apikey: config.serviceRoleKey,
-    Authorization: `Bearer ${config.serviceRoleKey}`,
+    apikey: config.secretKey,
+    Authorization: `Bearer ${config.secretKey}`,
     "Content-Type": "application/json",
   };
 }
