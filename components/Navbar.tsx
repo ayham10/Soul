@@ -32,6 +32,7 @@ export default function Navbar() {
   const links = [
     { href: "/", label: t.nav.home },
     { href: "/shop", label: t.nav.collection },
+    { href: "/#wellness", label: t.nav.wellness },
     { href: "/about", label: t.nav.story },
   ];
 
@@ -50,7 +51,7 @@ export default function Navbar() {
   return (
     <>
       <style>{`
-        .nav-links { display: flex; gap: 34px; align-items: center; }
+        .nav-links { display: flex; gap: clamp(18px, 3vw, 34px); align-items: center; }
         .nav-actions { display: flex; align-items: center; gap: 16px; }
         .nav-burger {
           display: none; background: none; border: none; cursor: pointer; flex-direction: column;

@@ -3,7 +3,8 @@ export type Lang = "en" | "ar";
 export const FAMILY_LABELS: Record<string, { en: string; ar: string }> = {
   All: { en: "All", ar: "الكل" },
   Woody: { en: "Woody", ar: "خشبي" },
-  Floral: { en: "Floral", ar: "زهري" },
+  Floral: { en: "Rosy", ar: "وردي" },
+  "Oud & Sweet": { en: "Oud & Sweet", ar: "عود و سُكري" },
   Citrus: { en: "Citrus", ar: "حمضي" },
   Oriental: { en: "Oriental", ar: "شرقي" },
   Musk: { en: "Musk", ar: "مسكي" },
@@ -25,7 +26,7 @@ export function genderLabel(gender: string, lang: Lang) {
 
 interface Dict {
   dir: "ltr" | "rtl";
-  nav: { home: string; collection: string; story: string; admin: string; shopCta: string; tagline: string; brandSub: string };
+  nav: { home: string; collection: string; wellness: string; story: string; admin: string; shopCta: string; tagline: string; brandSub: string };
   hero: { eyebrow: string; line1: string; italic: string; sub: string; shop: string; story: string; scroll: string };
   marquee: string[];
   featured: { eyebrow: string; title: string; titleEm: string; sub: string; viewAll: string };
@@ -67,18 +68,18 @@ interface Dict {
 export const translations: Record<Lang, Dict> = {
   en: {
     dir: "ltr",
-    nav: { home: "Home", collection: "The Collection", story: "Our Story", admin: "Admin", shopCta: "Shop the Collection", tagline: "Maison de Parfum", brandSub: "Crafted in Grasse · Worldwide Shipping" },
+    nav: { home: "Home", collection: "The Collection", wellness: "Wellness", story: "Our Tale", admin: "Admin", shopCta: "Shop the Collection", tagline: "Maison de Parfum", brandSub: "Crafted in the Land of Olives · Worldwide Shipping" },
     hero: {
-      eyebrow: "Maison de Parfum · Est. Grasse",
-      line1: "Wear your", italic: "Soul.",
-      sub: "Extrait-strength fragrances composed from the world's rarest materials — oud, rose absolute, ambergris. Scent, made unforgettable.",
-      shop: "Shop the Collection", story: "Our Story", scroll: "Scroll",
+      eyebrow: "Maison de Parfum · Land of Olives",
+      line1: "Adorn yourself", italic: "with scent.",
+      sub: "Some perfumes are not merely a fragrance; they are identity, history, and a story told without words.",
+      shop: "Shop the Collection", story: "Our Tale", scroll: "Scroll",
     },
     marquee: ["Oud", "Rose", "Amber", "Citrus", "Musk", "Marine", "Saffron", "Vanilla"],
     featured: { eyebrow: "Signature Scents", title: "The", titleEm: "Collection", sub: "Six compositions, each an obsession. Discover the fragrances our clients return to again and again.", viewAll: "View All Fragrances" },
-    storyBlock: { eyebrow: "The House of Soul", title: "The art of", titleEm: "slow perfumery", p1: "Every Soul fragrance begins with a raw material worth waiting for — agarwood aged for years, roses picked before dawn, resins sourced from a single grove. We compose in small batches, never compromising on concentration.", p2: "The result is a scent that unfolds for hours and becomes, unmistakably, your own.", cta: "Discover Our Story" },
+    storyBlock: { eyebrow: "From Jerusalem's Grasse", title: "The Land of Olives,", titleEm: "cradle of scent", p1: "Oud, amber, and vanilla form the heart of our house, balanced with measured touches of tobacco, patchouli, and bergamot. We do not rely on fast commercial production or exaggerated slogans; we hand-blend in limited quantities to preserve the highest possible quality and purity. Nothing is made in haste.", p2: "Each composition is poured at a high concentration of the finest perfume oils, ranging between 40% and 50% oil.", cta: "Discover Our Tale" },
     trio: { eyebrow: "", items: [
-      { t: "Extrait Strength", d: "20–30% perfume oil. A few drops last from morning into the night." },
+      { t: "Pure Perfume Strength", d: "Perfume oil reaches 40–50%. A few drops are made to last from morning into the night." },
       { t: "Rare Materials", d: "Natural oud, rose absolute and ambergris — sourced, never synthesised." },
       { t: "Cruelty-Free", d: "Vegan formulas, recyclable glass, refillable by design." },
     ] },
@@ -95,20 +96,20 @@ export const translations: Record<Lang, Dict> = {
       cta: "Ask on WhatsApp",
     },
     cta: { eyebrow: "Not sure where to begin?", title: "Find the scent that", titleEm: "feels like you", sub: "Every order ships with a curated set of samples, so you can fall in love before you commit.", btn: "Explore the Collection" },
-    shop: { eyebrow: "Eau de Parfum", title: "The", titleEm: "Collection", sub: "Fragrances composed in Grasse. Filter by olfactory family to find your signature.", empty: "No fragrances in this family yet." },
+    shop: { eyebrow: "Pure Perfume", title: "The", titleEm: "Collection", sub: "Fragrances composed in the Land of Olives. Choose your olfactory family to find your scent.", empty: "No fragrances in this family yet." },
     product: {
       breadcrumb: "Collection", size: "Size", quantity: "Quantity", addToBag: "Add to Bag", buyNow: "Buy Now",
       composition: "The Composition", top: "Top", heart: "Heart", base: "Base", related: "You may also", relatedEm: "love",
       perks: ["Free worldwide shipping", "Samples in every order", "Vegan & cruelty-free"], notFound: "Fragrance not found", back: "Back to the Collection",
     },
-    cart: { selection: "Your Selection", bag: "Shopping Bag", empty: "Your bag is empty", discover: "Discover the collection →", subtotal: "Subtotal", checkout: "Checkout via WhatsApp", note: "Complimentary shipping & samples on every order.", edp: "Eau de Parfum", remove: "Remove" },
-    footer: { blurb: "Rare ingredients, composed slowly. Soul is a small fragrance house crafting extrait-strength perfumes for those who wear scent like a signature.", explore: "Explore", care: "Client Care", careItems: ["Shipping & Returns", "Find Your Scent", "Contact"], list: "The List", listSub: "Private launches and 10% off your first order.", email: "Email address", rights: "Soul Maison de Parfum. All rights reserved." },
+    cart: { selection: "Your Selection", bag: "Shopping Bag", empty: "Your bag is empty", discover: "Discover the collection →", subtotal: "Subtotal", checkout: "Checkout via WhatsApp", note: "Complimentary shipping & samples on every order.", edp: "Pure Perfume", remove: "Remove" },
+    footer: { blurb: "Oud • Amber • Vanilla • Tobacco • Patchouli", explore: "Explore", care: "Client Care", careItems: ["Shipping & Returns", "Find Your Scent", "Contact"], list: "The List", listSub: "Private launches and 10% off your first order.", email: "Email address", rights: "Soul Maison de Parfum. All rights reserved." },
     about: {
-      eyebrow: "Our Story", title: "Scent is", titleEm: "memory",
+      eyebrow: "Our Tale", title: "Scent is", titleEm: "memory",
       quote: "We started Soul with a simple belief — that a fragrance should feel like a part of you, not a mask over it.", quoteBy: "— The Founders",
-      sEyebrow: "From Grasse, with patience", sTitle: "A house built on", sTitleEm: "raw materials",
-      sp1: "In the hills of Grasse — the birthplace of modern perfumery — we work with growers and distillers who have perfected their craft over generations. Our oud is aged. Our roses are picked by hand before sunrise. Nothing is rushed.",
-      sp2: "Each composition is poured at extrait strength and rested before it ever reaches you, so the first spray is as honest as the last.",
+      sEyebrow: "From Jerusalem's Grasse", sTitle: "The Land of Olives,", sTitleEm: "cradle of scent",
+      sp1: "Oud, amber, and vanilla form the heart of our house, balanced with measured touches of tobacco, patchouli, and bergamot. We do not rely on fast commercial production or exaggerated slogans; we hand-blend in limited quantities to preserve the highest possible quality and purity. Nothing is made in haste.",
+      sp2: "Each composition is poured at a high concentration of the finest perfume oils, ranging between 40% and 50% oil.",
       vEyebrow: "What we stand for", vTitle: "The Soul", vTitleEm: "promise",
       values: [
         { t: "Sustainably Sourced", d: "Traceable ingredients and partnerships that respect the land and the people who tend it." },
@@ -116,7 +117,7 @@ export const translations: Record<Lang, Dict> = {
         { t: "Honestly Priced", d: "Sold direct, never through endless middlemen — luxury without the markup." },
       ], cta: "Shop the Collection",
     },
-    intro: { discover: "Discover Your Signature", enter: "Enter", skip: "Skip" },
+    intro: { discover: "Discover Your Signature Scent", enter: "Enter", skip: "Skip" },
     admin: {
       title: "Atelier", subtitle: "Product Management", passLabel: "Passcode", passPlaceholder: "Enter passcode", enter: "Enter", wrongPass: "Incorrect passcode.",
       signOut: "Sign out", addProduct: "Add Fragrance", editProduct: "Edit Fragrance", products: "Fragrances", count: "in catalogue",
@@ -130,18 +131,18 @@ export const translations: Record<Lang, Dict> = {
   },
   ar: {
     dir: "rtl",
-    nav: { home: "الرئيسية", collection: "المجموعة", story: "قصتنا", admin: "الإدارة", shopCta: "تسوّق المجموعة", tagline: "دار العطور", brandSub: "صُنع في غراس · شحن لكل العالم" },
+    nav: { home: "الرئيسية", collection: "المجموعة", wellness: "العناية", story: "حكايتنا", admin: "الإدارة", shopCta: "تسوّق المجموعة", tagline: "دار العطور", brandSub: "صُنع في أرض الزيتون · شحن لكل العالم" },
     hero: {
-      eyebrow: "دار العطور · غراس",
-      line1: "ارتدِ", italic: "روحك.",
-      sub: "عطور بتركيز الإكستريت مصنوعة من أندر المكوّنات في العالم — العود، خلاصة الورد، العنبر. عطرٌ لا يُنسى.",
-      shop: "تسوّق المجموعة", story: "قصتنا", scroll: "مرّر",
+      eyebrow: "دار العطور · أرض الزيتون",
+      line1: "تأنّق", italic: "بعُطرك.",
+      sub: "بعض العطور ليست مجرد رائحة، بل هي هويةٌ، وتاريخٌ، وحكايةٌ تُروى دون كلمات.",
+      shop: "تسوّق المجموعة", story: "حكايتنا", scroll: "مرّر",
     },
     marquee: ["عود", "ورد", "عنبر", "حمضيات", "مسك", "بحري", "زعفران", "فانيلا"],
     featured: { eyebrow: "عطور مميّزة", title: "", titleEm: "المجموعة", sub: "ستّة تركيبات، كلٌّ منها شغف. اكتشف العطور التي يعود إليها عملاؤنا مرّة بعد مرّة.", viewAll: "عرض كل العطور" },
-    storyBlock: { eyebrow: "دار سول", title: "فنّ العطور", titleEm: "البطيء", p1: "يبدأ كل عطر من سول بمكوّن خام يستحق الانتظار — عود مُعتّق لسنوات، ورود تُقطف قبل الفجر، وراتنجات من بستان واحد. نركّب بكميات صغيرة، دون أي تنازل عن التركيز.", p2: "والنتيجة عطرٌ يتفتّح لساعات ويصبح، بلا شك، عطرك أنت.", cta: "اكتشف قصتنا" },
+    storyBlock: { eyebrow: "من غِراس القُدس", title: "أرض الزيتون،", titleEm: "مهدُ العطور", p1: "العود والعنبر والفانيليا، وندعمها بلمساتٍ متوازنة من التوباكو، الباتشولي، والبرغموت. لا نعتمد على الإنتاج التجاري السريع أو الشعارات المبالغ فيها؛ بل نركّب عطورنا يدوياً وبكميات محدودة لضمان أعلى مستويات الجودة والنقاء الممكنة. لا شيء يُصنع على عجل.", p2: "كل تركيبة تُسكب بتركيز عالٍ من أجود أنواع الزيت العطري وتتراوح من بين 40% - 50% زيت.", cta: "اكتشف حكايتنا" },
     trio: { eyebrow: "", items: [
-      { t: "تركيز إكستريت", d: "زيت عطري بنسبة ٢٠–٣٠٪. بضع قطرات تدوم من الصباح حتى الليل." },
+      { t: "تركيز عطر نقي", d: "زيت عطري يصل لنسبة ٤٠–٥٠٪. بضع قطرات تدوم من الصباح حتى الليل." },
       { t: "مكوّنات نادرة", d: "عود طبيعي وخلاصة ورد وعنبر — مصدرها الطبيعة، لا التصنيع." },
       { t: "خالٍ من القسوة", d: "تركيبات نباتية، زجاج قابل لإعادة التدوير، وقابل لإعادة التعبئة." },
     ] },
@@ -158,20 +159,20 @@ export const translations: Record<Lang, Dict> = {
       cta: "اسأل عبر واتساب",
     },
     cta: { eyebrow: "لا تعرف من أين تبدأ؟", title: "اعثر على العطر الذي", titleEm: "يشبهك", sub: "كل طلب يصلك مع مجموعة عيّنات منتقاة، لتقع في الحب قبل أن تقرّر.", btn: "استكشف المجموعة" },
-    shop: { eyebrow: "أو دو بارفان", title: "", titleEm: "المجموعة", sub: "عطور مُركّبة في غراس. صنّف حسب العائلة العطرية لتجد عطرك.", empty: "لا توجد عطور في هذه العائلة بعد." },
+    shop: { eyebrow: "Pure Perfume", title: "", titleEm: "المجموعة", sub: "عطور مركبة في أرض الزيتون، اختر عائلتك العُطرية لتجد عطرك.", empty: "لا توجد عطور في هذه العائلة بعد." },
     product: {
       breadcrumb: "المجموعة", size: "الحجم", quantity: "الكمية", addToBag: "أضف إلى الحقيبة", buyNow: "اشترِ الآن",
       composition: "التركيبة", top: "المقدّمة", heart: "القلب", base: "القاعدة", related: "قد يعجبك", relatedEm: "أيضاً",
       perks: ["شحن مجاني لكل العالم", "عيّنات مع كل طلب", "نباتي وخالٍ من القسوة"], notFound: "العطر غير موجود", back: "العودة إلى المجموعة",
     },
-    cart: { selection: "اختيارك", bag: "حقيبة التسوّق", empty: "حقيبتك فارغة", discover: "اكتشف المجموعة →", subtotal: "المجموع", checkout: "إتمام الطلب عبر واتساب", note: "شحن وعيّنات مجانية مع كل طلب.", edp: "أو دو بارفان", remove: "حذف" },
-    footer: { blurb: "مكوّنات نادرة، تُركّب على مهل. سول دار عطور صغيرة تصنع عطوراً بتركيز الإكستريت لمن يرتدون العطر كتوقيع خاص.", explore: "استكشف", care: "خدمة العملاء", careItems: ["الشحن والإرجاع", "اعثر على عطرك", "تواصل معنا"], list: "القائمة", listSub: "إطلاقات خاصة وخصم ١٠٪ على طلبك الأول.", email: "البريد الإلكتروني", rights: "سول دار العطور. جميع الحقوق محفوظة." },
+    cart: { selection: "اختيارك", bag: "حقيبة التسوّق", empty: "حقيبتك فارغة", discover: "اكتشف المجموعة →", subtotal: "المجموع", checkout: "إتمام الطلب عبر واتساب", note: "شحن وعيّنات مجانية مع كل طلب.", edp: "Pure Perfume", remove: "حذف" },
+    footer: { blurb: "عود • عَنْبَر • فَانِلْيَا • تُوبَاكُو • بَاتْشُولِي", explore: "استكشف", care: "خدمة العملاء", careItems: ["الشحن والإرجاع", "اعثر على عطرك", "تواصل معنا"], list: "القائمة", listSub: "إطلاقات خاصة وخصم ١٠٪ على طلبك الأول.", email: "البريد الإلكتروني", rights: "سول دار العطور. جميع الحقوق محفوظة." },
     about: {
-      eyebrow: "قصتنا", title: "العطر", titleEm: "ذاكرة",
+      eyebrow: "حكايتنا", title: "العطر", titleEm: "ذاكرة",
       quote: "بدأنا سول بإيمان بسيط — أن العطر يجب أن يكون جزءاً منك، لا قناعاً فوقك.", quoteBy: "— المؤسّسون",
-      sEyebrow: "من غراس، بصبر", sTitle: "دار قائمة على", sTitleEm: "المكوّنات الخام",
-      sp1: "في تلال غراس — مهد العطور الحديثة — نعمل مع مزارعين ومقطّرين أتقنوا حرفتهم عبر الأجيال. عودنا مُعتّق. ورودنا تُقطف يدوياً قبل الشروق. لا شيء على عجل.",
-      sp2: "كل تركيبة تُسكب بتركيز الإكستريت وتُترك لترتاح قبل أن تصلك، فتكون أول رشّة صادقة كآخرها.",
+      sEyebrow: "من غِراس القُدس", sTitle: "أرض الزيتون،", sTitleEm: "مهدُ العطور",
+      sp1: "العود والعنبر والفانيليا، وندعمها بلمساتٍ متوازنة من التوباكو، الباتشولي، والبرغموت. لا نعتمد على الإنتاج التجاري السريع أو الشعارات المبالغ فيها؛ بل نركّب عطورنا يدوياً وبكميات محدودة لضمان أعلى مستويات الجودة والنقاء الممكنة. لا شيء يُصنع على عجل.",
+      sp2: "كل تركيبة تُسكب بتركيز عالٍ من أجود أنواع الزيت العطري وتتراوح من بين 40% - 50% زيت.",
       vEyebrow: "ما نؤمن به", vTitle: "وعد", vTitleEm: "سول",
       values: [
         { t: "مصادر مستدامة", d: "مكوّنات يمكن تتبّعها وشراكات تحترم الأرض ومن يعتني بها." },
@@ -179,7 +180,7 @@ export const translations: Record<Lang, Dict> = {
         { t: "سعر عادل", d: "نبيع مباشرة، دون وسطاء لا نهاية لهم — فخامة دون مبالغة في السعر." },
       ], cta: "تسوّق المجموعة",
     },
-    intro: { discover: "اكتشف توقيعك", enter: "ادخل", skip: "تخطّي" },
+    intro: { discover: "اكتشف عطرك الخاص", enter: "ادخل", skip: "تخطّي" },
     admin: {
       title: "الأتيليه", subtitle: "إدارة المنتجات", passLabel: "رمز الدخول", passPlaceholder: "أدخل رمز الدخول", enter: "دخول", wrongPass: "رمز غير صحيح.",
       signOut: "تسجيل الخروج", addProduct: "إضافة عطر", editProduct: "تعديل عطر", products: "العطور", count: "في الكتالوج",
