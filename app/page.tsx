@@ -14,7 +14,7 @@ export default function HomePage() {
   const bestsellers = products.filter((p) => p.bestseller);
   const featured = (bestsellers.length ? bestsellers : products).slice(0, 3);
   const wellnessMessage = encodeURIComponent(
-    "مرحباً Soul، أريد الاستفسار عن رذاذ راحة العضلات والمفاصل: السعر، التوفر، وطريقة الاستخدام والتوصيل."
+    "مرحباً Soul، أريد طلب رذاذ راحة العضلات والمفاصل. يرجى إرسال السعر، طريقة الاستخدام، وخيارات التوصيل."
   );
 
   return (

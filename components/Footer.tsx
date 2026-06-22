@@ -12,19 +12,10 @@ export default function Footer() {
           padding: 64px 22px 40px; max-width: 1280px; margin: 0 auto;
         }
         @media (min-width: 768px) {
-          .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 48px; padding: 84px 48px 48px; }
+          .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 48px; padding: 84px 48px 48px; }
         }
         .footer-link { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; background: none; border: none; cursor: pointer; text-align: inherit; padding: 0; font-family: inherit; }
         .footer-link:hover { color: var(--gold); }
-        .news-input {
-          flex: 1; background: transparent; border: none; outline: none;
-          color: var(--cream); font-family: 'Jost', sans-serif; font-size: 13px; padding: 12px 4px;
-        }
-        .news-input::placeholder { color: #6f6655; }
-        .news-submit {
-          display: inline-flex; align-items: center; justify-content: center;
-          min-width: 44px; min-height: 44px;
-        }
         @media (max-width: 560px) {
           .footer-grid { padding: 58px 18px 38px; gap: 38px; }
           .footer-bottom { padding-inline: 18px !important; align-items: flex-start !important; }
@@ -64,19 +55,6 @@ export default function Footer() {
             {t.footer.careItems.map((c) => (
               <span key={c} className="footer-link">{c}</span>
             ))}
-          </div>
-        </div>
-
-        <div>
-          <div className="eyebrow" style={{ marginBottom: 22 }}>{t.footer.list}</div>
-          <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.8, marginBottom: 16 }}>
-            {t.footer.listSub}
-          </p>
-          <div style={{ display: "flex", alignItems: "center", borderBottom: "1px solid var(--line)" }}>
-            <input className="news-input" type="email" placeholder={t.footer.email} aria-label={t.footer.email} />
-            <button className="news-submit" aria-label="Subscribe" style={{ background: "none", border: "none", color: "var(--gold)", cursor: "pointer", padding: "0 4px" }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </button>
           </div>
         </div>
       </div>

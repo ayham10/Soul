@@ -129,7 +129,7 @@ export const products: Product[] = [
   },
 ];
 
-export const families = ["All", "Woody", "Floral", "Oud & Sweet", "Citrus", "Oriental", "Musk", "Aquatic"];
+export const families = ["All", "Oud", "Sweet", "Woody", "Floral", "Citrus", "Oriental", "Musk", "Aquatic"];
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
