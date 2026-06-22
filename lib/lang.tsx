@@ -14,7 +14,7 @@ const LangContext = createContext<LangContextType | null>(null);
 const STORAGE_KEY = "soul-lang";
 
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
+  const [lang, setLangState] = useState<Lang>("ar");
 
   useEffect(() => {
     try {
