@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 import ProductCard from "@/components/ProductCard";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
-import { SHOP_WHATSAPP } from "@/lib/products";
+import { SHOP_WHATSAPP, formatPrice } from "@/lib/products";
 
 export default function HomePage() {
   const { products } = useProducts();
@@ -13,8 +13,9 @@ export default function HomePage() {
 
   const bestsellers = products.filter((p) => p.bestseller);
   const featured = (bestsellers.length ? bestsellers : products).slice(0, 3);
+  const wellnessPrice = 150;
   const wellnessMessage = encodeURIComponent(
-    "مرحباً Soul، أريد طلب رذاذ راحة العضلات والمفاصل. يرجى إرسال السعر، طريقة الاستخدام، وخيارات التوصيل."
+    `مرحباً Soul، أريد طلب مرش علاجي للعضلات والمفاصل والرُكب بسعر ${formatPrice(wellnessPrice)}. يرجى إرسال طريقة الاستخدام وخيارات التوصيل.`
   );
 
   return (
@@ -53,6 +54,11 @@ export default function HomePage() {
           background: linear-gradient(to top, rgba(7,6,5,0.92), rgba(7,6,5,0.44) 48%, rgba(7,6,5,0.12));
         }
         .wellness-card-content { position: relative; z-index: 2; max-width: 430px; }
+        .wellness-price {
+          display: inline-flex; align-items: center; justify-content: center;
+          color: var(--gold); font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(30px, 4vw, 42px); line-height: 1; margin: 18px 0 2px;
+        }
         .wellness-bullets { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 24px 0 26px; }
         @media (min-width: 900px) {
           .wellness-grid { grid-template-columns: 0.92fr 1.08fr; }
@@ -202,18 +208,23 @@ export default function HomePage() {
             <p style={{ color: "var(--muted)", lineHeight: 1.9, fontSize: 15, maxWidth: 560, marginBottom: 28 }}>
               {t.wellness.sub}
             </p>
-            <a
-              href={`https://wa.me/${SHOP_WHATSAPP}?text=${wellnessMessage}`}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-gold"
-            >
-              {t.wellness.cta}
-            </a>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 14, alignItems: "center" }}>
+              <a
+                href={`https://wa.me/${SHOP_WHATSAPP}?text=${wellnessMessage}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-gold"
+              >
+                {t.wellness.cta}
+              </a>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, color: "var(--gold)" }}>
+                {formatPrice(wellnessPrice)}
+              </span>
+            </div>
           </Reveal>
 
           <Reveal className="wellness-card">
-            <Image src="/images/atmosphere.png" alt="" fill style={{ objectFit: "cover" }} sizes="(max-width: 900px) 100vw, 55vw" />
+            <Image src="/images/Med.jpeg" alt={t.wellness.cardTitle} fill style={{ objectFit: "cover" }} sizes="(max-width: 900px) 100vw, 55vw" />
             <div className="wellness-card-content">
               <div style={{
                 display: "inline-flex", color: "#1a140a", background: "var(--gold)", fontSize: 9,
@@ -227,6 +238,7 @@ export default function HomePage() {
               <p style={{ color: "rgba(255,255,255,0.74)", lineHeight: 1.8, fontSize: 14.5 }}>
                 {t.wellness.cardSub}
               </p>
+              <div className="wellness-price">{formatPrice(wellnessPrice)}</div>
               <div className="wellness-bullets">
                 {t.wellness.bullets.map((item) => (
                   <div key={item} style={{ display: "flex", alignItems: "center", gap: 10, color: "var(--cream)", fontSize: 13 }}>
@@ -238,6 +250,15 @@ export default function HomePage() {
               <p style={{ color: "rgba(255,255,255,0.52)", lineHeight: 1.7, fontSize: 11.5 }}>
                 {t.wellness.note}
               </p>
+              <a
+                href={`https://wa.me/${SHOP_WHATSAPP}?text=${wellnessMessage}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-gold"
+                style={{ marginTop: 20, width: "100%" }}
+              >
+                {t.wellness.cta}
+              </a>
             </div>
           </Reveal>
         </div>
