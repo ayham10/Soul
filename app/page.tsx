@@ -192,7 +192,7 @@ export default function HomePage() {
       </section>
 
       {/* ============ WELLNESS / BODY CARE ============ */}
-      <section className="wellness-shell">
+      <section id="wellness" className="wellness-shell">
         <div className="wellness-grid">
           <Reveal className="wellness-copy">
             <div className="eyebrow">{t.wellness.eyebrow}</div>
