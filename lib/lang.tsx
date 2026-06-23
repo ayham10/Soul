@@ -20,7 +20,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
     try {
       const saved = localStorage.getItem(STORAGE_KEY) as Lang | null;
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (saved === "en" || saved === "ar") setLangState(saved);
+      if (saved === "ar") setLangState(saved);
     } catch {}
   }, []);
 
