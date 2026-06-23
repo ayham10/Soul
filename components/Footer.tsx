@@ -24,7 +24,6 @@ export default function Footer() {
           .footer-grid { padding-left: 16px; padding-right: 16px; }
           .footer-bottom { padding-left: 16px !important; padding-right: 16px !important; }
         }
-        .admin-link { display: none; }
       `}</style>
 
       <div className="footer-grid">
@@ -46,7 +45,6 @@ export default function Footer() {
             <Link href="/" className="footer-link">{t.nav.home}</Link>
             <Link href="/shop" className="footer-link">{t.nav.collection}</Link>
             <Link href="/about" className="footer-link">{t.nav.story}</Link>
-            <Link href="/admin" className="footer-link admin-link">{t.nav.admin}</Link>
           </div>
         </div>
 
