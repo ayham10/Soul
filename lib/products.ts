@@ -16,7 +16,7 @@ export interface Product {
   tagline_ar?: string;
   description: string;
   description_ar?: string;
-  price: number;         // base price for 50ml (ILS)
+  price: number;         // base price for 100ml (ILS)
   image: string;
   accent: string;        // accent color derived from the bottle
   notes: Note;
@@ -31,12 +31,18 @@ export const SHOP_WHATSAPP = "972532286019";
 export const ADMIN_PASSCODE = "soul2024";
 
 export const SIZES = [
-  { ml: 50, multiplier: 1 },
-  { ml: 100, multiplier: 1.6 },
+  { ml: 50, multiplier: 0.5 },
+  { ml: 100, multiplier: 1 },
 ];
 
 export function formatPrice(price: number): string {
   return `₪${Math.round(price)}`;
+}
+
+// Calculate price with +10 offset for 50ml size
+export function calculatePrice(basePrice: number, sizeMultiplier: number, sizeMl: number): number {
+  const rawPrice = basePrice * sizeMultiplier;
+  return sizeMl === 50 ? Math.round(rawPrice + 10) : Math.round(rawPrice);
 }
 
 export const products: Product[] = [
