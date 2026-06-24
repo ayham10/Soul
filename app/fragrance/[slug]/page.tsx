@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { SIZES, formatPrice, localize } from "@/lib/products";
+import { SIZES, formatPrice, localize, calculatePrice } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useCart } from "@/lib/cart";
 import { useLang } from "@/lib/lang";
@@ -29,7 +29,7 @@ export default function FragrancePage() {
 
   const product = get(params.slug);
   const price = useMemo(
-    () => (product ? Math.round(product.price * SIZES[sizeIdx].multiplier) : 0),
+    () => (product ? calculatePrice(product.price, SIZES[sizeIdx].multiplier, SIZES[sizeIdx].ml) : 0),
     [product, sizeIdx]
   );
 
@@ -106,7 +106,7 @@ export default function FragrancePage() {
           {/* Image */}
           <div className="detail-img" style={{ background: "#0e0c0b" }}>
             <Image src={product.image} alt={L.name} fill priority style={{ objectFit: "cover" }} sizes="(max-width: 940px) 100vw, 50vw" />
-            <span style={{ position: "absolute", top: 90, insetInlineStart: 22, fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: "var(--cream)", background: "rgba(0,0,0,0.5)", border: "1px solid var(--line)", padding: "6px 12px" }}>
+            <span style={{ position: "absolute", top: 90, insetInlineStart: 22, fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: "var(--cream)", background: "rgba(0,0,0,0.5)", borderRadius: 3, padding: "6px 12px" }}>
               {famLabel(product.family, lang)} · {genderLabel(product.gender, lang)}
             </span>
           </div>
@@ -141,7 +141,7 @@ export default function FragrancePage() {
                   }}
                 >
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22 }}>{s.ml}ml</div>
-                  <div style={{ fontSize: 11, color: "var(--muted)", marginTop: 2 }}>{formatPrice(product.price * s.multiplier)}</div>
+                  <div style={{ fontSize: 11, color: "var(--muted)", marginTop: 2 }}>{formatPrice(calculatePrice(product.price, s.multiplier, s.ml))}</div>
                 </button>
               ))}
             </div>
