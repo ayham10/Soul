@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Product, formatPrice, localize } from "@/lib/products";
+import { Product, formatPrice, localize, getProductPrice } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 import { useLang } from "@/lib/lang";
 import { famLabel, genderLabel } from "@/lib/i18n";
@@ -40,11 +40,11 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="product-tagline">{L.tagline}</p>
 
         <div className="product-purchase-row">
-          <span className="product-price">{formatPrice(product.price)}</span>
+          <span className="product-price">{formatPrice(getProductPrice(product, 100))}</span>
           <button
             className="quick-add product-add-button"
             onClick={() =>
-              add({ slug: product.slug, name: L.name, image: product.image, ml: 50, price: product.price })
+              add({ slug: product.slug, name: L.name, image: product.image, ml: 50, price: getProductPrice(product, 50) })
             }
           >
             {t.product.addToBag}

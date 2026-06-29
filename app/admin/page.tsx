@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Product, ADMIN_PASSCODE, families, formatPrice } from "@/lib/products";
+import { Product, ADMIN_PASSCODE, families, groups, formatPrice } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
 
@@ -12,9 +12,10 @@ const GALLERY = [
 ];
 const GENDERS = ["Unisex", "For Her", "For Him"];
 const FAMS = families.filter((f) => f !== "All");
+const GROUPS = groups.filter((g) => g !== "All");
 
 type Draft = {
-  name: string; name_ar: string; family: string; gender: string;
+  name: string; name_ar: string; group: string; family: string; gender: string;
   tagline: string; tagline_ar: string; description: string; description_ar: string;
   price: string; image: string; accent: string;
   top: string; heart: string; base: string; top_ar: string; heart_ar: string; base_ar: string;
@@ -22,7 +23,7 @@ type Draft = {
 };
 
 const emptyDraft: Draft = {
-  name: "", name_ar: "", family: "Woody", gender: "Unisex",
+  name: "", name_ar: "", group: "General", family: "Woody", gender: "Unisex",
   tagline: "", tagline_ar: "", description: "", description_ar: "",
   price: "195", image: GALLERY[3], accent: "#c6a15b",
   top: "", heart: "", base: "", top_ar: "", heart_ar: "", base_ar: "", bestseller: false,
@@ -61,7 +62,7 @@ export default function AdminPage() {
   const startEdit = (p: Product) => {
     setEditSlug(p.slug);
     setDraft({
-      name: p.name, name_ar: p.name_ar || "", family: p.family, gender: p.gender,
+      name: p.name, name_ar: p.name_ar || "", group: p.group, family: p.family, gender: p.gender,
       tagline: p.tagline, tagline_ar: p.tagline_ar || "", description: p.description, description_ar: p.description_ar || "",
       price: String(p.price), image: p.image, accent: p.accent,
       top: join(p.notes.top), heart: join(p.notes.heart), base: join(p.notes.base),
@@ -77,7 +78,7 @@ export default function AdminPage() {
     const p: Product = {
       slug: editSlug || "",
       name: draft.name.trim(), name_ar: draft.name_ar.trim() || undefined,
-      family: draft.family, gender: draft.gender,
+      group: draft.group, family: draft.family, gender: draft.gender,
       tagline: draft.tagline.trim(), tagline_ar: draft.tagline_ar.trim() || undefined,
       description: draft.description.trim(), description_ar: draft.description_ar.trim() || undefined,
       price: Number(draft.price) || 0, image: draft.image || GALLERY[0], accent: draft.accent,
@@ -161,7 +162,7 @@ export default function AdminPage() {
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "var(--cream)" }}>
                   {p.name} {p.bestseller && <span style={{ color: "var(--gold)", fontSize: 14 }}>★</span>}
                 </div>
-                <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: 1 }}>{p.family} · {p.gender} · {formatPrice(p.price)}</div>
+                <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: 1 }}>{p.group} · {p.family} · {p.gender} · {formatPrice(p.price)}</div>
               </div>
               <div style={{ display: "flex", gap: 8 }}>
                 <button onClick={() => startEdit(p)} style={miniBtn}>{A.edit}</button>
@@ -184,6 +185,11 @@ export default function AdminPage() {
             <div className="ag2">
               <Field label={A.name}><input style={inp} value={draft.name} onChange={(e) => set("name", e.target.value)} /></Field>
               <Field label={A.nameAr}><input style={inp} dir="rtl" value={draft.name_ar} onChange={(e) => set("name_ar", e.target.value)} /></Field>
+              <Field label={A.group}>
+                <select style={inp} value={draft.group} onChange={(e) => set("group", e.target.value)}>
+                  {GROUPS.map((g) => <option key={g} value={g}>{g}</option>)}
+                </select>
+              </Field>
               <Field label={A.family}>
                 <select style={inp} value={draft.family} onChange={(e) => set("family", e.target.value)}>
                   {FAMS.map((f) => <option key={f} value={f}>{f}</option>)}

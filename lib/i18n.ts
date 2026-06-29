@@ -18,11 +18,23 @@ export const GENDER_LABELS: Record<string, { en: string; ar: string }> = {
   "For Him": { en: "For Him", ar: "له" },
 };
 
+export const GROUP_LABELS: Record<string, { en: string; ar: string }> = {
+  All: { en: "All", ar: "الكل" },
+  Women: { en: "Women", ar: "نسائي" },
+  "Louis Vuitton": { en: "Louis Vuitton", ar: "لويس فيتون" },
+  "Black Afghano": { en: "Black Afghano", ar: "بلاك أفغانو" },
+  General: { en: "General", ar: "عام" },
+  Signature: { en: "Signature", ar: "توقيع الدار" },
+};
+
 export function famLabel(family: string, lang: Lang) {
   return FAMILY_LABELS[family]?.[lang] ?? family;
 }
 export function genderLabel(gender: string, lang: Lang) {
   return GENDER_LABELS[gender]?.[lang] ?? gender;
+}
+export function groupLabel(group: string, lang: Lang) {
+  return GROUP_LABELS[group]?.[lang] ?? group;
 }
 
 interface Dict {
@@ -58,7 +70,7 @@ interface Dict {
   admin: {
     title: string; subtitle: string; passLabel: string; passPlaceholder: string; enter: string; wrongPass: string;
     signOut: string; addProduct: string; editProduct: string; products: string; count: string;
-    name: string; nameAr: string; family: string; gender: string; tagline: string; taglineAr: string;
+    name: string; nameAr: string; group: string; family: string; gender: string; tagline: string; taglineAr: string;
     description: string; descriptionAr: string; price: string; image: string; accent: string;
     notesTop: string; notesHeart: string; notesBase: string; notesHint: string; bestseller: string;
     save: string; cancel: string; edit: string; delete: string; confirmDelete: string; reset: string;
@@ -122,7 +134,7 @@ export const translations: Record<Lang, Dict> = {
     admin: {
       title: "Atelier", subtitle: "Product Management", passLabel: "Passcode", passPlaceholder: "Enter passcode", enter: "Enter", wrongPass: "Incorrect passcode.",
       signOut: "Sign out", addProduct: "Add Fragrance", editProduct: "Edit Fragrance", products: "Fragrances", count: "in catalogue",
-      name: "Name (EN)", nameAr: "Name (AR)", family: "Family", gender: "Audience", tagline: "Tagline (EN)", taglineAr: "Tagline (AR)",
+      name: "Name (EN)", nameAr: "Name (AR)", group: "Group", family: "Family", gender: "Audience", tagline: "Tagline (EN)", taglineAr: "Tagline (AR)",
       description: "Description (EN)", descriptionAr: "Description (AR)", price: "Price (50ml, ILS)", image: "Image URL / path", accent: "Accent color",
       notesTop: "Top notes", notesHeart: "Heart notes", notesBase: "Base notes", notesHint: "Separate notes with commas", bestseller: "Mark as bestseller",
       save: "Save", cancel: "Cancel", edit: "Edit", delete: "Delete", confirmDelete: "Delete this fragrance?", reset: "Reset catalogue",
@@ -185,7 +197,7 @@ export const translations: Record<Lang, Dict> = {
     admin: {
       title: "الأتيليه", subtitle: "إدارة المنتجات", passLabel: "رمز الدخول", passPlaceholder: "أدخل رمز الدخول", enter: "دخول", wrongPass: "رمز غير صحيح.",
       signOut: "تسجيل الخروج", addProduct: "إضافة عطر", editProduct: "تعديل عطر", products: "العطور", count: "في الكتالوج",
-      name: "الاسم (إنجليزي)", nameAr: "الاسم (عربي)", family: "العائلة", gender: "الفئة", tagline: "الشعار (إنجليزي)", taglineAr: "الشعار (عربي)",
+      name: "الاسم (إنجليزي)", nameAr: "الاسم (عربي)", group: "المجموعة", family: "العائلة", gender: "الفئة", tagline: "الشعار (إنجليزي)", taglineAr: "الشعار (عربي)",
       description: "الوصف (إنجليزي)", descriptionAr: "الوصف (عربي)", price: "السعر (٥٠مل، شيكل)", image: "رابط/مسار الصورة", accent: "اللون المميّز",
       notesTop: "مقدّمة العطر", notesHeart: "قلب العطر", notesBase: "قاعدة العطر", notesHint: "افصل بين النوتات بفواصل", bestseller: "تمييز كأفضل مبيعاً",
       save: "حفظ", cancel: "إلغاء", edit: "تعديل", delete: "حذف", confirmDelete: "حذف هذا العطر؟", reset: "إعادة ضبط الكتالوج",

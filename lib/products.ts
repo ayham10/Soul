@@ -1,4 +1,5 @@
 import { Lang } from "@/lib/i18n";
+import { catalogProducts } from "@/lib/catalog";
 
 export interface Note {
   top: string[];
@@ -10,13 +11,15 @@ export interface Product {
   slug: string;
   name: string;
   name_ar?: string;
+  group: string;         // Women | Louis Vuitton | Black Afghano | General | Signature
   family: string;        // Woody | Floral | Citrus | Oriental | Musk | Aquatic
   gender: string;        // For Her | For Him | Unisex
   tagline: string;
   tagline_ar?: string;
   description: string;
   description_ar?: string;
-  price: number;         // base price for 100ml (ILS)
+  price: number;         // 100ml price (ILS) — used for display & Signature group
+  price50?: number;      // optional explicit 50ml price (Signature group)
   image: string;
   accent: string;        // accent color derived from the bottle
   notes: Note;
@@ -35,21 +38,44 @@ export const SIZES = [
   { ml: 100, multiplier: 1 },
 ];
 
+/** Fixed ILS pricing per collection group */
+export const GROUP_PRICING: Record<string, { ml50: number; ml100: number }> = {
+  "Louis Vuitton": { ml50: 90, ml100: 150 },
+  "Black Afghano": { ml50: 100, ml100: 200 },
+  Women: { ml50: 70, ml100: 120 },
+  General: { ml50: 70, ml100: 120 },
+};
+
+export const groups = ["All", "Women", "Louis Vuitton", "Black Afghano", "General", "Signature"];
+
 export function formatPrice(price: number): string {
   return `₪${Math.round(price)}`;
 }
 
-// Calculate price with +10 offset for 50ml size
+/** Legacy formula for Signature house fragrances */
+function legacyPrice(basePrice: number, sizeMl: number): number {
+  const rawPrice = basePrice * (sizeMl === 50 ? 0.5 : 1);
+  return sizeMl === 50 ? Math.round(rawPrice + 10) : Math.round(rawPrice);
+}
+
+export function getProductPrice(product: Product, sizeMl: number): number {
+  if (sizeMl === 50 && product.price50 != null) return product.price50;
+  const tier = GROUP_PRICING[product.group];
+  if (tier) return sizeMl === 50 ? tier.ml50 : tier.ml100;
+  return legacyPrice(product.price, sizeMl);
+}
+
+/** @deprecated Use getProductPrice(product, sizeMl) */
 export function calculatePrice(basePrice: number, sizeMultiplier: number, sizeMl: number): number {
   const rawPrice = basePrice * sizeMultiplier;
   return sizeMl === 50 ? Math.round(rawPrice + 10) : Math.round(rawPrice);
 }
 
-export const products: Product[] = [
+const signatureProducts: Product[] = [
   {
     slug: "noir-oud",
     name: "Noir Oud", name_ar: "نوار عود",
-    family: "Woody", gender: "Unisex",
+    group: "Signature", family: "Woody", gender: "Unisex",
     tagline: "Smoke, saffron and rare agarwood.",
     tagline_ar: "دخان وزعفران وعود نادر.",
     description:
@@ -64,7 +90,7 @@ export const products: Product[] = [
   {
     slug: "rose-elixir",
     name: "Rose Élixir", name_ar: "إكسير الورد",
-    family: "Floral", gender: "For Her",
+    group: "Signature", family: "Floral", gender: "For Her",
     tagline: "A modern rose, dressed in velvet.",
     tagline_ar: "ورد عصري بثوب مخملي.",
     description:
@@ -79,7 +105,7 @@ export const products: Product[] = [
   {
     slug: "citrus-aura",
     name: "Citrus Aura", name_ar: "هالة الحمضيات",
-    family: "Citrus", gender: "Unisex",
+    group: "Signature", family: "Citrus", gender: "Unisex",
     tagline: "Sunlight, captured at first light.",
     tagline_ar: "ضوء الشمس، عند أوّل النهار.",
     description:
@@ -93,7 +119,7 @@ export const products: Product[] = [
   {
     slug: "amber-soul",
     name: "Amber Soul", name_ar: "عنبر سول",
-    family: "Oriental", gender: "Unisex",
+    group: "Signature", family: "Oriental", gender: "Unisex",
     tagline: "The house signature. Warm and golden.",
     tagline_ar: "توقيع الدار. دافئ وذهبي.",
     description:
@@ -108,7 +134,7 @@ export const products: Product[] = [
   {
     slug: "velvet-musk",
     name: "Velvet Musk", name_ar: "مسك مخملي",
-    family: "Musk", gender: "For Her",
+    group: "Signature", family: "Musk", gender: "For Her",
     tagline: "Skin, only softer.",
     tagline_ar: "كالبشرة، لكن أنعم.",
     description:
@@ -122,7 +148,7 @@ export const products: Product[] = [
   {
     slug: "marine-reign",
     name: "Marine Reign", name_ar: "سطوة البحر",
-    family: "Aquatic", gender: "For Him",
+    group: "Signature", family: "Aquatic", gender: "For Him",
     tagline: "The open sea, bottled.",
     tagline_ar: "البحر المفتوح، في زجاجة.",
     description:
@@ -134,6 +160,8 @@ export const products: Product[] = [
     notes_ar: { top: ["ملح البحر", "جريب فروت"], heart: ["أكورد بحري", "مريمية"], base: ["خشب الطافي", "عنبر بحري"] },
   },
 ];
+
+export const products: Product[] = [...signatureProducts, ...catalogProducts];
 
 export const families = ["All", "Oud", "Sweet", "Woody", "Floral", "Citrus", "Oriental", "Musk", "Aquatic"];
 
