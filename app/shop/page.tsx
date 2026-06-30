@@ -1,16 +1,21 @@
 "use client";
 import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
-import { groups } from "@/lib/products";
+import { families } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
-import { groupLabel } from "@/lib/i18n";
+import { famLabel } from "@/lib/i18n";
 
 export default function ShopPage() {
   const { products } = useProducts();
   const { t, lang } = useLang();
   const [active, setActive] = useState("All");
-  const list = active === "All" ? products : products.filter((p) => p.group === active);
+  const list =
+    active === "All"
+      ? products
+      : active === "Women"
+        ? products.filter((p) => p.collection === "Women")
+        : products.filter((p) => p.family === active);
 
   return (
     <>
@@ -66,9 +71,9 @@ export default function ShopPage() {
 
       <div className="filter-wrap" style={{ padding: "10px 22px 34px" }}>
         <div className="filter-row">
-          {groups.map((g) => (
-            <button key={g} className={`filter-chip${active === g ? " active" : ""}`} onClick={() => setActive(g)}>
-              {groupLabel(g, lang)}
+          {families.map((f) => (
+            <button key={f} className={`filter-chip${active === f ? " active" : ""}`} onClick={() => setActive(f)}>
+              {famLabel(f, lang)}
             </button>
           ))}
         </div>
