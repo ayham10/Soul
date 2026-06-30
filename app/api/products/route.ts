@@ -42,7 +42,7 @@ function isProduct(value: unknown): value is Product {
   return (
     typeof p.slug === "string" &&
     typeof p.name === "string" &&
-    typeof p.group === "string" &&
+    typeof p.collection === "string" &&
     typeof p.family === "string" &&
     typeof p.gender === "string" &&
     typeof p.tagline === "string" &&

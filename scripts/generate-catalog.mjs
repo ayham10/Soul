@@ -17,7 +17,9 @@ const IMAGES = [
 
 const ACCENTS = ["#b5854a", "#c98a8a", "#cdab5e", "#c47a35", "#b9a98c", "#5e8ca0", "#c6a15b", "#8a7a6a"];
 
-const GROUP_PRICE = {
+const OLFACTORY_FAMILIES = ["Oud", "Sweet", "Woody", "Floral", "Citrus", "Oriental", "Musk", "Aquatic"];
+
+const COLLECTION_PRICE = {
   "Louis Vuitton": 150,
   "Black Afghano": 200,
   Women: 120,
@@ -120,6 +122,11 @@ const ENTRIES = [
   ["Paco Rabanne - One Million", "General", "For Him"],
 ];
 
+// Deterministic shuffle so families are spread evenly across the 8 olfactory groups
+function pickFamily(index) {
+  return OLFACTORY_FAMILIES[index % OLFACTORY_FAMILIES.length];
+}
+
 function slugify(name) {
   return name
     .toLowerCase()
@@ -137,7 +144,7 @@ function esc(s) {
 }
 
 const slugs = new Set();
-const lines = ENTRIES.map(([name, group, gender], i) => {
+const lines = ENTRIES.map(([name, collection, gender], i) => {
   let slug = slugify(name);
   if (slugs.has(slug)) {
     let n = 2;
@@ -146,15 +153,15 @@ const lines = ENTRIES.map(([name, group, gender], i) => {
   }
   slugs.add(slug);
 
-  const price = GROUP_PRICE[group];
+  const price = COLLECTION_PRICE[collection];
   const image = IMAGES[i % IMAGES.length];
   const accent = ACCENTS[i % ACCENTS.length];
-  const family = gender === "For Her" ? "Floral" : gender === "For Him" ? "Woody" : "Oriental";
+  const family = pickFamily(i);
 
   return `  {
     slug: "${esc(slug)}",
     name: "${esc(name)}",
-    group: "${esc(group)}",
+    collection: "${esc(collection)}",
     family: "${family}", gender: "${gender}",
     tagline: "A signature composition, crafted with care.",
     description: "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
@@ -165,7 +172,7 @@ const lines = ENTRIES.map(([name, group, gender], i) => {
 
 const out = `import { Product } from "@/lib/products";
 
-/** Branded catalogue entries — pricing follows group rules in products.ts */
+/** Branded catalogue entries — pricing follows collection rules in products.ts */
 export const catalogProducts: Product[] = [
 ${lines.join(",\n")},
 ];
