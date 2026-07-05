@@ -36,6 +36,14 @@ function supabaseHeaders(config: ReturnType<typeof supabaseConfig>) {
   };
 }
 
+function normalizeProduct(value: unknown): Product | null {
+  if (!value || typeof value !== "object") return null;
+  const raw = { ...(value as Record<string, unknown>) };
+  if (!raw.collection && raw.group) raw.collection = raw.group;
+  if (!isProduct(raw)) return null;
+  return raw as Product;
+}
+
 function isProduct(value: unknown): value is Product {
   if (!value || typeof value !== "object") return false;
   const p = value as Partial<Product>;
@@ -56,6 +64,13 @@ function isProduct(value: unknown): value is Product {
     Array.isArray(p.notes.heart) &&
     Array.isArray(p.notes.base)
   );
+}
+
+function normalizeCatalog(products: unknown): Product[] | null {
+  if (!Array.isArray(products)) return null;
+  const normalized = products.map(normalizeProduct);
+  if (normalized.some((p) => !p)) return null;
+  return normalized as Product[];
 }
 
 async function redisCommand(command: unknown[]) {
@@ -84,8 +99,7 @@ async function readRemoteCatalog(): Promise<Product[] | null> {
   if (!response?.result) return null;
 
   const parsed = typeof response.result === "string" ? JSON.parse(response.result) : response.result;
-  if (Array.isArray(parsed) && parsed.every(isProduct)) return parsed;
-  return null;
+  return normalizeCatalog(parsed);
 }
 
 async function writeRemoteCatalog(products: Product[]) {
@@ -109,8 +123,7 @@ async function readSupabaseCatalog(): Promise<Product[] | null> {
 
   const rows = await response.json() as { products?: unknown }[];
   const products = rows[0]?.products;
-  if (Array.isArray(products) && products.length > 0 && products.every(isProduct)) return products;
-  return null;
+  return normalizeCatalog(products);
 }
 
 async function writeSupabaseCatalog(products: Product[]) {
@@ -140,14 +153,20 @@ async function readLocalCatalog(): Promise<Product[]> {
   try {
     const raw = await fs.readFile(DATA_FILE, "utf8");
     const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed) && parsed.every(isProduct)) return parsed;
+    const products = Array.isArray(parsed) ? parsed : parsed?.products;
+    const normalized = normalizeCatalog(products);
+    if (normalized?.length) return normalized;
   } catch {}
   return seedProducts;
 }
 
 async function writeLocalCatalog(products: Product[]) {
   await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.writeFile(DATA_FILE, JSON.stringify(products, null, 2), "utf8");
+  await fs.writeFile(
+    DATA_FILE,
+    JSON.stringify({ updatedAt: new Date().toISOString(), products }, null, 2),
+    "utf8"
+  );
 }
 
 async function readCatalog(): Promise<{ products: Product[]; storage: StorageMode }> {
@@ -195,13 +214,17 @@ export async function PUT(request: Request) {
   const body = await request.json().catch(() => null);
   const products = body?.products;
 
-  if (!Array.isArray(products) || !products.every(isProduct)) {
+  if (!Array.isArray(products)) {
+    return NextResponse.json({ error: "Invalid catalogue payload." }, { status: 400 });
+  }
+  const normalized = normalizeCatalog(products);
+  if (!normalized) {
     return NextResponse.json({ error: "Invalid catalogue payload." }, { status: 400 });
   }
 
-  const storage = await writeCatalog(products);
+  const storage = await writeCatalog(normalized);
   return NextResponse.json(
-    { products, storage },
+    { products: normalized, storage },
     { headers: { "Cache-Control": "no-store, max-age=0" } }
   );
 }

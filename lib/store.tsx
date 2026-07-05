@@ -23,18 +23,24 @@ async function saveSharedCatalog(products: Product[]) {
   });
   if (!response.ok) throw new Error("Unable to save product catalogue");
   const data = await response.json().catch(() => null);
-  if (data?.storage !== "supabase" && data?.storage !== "redis") {
-    throw new Error("A durable catalogue database is not configured.");
-  }
+  return (data?.storage as string) ?? "unknown";
 }
 
-function warnSharedSaveFailed(error: unknown) {
+function warnSharedSaveFailed(error: unknown, storage?: string) {
   console.error(error);
-  if (typeof window !== "undefined") {
-    window.alert(
-      "Product updated on this device, but it is not saved for all users yet. Configure Supabase environment variables so admin changes appear on every phone and browser."
-    );
+  if (typeof window === "undefined") return;
+  if (storage === "filesystem") {
+    const onLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+    if (!onLocalhost) {
+      window.alert(
+        "Changes are saved on this device only. To sync admin edits across every phone and browser, add SUPABASE_URL and SUPABASE_SECRET_KEY to your deployment (see .env.example)."
+      );
+    }
+    return;
   }
+  window.alert(
+    "Could not save the catalogue. Check your connection and Supabase environment variables."
+  );
 }
 
 export function slugify(name: string): string {
@@ -55,33 +61,51 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let active = true;
     const load = async () => {
+      let localProducts: Product[] | null = null;
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length) localProducts = parsed;
+        }
+      } catch {}
+
       try {
         const response = await fetch("/api/products", { cache: "no-store" });
         if (response.ok) {
           const data = await response.json();
-          if (active && Array.isArray(data.products) && data.products.length) {
-            setItems(data.products);
-            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data.products)); } catch {}
+          if (!active) return;
+
+          const apiProducts = Array.isArray(data.products) ? data.products : null;
+          const storage = data.storage as string | undefined;
+
+          // Without Supabase/Redis the server may reset to seed on each deploy — prefer this device's saved catalogue.
+          if (storage === "filesystem" && localProducts) {
+            setItems(localProducts);
+          } else if (apiProducts?.length) {
+            setItems(apiProducts);
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(apiProducts)); } catch {}
+          } else if (localProducts) {
+            setItems(localProducts);
           }
         } else {
           throw new Error("Catalogue request failed");
         }
       } catch {
-        try {
-          const raw = localStorage.getItem(STORAGE_KEY);
-          if (raw) {
-            const parsed = JSON.parse(raw);
-            if (active && Array.isArray(parsed) && parsed.length) {
-              setItems(parsed);
-            }
-          }
-        } catch {}
+        if (active && localProducts) setItems(localProducts);
       } finally {
         if (active) setReady(true);
       }
     };
     load();
     return () => { active = false; };
+  }, []);
+
+  const persist = useCallback((next: Product[]) => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
+    saveSharedCatalog(next)
+      .catch((err) => warnSharedSaveFailed(err));
+    return next;
   }, []);
 
   const add = useCallback((p: Product) => {
@@ -92,33 +116,30 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
       const baseSlug = slug;
       while (existing.has(slug)) slug = `${baseSlug}-${i++}`;
       const next = [{ ...p, slug }, ...prev];
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
-      saveSharedCatalog(next).catch(warnSharedSaveFailed);
+      persist(next);
       return next;
     });
-  }, []);
+  }, [persist]);
 
   const update = useCallback((slug: string, p: Product) => {
     setItems((prev) => {
       const next = prev.map((x) => (x.slug === slug ? { ...p, slug } : x));
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
-      saveSharedCatalog(next).catch(warnSharedSaveFailed);
+      persist(next);
       return next;
     });
-  }, []);
+  }, [persist]);
 
   const remove = useCallback((slug: string) => {
     setItems((prev) => {
       const next = prev.filter((x) => x.slug !== slug);
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch {}
-      saveSharedCatalog(next).catch(warnSharedSaveFailed);
+      persist(next);
       return next;
     });
-  }, []);
+  }, [persist]);
 
   const reset = useCallback(() => {
     try { localStorage.removeItem(STORAGE_KEY); } catch {}
-    saveSharedCatalog(seed).catch(warnSharedSaveFailed);
+    saveSharedCatalog(seed).catch((err) => warnSharedSaveFailed(err));
     setItems(seed);
   }, []);
 

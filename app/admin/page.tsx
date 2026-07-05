@@ -159,7 +159,7 @@ export default function AdminPage() {
                 <Image src={p.image} alt={p.name} fill style={{ objectFit: "cover" }} sizes="52px" />
               </div>
               <div style={{ flex: 1, minWidth: 140 }}>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "var(--cream)" }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "var(--cream)", lineHeight: 1.2, wordBreak: "break-word" }}>
                   {p.name} {p.bestseller && <span style={{ color: "var(--gold)", fontSize: 14 }}>★</span>}
                 </div>
                 <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: 1 }}>{p.collection} · {p.family} · {p.gender} · {formatPrice(p.price)}</div>
