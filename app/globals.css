@@ -172,6 +172,8 @@ a { color: inherit; }
   color: var(--cream);
   margin-bottom: 6px;
   text-wrap: balance;
+  word-break: break-word;
+  line-height: 1.15;
 }
 .product-tagline {
   font-size: 12.5px;
@@ -287,12 +289,12 @@ a { color: inherit; }
     margin-bottom: 6px;
   }
   .product-title {
-    overflow: hidden;
+    overflow: visible;
     font-size: clamp(20px, 5.65vw, 24px);
-    line-height: 1.02;
+    line-height: 1.15;
     margin-bottom: 6px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    text-wrap: balance;
+    word-break: break-word;
   }
   .product-tagline {
     display: -webkit-box;
