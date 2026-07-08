@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 import { Product, products as seedProducts } from "@/lib/products";
+import { isBase64Image, sanitizeProductImage } from "@/lib/storage";
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +41,9 @@ function normalizeProduct(value: unknown): Product | null {
   if (!value || typeof value !== "object") return null;
   const raw = { ...(value as Record<string, unknown>) };
   if (!raw.collection && raw.group) raw.collection = raw.group;
+  if (typeof raw.image === "string" && isBase64Image(raw.image)) {
+    raw.image = sanitizeProductImage(raw.image);
+  }
   if (!isProduct(raw)) return null;
   return raw as Product;
 }
@@ -220,6 +224,12 @@ export async function PUT(request: Request) {
   const normalized = normalizeCatalog(products);
   if (!normalized) {
     return NextResponse.json({ error: "Invalid catalogue payload." }, { status: 400 });
+  }
+  if (normalized.some((p) => isBase64Image(p.image))) {
+    return NextResponse.json(
+      { error: "Catalogue contains embedded Base64 images. Upload images to Storage first, then save again." },
+      { status: 413 }
+    );
   }
 
   const storage = await writeCatalog(normalized);
