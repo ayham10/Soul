@@ -37,19 +37,8 @@ Open http://localhost:3000.
 Admin edits need durable storage to appear for every customer on every device.
 Create a Supabase project, open **SQL Editor**, and run:
 
-```sql
-create table if not exists public.soul_catalog (
-  id text primary key,
-  products jsonb not null,
-  updated_at timestamptz not null default now()
-);
-
-insert into public.soul_catalog (id, products)
-values ('default', '[]'::jsonb)
-on conflict (id) do nothing;
-
-alter table public.soul_catalog enable row level security;
-```
+1. `supabase-catalog.sql` — catalogue table
+2. `supabase-storage.sql` — public `perfumes` bucket for uploaded images
 
 Then add these environment variables to the deployment:
 
@@ -62,6 +51,9 @@ SUPABASE_SECRET_KEY=...
 secret key from Supabase API settings; keep it server-side only and do not expose
 it in browser code or commit it to Git. The publishable key is not needed for the
 admin catalogue because all database writes happen through the server API.
+
+Admin image uploads are stored in Supabase Storage (`perfumes` bucket) as public URLs.
+The catalogue JSON stores only the image URL — never Base64 — so saves stay small.
 
 `SUPABASE_SERVICE_ROLE_KEY` is also supported if your Supabase project still uses
 the legacy service-role key name. Without a Supabase URL and secret key,

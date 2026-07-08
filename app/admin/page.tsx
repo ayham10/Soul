@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Product, ADMIN_PASSCODE, families, collections, formatPrice } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
+import { deletePerfumeImage, isBase64Image, isStorageImageUrl, slugFromName, uploadPerfumeImage } from "@/lib/image-upload";
 
 const GALLERY = [
   "/images/p-noir-oud.png", "/images/p-rose-elixir.png", "/images/p-citrus-aura.png",
@@ -44,6 +45,8 @@ export default function AdminPage() {
   const [open, setOpen] = useState(false);
   const [editSlug, setEditSlug] = useState<string | null>(null);
   const [draft, setDraft] = useState<Draft>(emptyDraft);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -58,9 +61,10 @@ export default function AdminPage() {
     } else { setPassErr(true); }
   };
 
-  const startAdd = () => { setDraft(emptyDraft); setEditSlug(null); setOpen(true); };
+  const startAdd = () => { setDraft(emptyDraft); setEditSlug(null); setUploadError(""); setOpen(true); };
   const startEdit = (p: Product) => {
     setEditSlug(p.slug);
+    setUploadError("");
     setDraft({
       name: p.name, name_ar: p.name_ar || "", collection: p.collection, family: p.family, gender: p.gender,
       tagline: p.tagline, tagline_ar: p.tagline_ar || "", description: p.description, description_ar: p.description_ar || "",
@@ -72,8 +76,14 @@ export default function AdminPage() {
     setOpen(true);
   };
 
-  const save = () => {
-    if (!draft.name.trim()) return;
+  const save = async () => {
+    if (!draft.name.trim() || uploading) return;
+    if (isBase64Image(draft.image)) {
+      window.alert("Please upload the image first. Base64 images are no longer supported.");
+      return;
+    }
+
+    const oldProduct = editSlug ? products.find((p) => p.slug === editSlug) : undefined;
     const hasAr = draft.top_ar || draft.heart_ar || draft.base_ar;
     const p: Product = {
       slug: editSlug || "",
@@ -87,14 +97,31 @@ export default function AdminPage() {
       bestseller: draft.bestseller,
     };
     if (editSlug) update(editSlug, p); else add(p);
+
+    if (
+      oldProduct?.image &&
+      oldProduct.image !== p.image &&
+      isStorageImageUrl(oldProduct.image)
+    ) {
+      deletePerfumeImage(oldProduct.image).catch(console.error);
+    }
+
     setOpen(false);
   };
 
-  const onUpload = (file?: File) => {
+  const onUpload = async (file?: File) => {
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => setDraft((d) => ({ ...d, image: String(reader.result) }));
-    reader.readAsDataURL(file);
+    setUploading(true);
+    setUploadError("");
+    try {
+      const url = await uploadPerfumeImage(file, slugFromName(draft.name || "perfume"));
+      setDraft((d) => ({ ...d, image: url }));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Image upload failed";
+      setUploadError(message);
+    } finally {
+      setUploading(false);
+    }
   };
 
   const set = (k: keyof Draft, v: string | boolean) => setDraft((d) => ({ ...d, [k]: v }));
@@ -231,10 +258,18 @@ export default function AdminPage() {
                 </button>
               ))}
             </div>
-            <label style={{ ...miniBtn, display: "inline-block", marginBottom: 18 }}>
-              {A.uploadImage}
-              <input type="file" accept="image/*" style={{ display: "none" }} onChange={(e) => onUpload(e.target.files?.[0])} />
+            <label style={{ ...miniBtn, display: "inline-block", marginBottom: uploadError ? 8 : 18, opacity: uploading ? 0.6 : 1, pointerEvents: uploading ? "none" : "auto" }}>
+              {uploading ? `${A.uploadImage}…` : A.uploadImage}
+              <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" style={{ display: "none" }} disabled={uploading} onChange={(e) => onUpload(e.target.files?.[0])} />
             </label>
+            {uploadError && (
+              <div style={{ color: "#e0746a", fontSize: 12, marginBottom: 18, lineHeight: 1.6 }}>{uploadError}</div>
+            )}
+            {isBase64Image(draft.image) && (
+              <div style={{ color: "#e0746a", fontSize: 12, marginBottom: 18, lineHeight: 1.6 }}>
+                This product still has an old embedded image. Upload a new image before saving.
+              </div>
+            )}
 
             <label style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24, cursor: "pointer", color: "var(--cream)", fontSize: 13 }}>
               <input type="checkbox" checked={draft.bestseller} onChange={(e) => set("bestseller", e.target.checked)} />
@@ -242,7 +277,7 @@ export default function AdminPage() {
             </label>
 
             <div style={{ display: "flex", gap: 12 }}>
-              <button onClick={save} className="btn-gold" style={{ flex: 1 }}>{A.save}</button>
+              <button onClick={save} className="btn-gold" style={{ flex: 1 }} disabled={uploading || isBase64Image(draft.image)}>{A.save}</button>
               <button onClick={() => setOpen(false)} className="btn-ghost" style={{ flex: 1 }}>{A.cancel}</button>
             </div>
           </div>

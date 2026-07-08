@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, ReactNode } from "react";
 import { products as seed, Product } from "@/lib/products";
+import { deletePerfumeImage } from "@/lib/image-upload";
 
 interface ProductsContextType {
   products: Product[];
@@ -43,16 +44,9 @@ function warnSharedSaveFailed(error: unknown, storage?: string) {
   );
 }
 
-export function slugify(name: string): string {
-  return (
-    name
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-") || "fragrance"
-  );
-}
+import { slugify } from "@/lib/slug";
+
+export { slugify };
 
 export function ProductsProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<Product[]>(seed);
@@ -131,6 +125,10 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
 
   const remove = useCallback((slug: string) => {
     setItems((prev) => {
+      const removed = prev.find((x) => x.slug === slug);
+      if (removed?.image) {
+        deletePerfumeImage(removed.image).catch(console.error);
+      }
       const next = prev.filter((x) => x.slug !== slug);
       persist(next);
       return next;
