@@ -60,7 +60,7 @@ function readCachedCatalog(): Product[] | null {
 }
 
 export function ProductsProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<Product[]>(seed);
+  const [items, setItems] = useState<Product[]>([]);
   const [ready, setReady] = useState(false);
   const [saving, setSaving] = useState(false);
   const itemsRef = useRef(items);
@@ -98,7 +98,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
       } catch {
         if (!active) return;
         const cached = readCachedCatalog();
-        if (cached) applyCatalog(cached);
+        applyCatalog(cached ?? seed);
       } finally {
         if (active) setReady(true);
       }
