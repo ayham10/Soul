@@ -1,21 +1,36 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ProductCard from "@/components/ProductCard";
-import { families } from "@/lib/products";
+import ShopCatalogSkeleton from "@/components/ShopCatalogSkeleton";
+import { families, Product } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
 import { famLabel } from "@/lib/i18n";
 
+function ShopProductGrid({ products }: { products: Product[] }) {
+  return (
+    <div className="shop-grid">
+      {products.map((p) => (
+        <ProductCard key={p.slug} product={p} />
+      ))}
+    </div>
+  );
+}
+
 export default function ShopPage() {
-  const { products } = useProducts();
+  const { products, ready } = useProducts();
   const { t, lang } = useLang();
   const [active, setActive] = useState("All");
-  const list =
-    active === "All"
-      ? products
-      : active === "Women"
-        ? products.filter((p) => p.collection === "Women")
-        : products.filter((p) => p.family === active);
+
+  const list = useMemo(
+    () =>
+      active === "All"
+        ? products
+        : active === "Women"
+          ? products.filter((p) => p.collection === "Women")
+          : products.filter((p) => p.family === active),
+    [products, active]
+  );
 
   return (
     <>
@@ -32,6 +47,27 @@ export default function ShopPage() {
         }
         .filter-chip:hover { color: var(--cream); border-color: rgba(198,161,91,0.5); }
         .filter-chip.active { background: var(--gold); color: #1a140a; border-color: var(--gold); }
+        .skeleton-card { pointer-events: none; }
+        .skeleton-card:hover { transform: none; box-shadow: none; border-color: var(--line); }
+        .skeleton-shimmer {
+          background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, rgba(198,161,91,0.08) 50%, rgba(255,255,255,0.03) 100%);
+          background-size: 200% 100%;
+          animation: catalog-shimmer 1.4s ease-in-out infinite;
+        }
+        .skeleton-line {
+          height: 12px;
+          border-radius: 2px;
+          margin-bottom: 10px;
+        }
+        .skeleton-line-sm { width: 38%; height: 10px; }
+        .skeleton-line-lg { width: 72%; height: 18px; margin-bottom: 12px; }
+        .skeleton-line-md { width: 90%; margin-bottom: 18px; }
+        .skeleton-line-price { width: 56px; height: 16px; margin-bottom: 0; }
+        .skeleton-line-btn { width: 92px; height: 36px; margin-bottom: 0; }
+        @keyframes catalog-shimmer {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
         @media (max-width: 639px) {
           .shop-header { padding: 118px 18px 18px !important; }
           .filter-wrap { padding: 10px 18px 34px !important; }
@@ -81,12 +117,11 @@ export default function ShopPage() {
       </div>
 
       <section className="wrap shop-products-wrap" style={{ padding: "0 22px 110px" }}>
-        <div className="shop-grid">
-          {list.map((p) => (
-            <ProductCard key={p.slug} product={p} />
-          ))}
-        </div>
-        {list.length === 0 && (
+        {!ready ? (
+          <ShopCatalogSkeleton />
+        ) : list.length > 0 ? (
+          <ShopProductGrid products={list} />
+        ) : (
           <p style={{ textAlign: "center", color: "var(--muted)", padding: "60px 0" }}>{t.shop.empty}</p>
         )}
       </section>
