@@ -21,6 +21,7 @@ export default function ShopPage() {
     <>
       <style>{`
         .shop-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+        .shop-grid > .product-card { height: 100%; }
         @media (min-width: 640px) { .shop-grid { gap: 20px; } }
         @media (min-width: 920px) { .shop-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
         .filter-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
