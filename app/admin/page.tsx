@@ -33,7 +33,9 @@ const parse = (s: string) => s.split(",").map((x) => x.trim()).filter(Boolean);
 const join = (a?: string[]) => (a || []).join(", ");
 
 export default function AdminPage() {
-  const { products, add, update, remove, reset } = useProducts();
+  const [saveError, setSaveError] = useState("");
+
+  const { products, add, update, remove, reset, saving } = useProducts();
   const { t, dir } = useLang();
   const A = t.admin;
 
@@ -58,9 +60,10 @@ export default function AdminPage() {
     } else { setPassErr(true); }
   };
 
-  const startAdd = () => { setDraft(emptyDraft); setEditSlug(null); setOpen(true); };
+  const startAdd = () => { setDraft(emptyDraft); setEditSlug(null); setSaveError(""); setOpen(true); };
   const startEdit = (p: Product) => {
     setEditSlug(p.slug);
+    setSaveError("");
     setDraft({
       name: p.name, name_ar: p.name_ar || "", collection: p.collection, family: p.family, gender: p.gender,
       tagline: p.tagline, tagline_ar: p.tagline_ar || "", description: p.description, description_ar: p.description_ar || "",
@@ -72,29 +75,62 @@ export default function AdminPage() {
     setOpen(true);
   };
 
-  const save = () => {
-    if (!draft.name.trim()) return;
+  const buildProduct = (): Product => {
     const hasAr = draft.top_ar || draft.heart_ar || draft.base_ar;
-    const p: Product = {
+    return {
       slug: editSlug || "",
-      name: draft.name.trim(), name_ar: draft.name_ar.trim() || undefined,
-      collection: draft.collection, family: draft.family, gender: draft.gender,
-      tagline: draft.tagline.trim(), tagline_ar: draft.tagline_ar.trim() || undefined,
-      description: draft.description.trim(), description_ar: draft.description_ar.trim() || undefined,
-      price: Number(draft.price) || 0, image: draft.image || GALLERY[0], accent: draft.accent,
+      name: draft.name.trim(),
+      name_ar: draft.name_ar.trim() || undefined,
+      collection: draft.collection,
+      family: draft.family,
+      gender: draft.gender,
+      tagline: draft.tagline.trim() || "A signature composition, crafted with care.",
+      tagline_ar: draft.tagline_ar.trim() || undefined,
+      description: draft.description.trim() || "An exceptional fragrance from our curated collection.",
+      description_ar: draft.description_ar.trim() || undefined,
+      price: Number(draft.price) || 0,
+      image: draft.image || GALLERY[0],
+      accent: draft.accent,
       notes: { top: parse(draft.top), heart: parse(draft.heart), base: parse(draft.base) },
       notes_ar: hasAr ? { top: parse(draft.top_ar), heart: parse(draft.heart_ar), base: parse(draft.base_ar) } : undefined,
       bestseller: draft.bestseller,
     };
-    if (editSlug) update(editSlug, p); else add(p);
-    setOpen(false);
   };
 
-  const onUpload = (file?: File) => {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => setDraft((d) => ({ ...d, image: String(reader.result) }));
-    reader.readAsDataURL(file);
+  const save = async () => {
+    if (!draft.name.trim() || saving) return;
+    setSaveError("");
+    const p = buildProduct();
+    try {
+      if (editSlug) await update(editSlug, p);
+      else await add(p);
+      setOpen(false);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Could not save product";
+      setSaveError(message);
+    }
+  };
+
+  const handleDelete = async (slug: string) => {
+    if (!confirm(A.confirmDelete) || saving) return;
+    setSaveError("");
+    try {
+      await remove(slug);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Could not delete product";
+      setSaveError(message);
+    }
+  };
+
+  const handleReset = async () => {
+    if (!confirm(A.resetConfirm) || saving) return;
+    setSaveError("");
+    try {
+      await reset();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Could not reset catalogue";
+      setSaveError(message);
+    }
   };
 
   const set = (k: keyof Draft, v: string | boolean) => setDraft((d) => ({ ...d, [k]: v }));
@@ -142,11 +178,14 @@ export default function AdminPage() {
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <button onClick={startAdd} className="btn-gold">+ {A.addProduct}</button>
-            <button onClick={() => { if (confirm(A.resetConfirm)) reset(); }} className="btn-ghost">{A.reset}</button>
+            <button onClick={() => { void handleReset(); }} className="btn-ghost" disabled={saving}>{A.reset}</button>
           </div>
         </div>
         <div style={{ fontSize: 13, color: "var(--muted)", marginBottom: 8 }}>{products.length} {A.count}</div>
         <p style={{ fontSize: 11.5, color: "#6f6655", marginBottom: 28, maxWidth: 620, lineHeight: 1.7 }}>{A.localNote}</p>
+        {saveError && (
+          <p style={{ color: "#e0746a", fontSize: 12, marginBottom: 20, lineHeight: 1.6 }}>{saveError}</p>
+        )}
 
         {/* Product list */}
         <div style={{ border: "1px solid var(--line)" }}>
@@ -166,7 +205,7 @@ export default function AdminPage() {
               </div>
               <div style={{ display: "flex", gap: 8 }}>
                 <button onClick={() => startEdit(p)} style={miniBtn}>{A.edit}</button>
-                <button onClick={() => { if (confirm(A.confirmDelete)) remove(p.slug); }} style={{ ...miniBtn, color: "#e0746a", borderColor: "rgba(224,116,106,0.4)" }}>{A.delete}</button>
+                <button onClick={() => { void handleDelete(p.slug); }} style={{ ...miniBtn, color: "#e0746a", borderColor: "rgba(224,116,106,0.4)" }} disabled={saving}>{A.delete}</button>
               </div>
             </div>
           ))}
@@ -223,7 +262,7 @@ export default function AdminPage() {
             <div style={{ fontSize: 11, color: "#6f6655", marginTop: -6, marginBottom: 14 }}>{A.notesHint}</div>
 
             {/* Image */}
-            <Field label={A.image}><input style={inp} value={draft.image} onChange={(e) => set("image", e.target.value)} /></Field>
+            <Field label={A.image}><input style={inp} value={draft.image} onChange={(e) => set("image", e.target.value)} placeholder="/images/... or https://..." /></Field>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, margin: "10px 0 6px" }}>
               {GALLERY.map((g) => (
                 <button key={g} onClick={() => set("image", g)} style={{ position: "relative", width: 46, height: 56, border: `1px solid ${draft.image === g ? "var(--gold)" : "var(--line)"}`, background: "var(--noir-card)", cursor: "pointer", padding: 0 }}>
@@ -231,18 +270,23 @@ export default function AdminPage() {
                 </button>
               ))}
             </div>
-            <label style={{ ...miniBtn, display: "inline-block", marginBottom: 18 }}>
-              {A.uploadImage}
-              <input type="file" accept="image/*" style={{ display: "none" }} onChange={(e) => onUpload(e.target.files?.[0])} />
-            </label>
+            <p style={{ fontSize: 11, color: "#6f6655", margin: "0 0 18px", lineHeight: 1.6 }}>
+              Pick a gallery image below or paste an image URL. Do not paste Base64 data.
+            </p>
 
             <label style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24, cursor: "pointer", color: "var(--cream)", fontSize: 13 }}>
               <input type="checkbox" checked={draft.bestseller} onChange={(e) => set("bestseller", e.target.checked)} />
               {A.bestseller}
             </label>
 
+            {saveError && (
+              <div style={{ color: "#e0746a", fontSize: 12, marginBottom: 14, lineHeight: 1.6 }}>{saveError}</div>
+            )}
+
             <div style={{ display: "flex", gap: 12 }}>
-              <button onClick={save} className="btn-gold" style={{ flex: 1 }}>{A.save}</button>
+              <button onClick={() => { void save(); }} className="btn-gold" style={{ flex: 1 }} disabled={saving || !draft.name.trim()}>
+                {saving ? `${A.save}…` : A.save}
+              </button>
               <button onClick={() => setOpen(false)} className="btn-ghost" style={{ flex: 1 }}>{A.cancel}</button>
             </div>
           </div>

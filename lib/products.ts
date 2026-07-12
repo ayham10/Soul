@@ -61,10 +61,12 @@ function legacyPrice(basePrice: number, sizeMl: number): number {
 }
 
 export function getProductPrice(product: Product, sizeMl: number): number {
-  if (sizeMl === 50 && product.price50 != null) return product.price50;
+  if (sizeMl === 100) return Math.round(product.price);
+  if (product.price50 != null) return product.price50;
   const tier = COLLECTION_PRICING[product.collection];
-  if (tier) return sizeMl === 50 ? tier.ml50 : tier.ml100;
-  return legacyPrice(product.price, sizeMl);
+  if (tier && product.price === tier.ml100) return tier.ml50;
+  if (product.collection === "Signature") return legacyPrice(product.price, 50);
+  return Math.round(product.price * 0.5);
 }
 
 /** @deprecated Use getProductPrice(product, sizeMl) */

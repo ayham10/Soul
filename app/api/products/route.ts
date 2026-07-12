@@ -27,8 +27,7 @@ function redisConfig() {
   return url && token ? { url, token } : null;
 }
 
-function supabaseHeaders(config: ReturnType<typeof supabaseConfig>) {
-  if (!config) throw new Error("Supabase is not configured");
+function supabaseHeaders(config: NonNullable<ReturnType<typeof supabaseConfig>>) {
   return {
     apikey: config.secretKey,
     Authorization: `Bearer ${config.secretKey}`,
@@ -40,6 +39,18 @@ function normalizeProduct(value: unknown): Product | null {
   if (!value || typeof value !== "object") return null;
   const raw = { ...(value as Record<string, unknown>) };
   if (!raw.collection && raw.group) raw.collection = raw.group;
+  if (typeof raw.tagline !== "string") raw.tagline = "";
+  if (typeof raw.description !== "string") raw.description = "";
+  if (!raw.notes || typeof raw.notes !== "object") {
+    raw.notes = { top: [], heart: [], base: [] };
+  } else {
+    const notes = raw.notes as Record<string, unknown>;
+    if (!Array.isArray(notes.top)) notes.top = [];
+    if (!Array.isArray(notes.heart)) notes.heart = [];
+    if (!Array.isArray(notes.base)) notes.base = [];
+    raw.notes = notes;
+  }
+  if (typeof raw.price === "string") raw.price = Number(raw.price);
   if (!isProduct(raw)) return null;
   return raw as Product;
 }
@@ -49,7 +60,9 @@ function isProduct(value: unknown): value is Product {
   const p = value as Partial<Product>;
   return (
     typeof p.slug === "string" &&
+    p.slug.length > 0 &&
     typeof p.name === "string" &&
+    p.name.length > 0 &&
     typeof p.collection === "string" &&
     typeof p.family === "string" &&
     typeof p.gender === "string" &&
@@ -58,6 +71,7 @@ function isProduct(value: unknown): value is Product {
     typeof p.price === "number" &&
     Number.isFinite(p.price) &&
     typeof p.image === "string" &&
+    p.image.length > 0 &&
     typeof p.accent === "string" &&
     !!p.notes &&
     Array.isArray(p.notes.top) &&
@@ -107,7 +121,7 @@ async function writeRemoteCatalog(products: Product[]) {
   if (response?.error) throw new Error(response.error);
 }
 
-async function readSupabaseCatalog(): Promise<Product[] | null> {
+async function readSupabaseCatalog(): Promise<{ products: Product[]; rowExists: boolean } | null> {
   const config = supabaseConfig();
   if (!config) return null;
 
@@ -122,8 +136,11 @@ async function readSupabaseCatalog(): Promise<Product[] | null> {
   }
 
   const rows = await response.json() as { products?: unknown }[];
-  const products = rows[0]?.products;
-  return normalizeCatalog(products);
+  if (!rows.length) return { products: [], rowExists: false };
+
+  const normalized = normalizeCatalog(rows[0]?.products);
+  if (!normalized) return { products: [], rowExists: true };
+  return { products: normalized, rowExists: true };
 }
 
 async function writeSupabaseCatalog(products: Product[]) {
@@ -145,7 +162,8 @@ async function writeSupabaseCatalog(products: Product[]) {
   });
 
   if (!response.ok) {
-    throw new Error(`Supabase catalogue write failed: ${response.status}`);
+    const detail = await response.text().catch(() => "");
+    throw new Error(`Supabase catalogue write failed (${response.status})${detail ? `: ${detail}` : ""}`);
   }
 }
 
@@ -155,7 +173,7 @@ async function readLocalCatalog(): Promise<Product[]> {
     const parsed = JSON.parse(raw);
     const products = Array.isArray(parsed) ? parsed : parsed?.products;
     const normalized = normalizeCatalog(products);
-    if (normalized?.length) return normalized;
+    if (normalized) return normalized;
   } catch {}
   return seedProducts;
 }
@@ -171,8 +189,8 @@ async function writeLocalCatalog(products: Product[]) {
 
 async function readCatalog(): Promise<{ products: Product[]; storage: StorageMode }> {
   if (supabaseConfig()) {
-    const supabaseProducts = await readSupabaseCatalog();
-    if (supabaseProducts) return { products: supabaseProducts, storage: "supabase" };
+    const result = await readSupabaseCatalog();
+    if (result?.rowExists) return { products: result.products, storage: "supabase" };
     await writeSupabaseCatalog(seedProducts);
     return { products: seedProducts, storage: "supabase" };
   }
@@ -217,14 +235,30 @@ export async function PUT(request: Request) {
   if (!Array.isArray(products)) {
     return NextResponse.json({ error: "Invalid catalogue payload." }, { status: 400 });
   }
+
   const normalized = normalizeCatalog(products);
   if (!normalized) {
-    return NextResponse.json({ error: "Invalid catalogue payload." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid catalogue payload. Each product needs name, collection, family, gender, price, image, and notes." },
+      { status: 400 }
+    );
   }
 
-  const storage = await writeCatalog(normalized);
-  return NextResponse.json(
-    { products: normalized, storage },
-    { headers: { "Cache-Control": "no-store, max-age=0" } }
-  );
+  if (normalized.some((p) => p.image.startsWith("data:image/"))) {
+    return NextResponse.json(
+      { error: "Catalogue contains embedded Base64 images. Use an image URL instead." },
+      { status: 413 }
+    );
+  }
+
+  try {
+    const storage = await writeCatalog(normalized);
+    return NextResponse.json(
+      { products: normalized, storage },
+      { headers: { "Cache-Control": "no-store, max-age=0" } }
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Catalogue save failed";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
 }

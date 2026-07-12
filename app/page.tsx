@@ -65,7 +65,8 @@ export default function HomePage() {
           .wellness-card { min-height: 610px; }
         }
         .grid-products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
-        .grid-products > .reveal { height: 100%; }
+        .grid-products > .reveal { height: 100%; display: flex; }
+        .grid-products > .reveal > .product-card { flex: 1; width: 100%; }
         @media (min-width: 640px) { .grid-products { gap: 20px; } }
         @media (min-width: 900px) { .grid-products { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
         @media (max-width: 340px) { .grid-products { gap: 10px; } }
