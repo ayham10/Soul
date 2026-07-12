@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 import { Product, products as seedProducts } from "@/lib/products";
+import { isBase64Image, sanitizeProductImage } from "@/lib/storage";
 
 export const dynamic = "force-dynamic";
 
@@ -39,6 +40,9 @@ function normalizeProduct(value: unknown): Product | null {
   if (!value || typeof value !== "object") return null;
   const raw = { ...(value as Record<string, unknown>) };
   if (!raw.collection && raw.group) raw.collection = raw.group;
+  if (typeof raw.image === "string" && isBase64Image(raw.image)) {
+    raw.image = sanitizeProductImage(raw.image);
+  }
   if (typeof raw.tagline !== "string") raw.tagline = "";
   if (typeof raw.description !== "string") raw.description = "";
   if (!raw.notes || typeof raw.notes !== "object") {

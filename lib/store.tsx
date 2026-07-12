@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, ReactNode } from "react";
 import { products as seed, Product } from "@/lib/products";
+import { deletePerfumeImage } from "@/lib/image-upload";
 import { slugify } from "@/lib/slug";
 
 interface ProductsContextType {
@@ -147,10 +148,14 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
 
   const remove = useCallback(async (slug: string) => {
     const prev = itemsRef.current;
+    const removed = prev.find((x) => x.slug === slug);
     const next = prev.filter((x) => x.slug !== slug);
     setItems(next);
     try {
       await persist(next);
+      if (removed?.image) {
+        deletePerfumeImage(removed.image).catch(console.error);
+      }
     } catch (error) {
       setItems(prev);
       throw error;

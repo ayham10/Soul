@@ -4,6 +4,13 @@ import Image from "next/image";
 import { Product, ADMIN_PASSCODE, families, collections, formatPrice } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
+import {
+  deletePerfumeImage,
+  isBase64Image,
+  isStorageImageUrl,
+  slugFromName,
+  uploadPerfumeImage,
+} from "@/lib/image-upload";
 
 const GALLERY = [
   "/images/p-noir-oud.png", "/images/p-rose-elixir.png", "/images/p-citrus-aura.png",
@@ -34,6 +41,8 @@ const join = (a?: string[]) => (a || []).join(", ");
 
 export default function AdminPage() {
   const [saveError, setSaveError] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
 
   const { products, add, update, remove, reset, saving } = useProducts();
   const { t, dir } = useLang();
@@ -60,10 +69,17 @@ export default function AdminPage() {
     } else { setPassErr(true); }
   };
 
-  const startAdd = () => { setDraft(emptyDraft); setEditSlug(null); setSaveError(""); setOpen(true); };
+  const startAdd = () => {
+    setDraft(emptyDraft);
+    setEditSlug(null);
+    setSaveError("");
+    setUploadError("");
+    setOpen(true);
+  };
   const startEdit = (p: Product) => {
     setEditSlug(p.slug);
     setSaveError("");
+    setUploadError("");
     setDraft({
       name: p.name, name_ar: p.name_ar || "", collection: p.collection, family: p.family, gender: p.gender,
       tagline: p.tagline, tagline_ar: p.tagline_ar || "", description: p.description, description_ar: p.description_ar || "",
@@ -98,16 +114,46 @@ export default function AdminPage() {
   };
 
   const save = async () => {
-    if (!draft.name.trim() || saving) return;
+    if (!draft.name.trim() || saving || uploading) return;
+    if (isBase64Image(draft.image)) {
+      setSaveError("Upload the image to Supabase Storage before saving.");
+      return;
+    }
+
     setSaveError("");
+    const oldProduct = editSlug ? products.find((p) => p.slug === editSlug) : undefined;
     const p = buildProduct();
     try {
       if (editSlug) await update(editSlug, p);
       else await add(p);
+
+      if (
+        oldProduct?.image &&
+        oldProduct.image !== p.image &&
+        isStorageImageUrl(oldProduct.image)
+      ) {
+        deletePerfumeImage(oldProduct.image).catch(console.error);
+      }
+
       setOpen(false);
     } catch (error) {
       const message = error instanceof Error ? error.message : "Could not save product";
       setSaveError(message);
+    }
+  };
+
+  const onUpload = async (file?: File) => {
+    if (!file || uploading) return;
+    setUploading(true);
+    setUploadError("");
+    try {
+      const url = await uploadPerfumeImage(file, slugFromName(draft.name || "perfume"));
+      setDraft((d) => ({ ...d, image: url }));
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Image upload failed";
+      setUploadError(message);
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -270,9 +316,27 @@ export default function AdminPage() {
                 </button>
               ))}
             </div>
-            <p style={{ fontSize: 11, color: "#6f6655", margin: "0 0 18px", lineHeight: 1.6 }}>
-              Pick a gallery image below or paste an image URL. Do not paste Base64 data.
+            <p style={{ fontSize: 11, color: "#6f6655", margin: "0 0 10px", lineHeight: 1.6 }}>
+              Pick a gallery image, upload a new one to Supabase Storage, or paste an image URL.
             </p>
+            <label style={{ ...miniBtn, display: "inline-block", marginBottom: uploadError ? 8 : 18, opacity: uploading ? 0.6 : 1, pointerEvents: uploading ? "none" : "auto" }}>
+              {uploading ? `${A.uploadImage}…` : A.uploadImage}
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/gif"
+                style={{ display: "none" }}
+                disabled={uploading || saving}
+                onChange={(e) => { void onUpload(e.target.files?.[0]); e.target.value = ""; }}
+              />
+            </label>
+            {uploadError && (
+              <div style={{ color: "#e0746a", fontSize: 12, marginBottom: 18, lineHeight: 1.6 }}>{uploadError}</div>
+            )}
+            {isBase64Image(draft.image) && (
+              <div style={{ color: "#e0746a", fontSize: 12, marginBottom: 18, lineHeight: 1.6 }}>
+                This product still has an old embedded image. Upload a new image before saving.
+              </div>
+            )}
 
             <label style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24, cursor: "pointer", color: "var(--cream)", fontSize: 13 }}>
               <input type="checkbox" checked={draft.bestseller} onChange={(e) => set("bestseller", e.target.checked)} />
@@ -284,7 +348,12 @@ export default function AdminPage() {
             )}
 
             <div style={{ display: "flex", gap: 12 }}>
-              <button onClick={() => { void save(); }} className="btn-gold" style={{ flex: 1 }} disabled={saving || !draft.name.trim()}>
+              <button
+                onClick={() => { void save(); }}
+                className="btn-gold"
+                style={{ flex: 1 }}
+                disabled={saving || uploading || !draft.name.trim() || isBase64Image(draft.image)}
+              >
                 {saving ? `${A.save}…` : A.save}
               </button>
               <button onClick={() => setOpen(false)} className="btn-ghost" style={{ flex: 1 }}>{A.cancel}</button>
