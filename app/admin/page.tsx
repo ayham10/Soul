@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Product, ADMIN_PASSCODE, families, collections, formatPrice } from "@/lib/products";
+import { Product, ADMIN_PASSCODE, families, collections, formatPrice, getProductPrice } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
 import { isBase64Image, slugFromName, uploadPerfumeImage } from "@/lib/image-upload";
@@ -18,7 +18,7 @@ const COLLECTIONS = collections;
 type Draft = {
   name: string; name_ar: string; collection: string; family: string; gender: string;
   tagline: string; tagline_ar: string; description: string; description_ar: string;
-  price: string; image: string; accent: string;
+  price: string; price50: string; image: string; accent: string;
   top: string; heart: string; base: string; top_ar: string; heart_ar: string; base_ar: string;
   bestseller: boolean;
 };
@@ -26,7 +26,7 @@ type Draft = {
 const emptyDraft: Draft = {
   name: "", name_ar: "", collection: "General", family: "Woody", gender: "Unisex",
   tagline: "", tagline_ar: "", description: "", description_ar: "",
-  price: "195", image: GALLERY[3], accent: "#c6a15b",
+  price: "120", price50: "70", image: GALLERY[3], accent: "#c6a15b",
   top: "", heart: "", base: "", top_ar: "", heart_ar: "", base_ar: "", bestseller: false,
 };
 
@@ -78,7 +78,9 @@ export default function AdminPage() {
     setDraft({
       name: p.name, name_ar: p.name_ar || "", collection: p.collection, family: p.family, gender: p.gender,
       tagline: p.tagline, tagline_ar: p.tagline_ar || "", description: p.description, description_ar: p.description_ar || "",
-      price: String(p.price), image: p.image, accent: p.accent,
+      price: String(p.price),
+      price50: String(p.price50 ?? getProductPrice(p, 50)),
+      image: p.image, accent: p.accent,
       top: join(p.notes.top), heart: join(p.notes.heart), base: join(p.notes.base),
       top_ar: join(p.notes_ar?.top), heart_ar: join(p.notes_ar?.heart), base_ar: join(p.notes_ar?.base),
       bestseller: !!p.bestseller,
@@ -88,6 +90,7 @@ export default function AdminPage() {
 
   const buildProduct = (): Product => {
     const hasAr = draft.top_ar || draft.heart_ar || draft.base_ar;
+    const price50 = Number(draft.price50);
     return {
       slug: editSlug || "",
       name: draft.name.trim(),
@@ -100,6 +103,7 @@ export default function AdminPage() {
       description: draft.description.trim() || "An exceptional fragrance from our curated collection.",
       description_ar: draft.description_ar.trim() || undefined,
       price: Number(draft.price) || 0,
+      price50: Number.isFinite(price50) && price50 > 0 ? price50 : undefined,
       image: draft.image || GALLERY[0],
       accent: draft.accent,
       notes: { top: parse(draft.top), heart: parse(draft.heart), base: parse(draft.base) },
@@ -228,7 +232,9 @@ export default function AdminPage() {
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "var(--cream)", lineHeight: 1.2, wordBreak: "break-word" }}>
                   {p.name} {p.bestseller && <span style={{ color: "var(--gold)", fontSize: 14 }}>★</span>}
                 </div>
-                <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: 1 }}>{p.collection} · {p.family} · {p.gender} · {formatPrice(p.price)}</div>
+                <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: 1 }}>
+                  {p.collection} · {p.family} · {p.gender} · {formatPrice(getProductPrice(p, 50))} / {formatPrice(p.price)}
+                </div>
               </div>
               <div style={{ display: "flex", gap: 8 }}>
                 <button onClick={() => startEdit(p)} style={miniBtn} disabled={saving}>{A.edit}</button>
@@ -273,7 +279,8 @@ export default function AdminPage() {
             <Field label={A.descriptionAr}><textarea style={{ ...inp, height: 78, resize: "vertical" }} dir="rtl" value={draft.description_ar} onChange={(e) => set("description_ar", e.target.value)} /></Field>
 
             <div className="ag2">
-              <Field label={A.price}><input style={inp} type="number" min="0" value={draft.price} onChange={(e) => set("price", e.target.value)} /></Field>
+              <Field label={A.price100}><input style={inp} type="number" min="0" value={draft.price} onChange={(e) => set("price", e.target.value)} /></Field>
+              <Field label={A.price50}><input style={inp} type="number" min="0" value={draft.price50} onChange={(e) => set("price50", e.target.value)} /></Field>
               <Field label={A.accent}>
                 <input style={{ ...inp, padding: 6, height: 44 }} type="color" value={draft.accent} onChange={(e) => set("accent", e.target.value)} />
               </Field>

@@ -56,6 +56,10 @@ function normalizeProduct(value: unknown): Product | null {
     raw.notes = notes;
   }
   if (typeof raw.price === "string") raw.price = Number(raw.price);
+  if (typeof raw.price50 === "string") raw.price50 = Number(raw.price50);
+  if (raw.price50 != null && (typeof raw.price50 !== "number" || !Number.isFinite(raw.price50))) {
+    delete raw.price50;
+  }
   if (!isProduct(raw)) return null;
   return raw as Product;
 }

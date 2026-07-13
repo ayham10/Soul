@@ -60,7 +60,7 @@ interface Dict {
     title: string; subtitle: string; passLabel: string; passPlaceholder: string; enter: string; wrongPass: string;
     signOut: string; addProduct: string; editProduct: string; products: string; count: string;
     name: string; nameAr: string; collection: string; family: string; gender: string; tagline: string; taglineAr: string;
-    description: string; descriptionAr: string; price: string; image: string; accent: string;
+    description: string; descriptionAr: string; price100: string; price50: string; image: string; accent: string;
     notesTop: string; notesHeart: string; notesBase: string; notesHint: string; bestseller: string;
     save: string; cancel: string; edit: string; delete: string; confirmDelete: string; reset: string;
     resetConfirm: string; localNote: string; uploadImage: string; or: string;
@@ -124,7 +124,7 @@ export const translations: Record<Lang, Dict> = {
       title: "Atelier", subtitle: "Product Management", passLabel: "Passcode", passPlaceholder: "Enter passcode", enter: "Enter", wrongPass: "Incorrect passcode.",
       signOut: "Sign out", addProduct: "Add Fragrance", editProduct: "Edit Fragrance", products: "Fragrances", count: "in catalogue",
       name: "Name (EN)", nameAr: "Name (AR)", collection: "Collection", family: "Family", gender: "Audience", tagline: "Tagline (EN)", taglineAr: "Tagline (AR)",
-      description: "Description (EN)", descriptionAr: "Description (AR)", price: "Price (50ml, ILS)", image: "Image URL / path", accent: "Accent color",
+      description: "Description (EN)", descriptionAr: "Description (AR)", price100: "Price (100ml, ILS)", price50: "Price (50ml, ILS)", image: "Image URL / path", accent: "Accent color",
       notesTop: "Top notes", notesHeart: "Heart notes", notesBase: "Base notes", notesHint: "Separate notes with commas", bestseller: "Mark as bestseller",
       save: "Save", cancel: "Cancel", edit: "Edit", delete: "Delete", confirmDelete: "Delete this fragrance?", reset: "Reset catalogue",
       resetConfirm: "Reset the catalogue to the original fragrances? Your changes will be lost.", localNote: "For all customers to see admin edits, configure Supabase database environment variables on the deployed site.",
@@ -187,7 +187,7 @@ export const translations: Record<Lang, Dict> = {
       title: "الأتيليه", subtitle: "إدارة المنتجات", passLabel: "رمز الدخول", passPlaceholder: "أدخل رمز الدخول", enter: "دخول", wrongPass: "رمز غير صحيح.",
       signOut: "تسجيل الخروج", addProduct: "إضافة عطر", editProduct: "تعديل عطر", products: "العطور", count: "في الكتالوج",
       name: "الاسم (إنجليزي)", nameAr: "الاسم (عربي)", collection: "المجموعة", family: "العائلة", gender: "الفئة", tagline: "الشعار (إنجليزي)", taglineAr: "الشعار (عربي)",
-      description: "الوصف (إنجليزي)", descriptionAr: "الوصف (عربي)", price: "السعر (٥٠مل، شيكل)", image: "رابط/مسار الصورة", accent: "اللون المميّز",
+      description: "الوصف (إنجليزي)", descriptionAr: "الوصف (عربي)", price100: "السعر (١٠٠مل، شيكل)", price50: "السعر (٥٠مل، شيكل)", image: "رابط/مسار الصورة", accent: "اللون المميّز",
       notesTop: "مقدّمة العطر", notesHeart: "قلب العطر", notesBase: "قاعدة العطر", notesHint: "افصل بين النوتات بفواصل", bestseller: "تمييز كأفضل مبيعاً",
       save: "حفظ", cancel: "إلغاء", edit: "تعديل", delete: "حذف", confirmDelete: "حذف هذا العطر؟", reset: "إعادة ضبط الكتالوج",
       resetConfirm: "إعادة الكتالوج إلى العطور الأصلية؟ ستفقد تغييراتك.", localNote: "لكي يرى كل العملاء تعديلات الإدارة، يجب ضبط متغيرات قاعدة بيانات Supabase في الموقع المنشور.",
