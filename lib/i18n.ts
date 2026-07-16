@@ -79,9 +79,9 @@ export const translations: Record<Lang, Dict> = {
     },
     marquee: ["Oud", "Rose", "Amber", "Citrus", "Musk", "Marine", "Saffron", "Vanilla"],
     featured: { eyebrow: "Signature Scents", title: "The", titleEm: "Collection", sub: "Eight compositions, each an obsession. Discover the fragrances our clients return to again and again.", viewAll: "View All Fragrances" },
-    storyBlock: { eyebrow: "From Jerusalem's Grasse", title: "The Land of Olives,", titleEm: "cradle of scent", p1: "Oud, amber, and vanilla form the heart of our house, balanced with measured touches of tobacco, patchouli, and bergamot. We do not rely on fast commercial production or exaggerated slogans; we hand-blend in limited quantities to preserve the highest possible quality and purity. Nothing is made in haste.", p2: "Each composition is poured at a high concentration of the finest perfume oils, ranging between 40% and 50% oil.", cta: "Discover Our Tale" },
+    storyBlock: { eyebrow: "From Jerusalem's Grasse", title: "The Land of Olives,", titleEm: "cradle of scent", p1: "Oud, amber, and vanilla form the heart of our house, balanced with measured touches of tobacco, patchouli, and bergamot. We do not rely on fast commercial production or exaggerated slogans; we hand-blend in limited quantities to preserve the highest possible quality and purity. Nothing is made in haste.", p2: "Each composition is poured at a high concentration of the finest perfume oils, ranging between 30% and 50% oil.", cta: "Discover Our Tale" },
     trio: { eyebrow: "", items: [
-      { t: "Pure Perfume Strength", d: "Perfume oil reaches 40–50%. A few drops are made to last from morning into the night." },
+      { t: "Pure Perfume Strength", d: "Perfume oil reaches 30–50%. A few drops are made to last from morning into the night." },
       { t: "Rare Materials", d: "Natural oud, rose absolute and ambergris — sourced, never synthesised." },
       { t: "Cruelty-Free", d: "Vegan formulas, recyclable glass, refillable by design." },
     ] },
@@ -111,7 +111,7 @@ export const translations: Record<Lang, Dict> = {
       quote: "We started Soul with a simple belief — that a fragrance should feel like a part of you, not a mask over it.", quoteBy: "— The Founders",
       sEyebrow: "From Jerusalem's Grasse", sTitle: "The Land of Olives,", sTitleEm: "cradle of scent",
       sp1: "Oud, amber, and vanilla form the heart of our house, balanced with measured touches of tobacco, patchouli, and bergamot. We do not rely on fast commercial production or exaggerated slogans; we hand-blend in limited quantities to preserve the highest possible quality and purity. Nothing is made in haste.",
-      sp2: "Each composition is poured at a high concentration of the finest perfume oils, ranging between 40% and 50% oil.",
+      sp2: "Each composition is poured at a high concentration of the finest perfume oils, ranging between 30% and 50% oil.",
       vEyebrow: "What we stand for", vTitle: "The Soul", vTitleEm: "promise",
       values: [
         { t: "Sustainably Sourced", d: "Traceable ingredients and partnerships that respect the land and the people who tend it." },
@@ -142,11 +142,11 @@ export const translations: Record<Lang, Dict> = {
     },
     marquee: ["عود", "ورد", "عنبر", "حمضيات", "مسك", "بحري", "زعفران", "فانيلا"],
     featured: { eyebrow: "عطور مميّزة", title: "", titleEm: "المجموعة", sub: "٨ تركيبات، كلٌّ منها شغف. اكتشف العطور التي يعود إليها عملاؤنا مرّة بعد مرّة.", viewAll: "عرض كل العطور" },
-    storyBlock: { eyebrow: "من غِراس القُدس", title: "أرض الزيتون،", titleEm: "مهدُ العطور", p1: "العود والعنبر والفانيليا، وندعمها بلمساتٍ متوازنة من التوباكو، الباتشولي، والبرغموت. لا نعتمد على الإنتاج التجاري السريع أو الشعارات المبالغ فيها؛ بل نركّب عطورنا يدوياً وبكميات محدودة لضمان أعلى مستويات الجودة والنقاء الممكنة. لا شيء يُصنع على عجل.", p2: "كل تركيبة تُسكب بتركيز عالٍ من أجود أنواع الزيت العطري وتتراوح من بين 40% - 50% زيت.", cta: "اكتشف حكايتنا" },
+    storyBlock: { eyebrow: "من غِراس القُدس", title: "أرض الزيتون،", titleEm: "مهدُ العطور", p1: "العود والعنبر والفانيليا، وندعمها بلمساتٍ متوازنة من التوباكو، الباتشولي، والبرغموت. لا نعتمد على الإنتاج التجاري السريع أو الشعارات المبالغ فيها؛ بل نركّب عطورنا يدوياً وبكميات محدودة لضمان أعلى مستويات الجودة والنقاء الممكنة. لا شيء يُصنع على عجل.", p2: "كل تركيبة تُسكب بتركيز عالٍ من أجود أنواع الزيت العطري وتتراوح من بين 30% - 50% زيت.", cta: "اكتشف حكايتنا" },
     trio: { eyebrow: "", items: [
       { t: "تركيز عطر نقي", d: "زيت عطري يصل لنسبة ٤٠–٥٠٪. بضع قطرات تدوم من الصباح حتى الليل." },
       { t: "مكوّنات نادرة", d: "عطور بتركيبة فريدة بتعطيك ثبات وجمال بناسب ذوقك الراقي." },
-      { t: "راحة وأناقة", d: "عطورنا مصنوعة لترافقك بكل راحة وأمان.. معبأة في زجاج مميز، ليدوم معك كقطعة تذكارية فخمة." },
+      { t: "راحة وأناقة", d: "عطورنا مصنوعة لترافقك بكل راحة وأمان معبأة في زجاج مميز، ليدوم معك كقطعة تذكارية فخمة." },
     ] },
     wellness: {
       eyebrow: "أتيليه العناية",
@@ -174,7 +174,7 @@ export const translations: Record<Lang, Dict> = {
       quote: "بدأنا سول بإيمان بسيط — أن العطر يجب أن يكون جزءاً منك، لا قناعاً فوقك.", quoteBy: "— المؤسّسون",
       sEyebrow: "من غِراس القُدس", sTitle: "أرض الزيتون،", sTitleEm: "مهدُ العطور",
       sp1: "العود والعنبر والفانيليا، وندعمها بلمساتٍ متوازنة من التوباكو، الباتشولي، والبرغموت. لا نعتمد على الإنتاج التجاري السريع أو الشعارات المبالغ فيها؛ بل نركّب عطورنا يدوياً وبكميات محدودة لضمان أعلى مستويات الجودة والنقاء الممكنة. لا شيء يُصنع على عجل.",
-      sp2: "كل تركيبة تُسكب بتركيز عالٍ من أجود أنواع الزيت العطري وتتراوح من بين 40% - 50% زيت.",
+      sp2: "كل تركيبة تُسكب بتركيز عالٍ من أجود أنواع الزيت العطري وتتراوح من بين 30% - 50% زيت.",
       vEyebrow: "ما نؤمن به", vTitle: "وعد", vTitleEm: "سول",
       values: [
         { t: "مصادر مستدامة", d: "مكوّنات يمكن تتبّعها وشراكات تحترم الأرض ومن يعتني بها." },
