@@ -51,6 +51,15 @@ export default function ShopPage() {
         .filter-chip:hover { color: var(--cream); border-color: rgba(198,161,91,0.5); }
         .filter-chip.active { background: var(--gold); color: #1a140a; border-color: var(--gold); }
         .shop-search-wrap { padding: 0 22px 22px; }
+        .shop-image-note {
+          max-width: 520px;
+          margin: 12px auto 0;
+          padding: 0 8px;
+          color: #5b5345;
+          font-size: 11px;
+          line-height: 1.7;
+          text-align: center;
+        }
         .skeleton-card { pointer-events: none; }
         .skeleton-card:hover { transform: none; box-shadow: none; border-color: var(--line); }
         .skeleton-shimmer {
@@ -127,6 +136,7 @@ export default function ShopPage() {
           placeholder={t.shop.searchPlaceholder}
           ariaLabel={t.shop.searchPlaceholder}
         />
+        <p className="shop-image-note">{t.footer.imageNote}</p>
       </div>
 
       <section className="wrap shop-products-wrap" style={{ padding: "0 22px 110px" }}>
@@ -137,19 +147,6 @@ export default function ShopPage() {
         ) : (
           <p style={{ textAlign: "center", color: "var(--muted)", padding: "60px 0" }}>
             {query.trim() ? t.shop.noResults : t.shop.empty}
-          </p>
-        )}
-        {ready && (
-          <p style={{
-            textAlign: "center",
-            color: "#5b5345",
-            fontSize: 11,
-            lineHeight: 1.7,
-            maxWidth: 520,
-            margin: "28px auto 0",
-            padding: "0 8px",
-          }}>
-            {t.footer.imageNote}
           </p>
         )}
       </section>

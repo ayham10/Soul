@@ -63,17 +63,6 @@ export default function Footer() {
         display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "space-between",
       }}>
         <span style={{ fontSize: 11, color: "#5b5345", letterSpacing: 1 }}>© {new Date().getFullYear()} {t.footer.rights}</span>
-        <span style={{
-          flex: "1 1 100%",
-          textAlign: "center",
-          fontSize: 10.5,
-          color: "#5b5345",
-          lineHeight: 1.65,
-          maxWidth: 520,
-          margin: "0 auto",
-        }}>
-          {t.footer.imageNote}
-        </span>
         <span style={{ fontSize: 11, color: "#5b5345", letterSpacing: 1.4 }}>
           Owner: Sqr Daghash · Developer: Ayham Huss
         </span>

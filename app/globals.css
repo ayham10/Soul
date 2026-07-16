@@ -41,12 +41,30 @@ img, video, svg { max-width: 100%; }
 /* letter-spacing breaks Arabic letter-joining — neutralise it in RTL. */
 [dir="rtl"] * { letter-spacing: 0 !important; }
 [dir="rtl"] .nav-link::after { left: auto; right: 0; }
-[dir="rtl"] .product-title-link,
-[dir="rtl"] .product-title,
-[dir="rtl"] .detail-title {
-  text-align: left;
+[dir="rtl"] .product-card .product-info {
   direction: ltr;
-  unicode-bidi: isolate;
+  text-align: left;
+}
+[dir="rtl"] .product-card .product-meta,
+[dir="rtl"] .product-card .product-title-link,
+[dir="rtl"] .product-card .product-title,
+[dir="rtl"] .product-card .product-tagline,
+[dir="rtl"] .product-card .product-purchase-row,
+[dir="rtl"] .product-card .product-price,
+[dir="rtl"] .product-card .product-add-button {
+  direction: ltr;
+  text-align: left;
+}
+[dir="rtl"] .detail-info {
+  direction: ltr;
+  text-align: left;
+}
+[dir="rtl"] .detail-title,
+[dir="rtl"] .detail-info .size-opt,
+[dir="rtl"] .detail-info .note-row,
+[dir="rtl"] .detail-info .product-perks {
+  direction: ltr;
+  text-align: left;
 }
 
 h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.1; }
