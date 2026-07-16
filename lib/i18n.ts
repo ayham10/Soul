@@ -39,7 +39,7 @@ interface Dict {
     cardTitle: string; cardSub: string; bullets: string[]; note: string; cta: string;
   };
   cta: { eyebrow: string; title: string; titleEm: string; sub: string; btn: string };
-  shop: { eyebrow: string; title: string; titleEm: string; sub: string; empty: string };
+  shop: { eyebrow: string; title: string; titleEm: string; sub: string; empty: string; searchPlaceholder: string; noResults: string };
   product: {
     breadcrumb: string; size: string; quantity: string; addToBag: string; buyNow: string;
     composition: string; top: string; heart: string; base: string; related: string; relatedEm: string;
@@ -49,7 +49,7 @@ interface Dict {
     selection: string; bag: string; empty: string; discover: string; subtotal: string;
     checkout: string; note: string; edp: string; remove: string;
   };
-  footer: { blurb: string; explore: string; care: string; careItems: string[]; list: string; listSub: string; email: string; rights: string };
+  footer: { blurb: string; explore: string; care: string; careItems: string[]; list: string; listSub: string; email: string; rights: string; imageNote: string };
   about: {
     eyebrow: string; title: string; titleEm: string; quote: string; quoteBy: string;
     sEyebrow: string; sTitle: string; sTitleEm: string; sp1: string; sp2: string;
@@ -63,7 +63,7 @@ interface Dict {
     description: string; descriptionAr: string; price100: string; price50: string; image: string; accent: string;
     notesTop: string; notesHeart: string; notesBase: string; notesHint: string; bestseller: string;
     save: string; cancel: string; edit: string; delete: string; confirmDelete: string; reset: string;
-    resetConfirm: string; localNote: string; uploadImage: string; or: string;
+    resetConfirm: string; localNote: string; uploadImage: string; or: string; searchPlaceholder: string; noResults: string;
   };
 }
 
@@ -98,14 +98,14 @@ export const translations: Record<Lang, Dict> = {
       cta: "Order on WhatsApp",
     },
     cta: { eyebrow: "Not sure where to begin?", title: "Find the scent that", titleEm: "feels like you", sub: "Every order ships with a curated set of samples, so you can fall in love before you commit.", btn: "Explore the Collection" },
-    shop: { eyebrow: "Pure Perfume", title: "The", titleEm: "Collection", sub: "Fragrances composed in the Land of Olives. Choose your olfactory family to find your scent.", empty: "No fragrances in this family yet." },
+    shop: { eyebrow: "Pure Perfume", title: "The", titleEm: "Collection", sub: "Fragrances composed in the Land of Olives. Choose your olfactory family to find your scent.", empty: "No fragrances in this family yet.", searchPlaceholder: "Search by name, notes, or family…", noResults: "No fragrances match your search." },
     product: {
       breadcrumb: "Collection", size: "Size", quantity: "Quantity", addToBag: "Add to Bag", buyNow: "Buy Now",
       composition: "The Composition", top: "Top", heart: "Heart", base: "Base", related: "You may also", relatedEm: "love",
-      perks: ["Free worldwide shipping", "Samples in every order", "Vegan & cruelty-free"], notFound: "Fragrance not found", back: "Back to the Collection",
+      perks: ["Delivery available across all regions", "Distinctive scents with high concentration & longevity", "Premium, comfortable oils for daily wear"], notFound: "Fragrance not found", back: "Back to the Collection",
     },
     cart: { selection: "Your Selection", bag: "Shopping Bag", empty: "Your bag is empty", discover: "Discover the collection →", subtotal: "Subtotal", checkout: "Checkout via WhatsApp", note: "Complimentary shipping & samples on every order.", edp: "Pure Perfume", remove: "Remove" },
-    footer: { blurb: "Oud • Amber • Vanilla • Tobacco • Patchouli", explore: "Explore", care: "Client Care", careItems: ["Shipping & Returns", "Find Your Scent", "Contact"], list: "The List", listSub: "Private launches and 10% off your first order.", email: "Email address", rights: "Soul Maison de Parfum. All rights reserved." },
+    footer: { blurb: "Oud • Amber • Vanilla • Tobacco • Patchouli", explore: "Explore", care: "Client Care", careItems: ["Shipping & Returns", "Find Your Scent", "Contact"], list: "The List", listSub: "Private launches and 10% off your first order.", email: "Email address", rights: "Soul Maison de Parfum. All rights reserved.", imageNote: "Note: Images are for illustration purposes only and may not exactly represent the actual product." },
     about: {
       eyebrow: "Our Tale", title: "Scent is", titleEm: "memory",
       quote: "We started Soul with a simple belief — that a fragrance should feel like a part of you, not a mask over it.", quoteBy: "— The Founders",
@@ -128,7 +128,7 @@ export const translations: Record<Lang, Dict> = {
       notesTop: "Top notes", notesHeart: "Heart notes", notesBase: "Base notes", notesHint: "Separate notes with commas", bestseller: "Mark as bestseller",
       save: "Save", cancel: "Cancel", edit: "Edit", delete: "Delete", confirmDelete: "Delete this fragrance?", reset: "Reset catalogue",
       resetConfirm: "Reset the catalogue to the original fragrances? Your changes will be lost.", localNote: "For all customers to see admin edits, configure Supabase database environment variables on the deployed site.",
-      uploadImage: "Upload image", or: "or",
+      uploadImage: "Upload image", or: "or", searchPlaceholder: "Search fragrances…", noResults: "No fragrances match your search.",
     },
   },
   ar: {
@@ -145,8 +145,8 @@ export const translations: Record<Lang, Dict> = {
     storyBlock: { eyebrow: "من غِراس القُدس", title: "أرض الزيتون،", titleEm: "مهدُ العطور", p1: "العود والعنبر والفانيليا، وندعمها بلمساتٍ متوازنة من التوباكو، الباتشولي، والبرغموت. لا نعتمد على الإنتاج التجاري السريع أو الشعارات المبالغ فيها؛ بل نركّب عطورنا يدوياً وبكميات محدودة لضمان أعلى مستويات الجودة والنقاء الممكنة. لا شيء يُصنع على عجل.", p2: "كل تركيبة تُسكب بتركيز عالٍ من أجود أنواع الزيت العطري وتتراوح من بين 40% - 50% زيت.", cta: "اكتشف حكايتنا" },
     trio: { eyebrow: "", items: [
       { t: "تركيز عطر نقي", d: "زيت عطري يصل لنسبة ٤٠–٥٠٪. بضع قطرات تدوم من الصباح حتى الليل." },
-      { t: "مكوّنات نادرة", d: "عود طبيعي وخلاصة ورد وعنبر — مصدرها الطبيعة، لا التصنيع." },
-      { t: "خالٍ من القسوة", d: "تركيبات نباتية، زجاج قابل لإعادة التدوير، وقابل لإعادة التعبئة." },
+      { t: "مكوّنات نادرة", d: "عطور بتركيبة فريدة بتعطيك ثبات وجمال بناسب ذوقك الراقي." },
+      { t: "راحة وأناقة", d: "عطورنا مصنوعة لترافقك بكل راحة وأمان.. معبأة في زجاج مميز، ليدوم معك كقطعة تذكارية فخمة." },
     ] },
     wellness: {
       eyebrow: "أتيليه العناية",
@@ -160,15 +160,15 @@ export const translations: Record<Lang, Dict> = {
       note: "للاستخدام الخارجي للراحة فقط. لا يُعد بديلاً عن الاستشارة الطبية؛ يُرجى استشارة مختص عند الإصابات أو الألم المستمر أو الحالات الطبية.",
       cta: "اطلب عبر واتساب",
     },
-    cta: { eyebrow: "لا تعرف من أين تبدأ؟", title: "اعثر على العطر الذي", titleEm: "يشبهك", sub: "كل طلب يصلك مع مجموعة عيّنات منتقاة، لتقع في الحب قبل أن تقرّر.", btn: "استكشف المجموعة" },
-    shop: { eyebrow: "Pure Perfume", title: "", titleEm: "المجموعة", sub: "عطور مركبة في أرض الزيتون، اختر عائلتك العُطرية لتجد عطرك.", empty: "لا توجد عطور في هذه العائلة بعد." },
+    cta: { eyebrow: "لا تعرف من أين تبدأ؟", title: "اعثر على العطر الذي", titleEm: "يشبهك", sub: "كل عطر بتركيبتنا إله قصة.. تصفّح مجموعتنا وتنقّى الريحة اللي تعبر عنك.", btn: "استكشف المجموعة" },
+    shop: { eyebrow: "Pure Perfume", title: "", titleEm: "المجموعة", sub: "عطور مركبة في أرض الزيتون، اختر عائلتك العُطرية لتجد عطرك.", empty: "لا توجد عطور في هذه العائلة بعد.", searchPlaceholder: "ابحث بالاسم أو النوتات أو العائلة…", noResults: "لا توجد عطور تطابق بحثك." },
     product: {
       breadcrumb: "المجموعة", size: "الحجم", quantity: "الكمية", addToBag: "أضف إلى الحقيبة", buyNow: "اشترِ الآن",
       composition: "التركيبة", top: "المقدّمة", heart: "القلب", base: "القاعدة", related: "قد يعجبك", relatedEm: "أيضاً",
-      perks: ["شحن مجاني لكل العالم", "عيّنات مع كل طلب", "نباتي وخالٍ من القسوة"], notFound: "العطر غير موجود", back: "العودة إلى المجموعة",
+      perks: ["خدمة التوصيل متوفرة لكامل المناطق", "روائح مميزة بتركيز وثبات عالٍ", "زيوت فخمة ومريحة للاستخدام"], notFound: "العطر غير موجود", back: "العودة إلى المجموعة",
     },
     cart: { selection: "اختيارك", bag: "حقيبة التسوّق", empty: "حقيبتك فارغة", discover: "اكتشف المجموعة →", subtotal: "المجموع", checkout: "إتمام الطلب عبر واتساب", note: "شحن وعيّنات مجانية مع كل طلب.", edp: "Pure Perfume", remove: "حذف" },
-    footer: { blurb: "عود • عَنْبَر • فَانِلْيَا • تُوبَاكُو • بَاتْشُولِي", explore: "استكشف", care: "خدمة العملاء", careItems: ["الشحن والإرجاع", "اعثر على عطرك", "تواصل معنا"], list: "القائمة", listSub: "إطلاقات خاصة وخصم ١٠٪ على طلبك الأول.", email: "البريد الإلكتروني", rights: "سول دار العطور. جميع الحقوق محفوظة." },
+    footer: { blurb: "عود • عَنْبَر • فَانِلْيَا • تُوبَاكُو • بَاتْشُولِي", explore: "استكشف", care: "خدمة العملاء", careItems: ["الشحن والإرجاع", "اعثر على عطرك", "تواصل معنا"], list: "القائمة", listSub: "إطلاقات خاصة وخصم ١٠٪ على طلبك الأول.", email: "البريد الإلكتروني", rights: "سول دار العطور. جميع الحقوق محفوظة.", imageNote: "ملاحظة: الصور لأغراض توضيحية فقط وقد لا تمثل المنتج الفعلي بدقة." },
     about: {
       eyebrow: "حكايتنا", title: "العطر", titleEm: "ذاكرة",
       quote: "بدأنا سول بإيمان بسيط — أن العطر يجب أن يكون جزءاً منك، لا قناعاً فوقك.", quoteBy: "— المؤسّسون",
@@ -191,7 +191,7 @@ export const translations: Record<Lang, Dict> = {
       notesTop: "مقدّمة العطر", notesHeart: "قلب العطر", notesBase: "قاعدة العطر", notesHint: "افصل بين النوتات بفواصل", bestseller: "تمييز كأفضل مبيعاً",
       save: "حفظ", cancel: "إلغاء", edit: "تعديل", delete: "حذف", confirmDelete: "حذف هذا العطر؟", reset: "إعادة ضبط الكتالوج",
       resetConfirm: "إعادة الكتالوج إلى العطور الأصلية؟ ستفقد تغييراتك.", localNote: "لكي يرى كل العملاء تعديلات الإدارة، يجب ضبط متغيرات قاعدة بيانات Supabase في الموقع المنشور.",
-      uploadImage: "رفع صورة", or: "أو",
+      uploadImage: "رفع صورة", or: "أو", searchPlaceholder: "ابحث في العطور…", noResults: "لا توجد عطور تطابق بحثك.",
     },
   },
 };

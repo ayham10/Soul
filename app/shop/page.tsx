@@ -2,10 +2,12 @@
 import { useMemo, useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import ShopCatalogSkeleton from "@/components/ShopCatalogSkeleton";
+import PerfumeSearch from "@/components/PerfumeSearch";
 import { families, Product } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
 import { famLabel } from "@/lib/i18n";
+import { matchesProductSearch } from "@/lib/search";
 
 function ShopProductGrid({ products }: { products: Product[] }) {
   return (
@@ -21,16 +23,17 @@ export default function ShopPage() {
   const { products, ready } = useProducts();
   const { t, lang } = useLang();
   const [active, setActive] = useState("All");
+  const [query, setQuery] = useState("");
 
-  const list = useMemo(
-    () =>
+  const list = useMemo(() => {
+    const byFamily =
       active === "All"
         ? products
         : active === "Women"
           ? products.filter((p) => p.collection === "Women")
-          : products.filter((p) => p.family === active),
-    [products, active]
-  );
+          : products.filter((p) => p.family === active);
+    return byFamily.filter((p) => matchesProductSearch(p, query));
+  }, [products, active, query]);
 
   return (
     <>
@@ -47,6 +50,7 @@ export default function ShopPage() {
         }
         .filter-chip:hover { color: var(--cream); border-color: rgba(198,161,91,0.5); }
         .filter-chip.active { background: var(--gold); color: #1a140a; border-color: var(--gold); }
+        .shop-search-wrap { padding: 0 22px 22px; }
         .skeleton-card { pointer-events: none; }
         .skeleton-card:hover { transform: none; box-shadow: none; border-color: var(--line); }
         .skeleton-shimmer {
@@ -106,7 +110,7 @@ export default function ShopPage() {
         </p>
       </header>
 
-      <div className="filter-wrap" style={{ padding: "10px 22px 34px" }}>
+      <div className="filter-wrap" style={{ padding: "10px 22px 18px" }}>
         <div className="filter-row">
           {families.map((f) => (
             <button key={f} className={`filter-chip${active === f ? " active" : ""}`} onClick={() => setActive(f)}>
@@ -116,13 +120,37 @@ export default function ShopPage() {
         </div>
       </div>
 
+      <div className="shop-search-wrap">
+        <PerfumeSearch
+          value={query}
+          onChange={setQuery}
+          placeholder={t.shop.searchPlaceholder}
+          ariaLabel={t.shop.searchPlaceholder}
+        />
+      </div>
+
       <section className="wrap shop-products-wrap" style={{ padding: "0 22px 110px" }}>
         {!ready ? (
           <ShopCatalogSkeleton />
         ) : list.length > 0 ? (
           <ShopProductGrid products={list} />
         ) : (
-          <p style={{ textAlign: "center", color: "var(--muted)", padding: "60px 0" }}>{t.shop.empty}</p>
+          <p style={{ textAlign: "center", color: "var(--muted)", padding: "60px 0" }}>
+            {query.trim() ? t.shop.noResults : t.shop.empty}
+          </p>
+        )}
+        {ready && (
+          <p style={{
+            textAlign: "center",
+            color: "#5b5345",
+            fontSize: 11,
+            lineHeight: 1.7,
+            maxWidth: 520,
+            margin: "28px auto 0",
+            padding: "0 8px",
+          }}>
+            {t.footer.imageNote}
+          </p>
         )}
       </section>
     </>

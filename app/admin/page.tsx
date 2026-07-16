@@ -1,9 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import PerfumeSearch from "@/components/PerfumeSearch";
 import { Product, ADMIN_PASSCODE, families, collections, formatPrice, getProductPrice } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
+import { matchesProductSearch } from "@/lib/search";
 import { isBase64Image, slugFromName, uploadPerfumeImage } from "@/lib/image-upload";
 
 const GALLERY = [
@@ -49,6 +51,12 @@ export default function AdminPage() {
   const [open, setOpen] = useState(false);
   const [editSlug, setEditSlug] = useState<string | null>(null);
   const [draft, setDraft] = useState<Draft>(emptyDraft);
+  const [query, setQuery] = useState("");
+
+  const visibleProducts = useMemo(
+    () => products.filter((p) => matchesProductSearch(p, query)),
+    [products, query]
+  );
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -219,8 +227,17 @@ export default function AdminPage() {
           <p style={{ color: "#e0746a", fontSize: 12, marginBottom: 20, lineHeight: 1.6 }}>{saveError}</p>
         )}
 
+        <div style={{ marginBottom: 22 }}>
+          <PerfumeSearch
+            value={query}
+            onChange={setQuery}
+            placeholder={A.searchPlaceholder}
+            ariaLabel={A.searchPlaceholder}
+          />
+        </div>
+
         <div style={{ border: "1px solid var(--line)" }}>
-          {products.map((p, i) => (
+          {visibleProducts.map((p, i) => (
             <div key={p.slug} style={{
               display: "flex", alignItems: "center", gap: 16, padding: "14px 16px",
               borderTop: i ? "1px solid var(--line)" : "none", flexWrap: "wrap",
@@ -242,6 +259,11 @@ export default function AdminPage() {
               </div>
             </div>
           ))}
+          {visibleProducts.length === 0 && (
+            <p style={{ textAlign: "center", color: "var(--muted)", padding: "40px 16px", fontSize: 13 }}>
+              {A.noResults}
+            </p>
+          )}
         </div>
       </div>
 
