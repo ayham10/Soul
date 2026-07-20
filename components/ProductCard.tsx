@@ -44,7 +44,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <button
             className="quick-add product-add-button"
             onClick={() =>
-              add({ slug: product.slug, name: L.name, image: product.image, ml: 50, price: getProductPrice(product, 50) })
+              add({ slug: product.slug, name: L.name, image: product.image, ml: 100, price: getProductPrice(product, 100) })
             }
           >
             {t.product.addToBag}
