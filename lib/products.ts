@@ -34,8 +34,8 @@ export const SHOP_WHATSAPP = "972532286019";
 export const ADMIN_PASSCODE = "soul2024";
 
 export const SIZES = [
-  { ml: 50, multiplier: 0.5 },
   { ml: 100, multiplier: 1 },
+  { ml: 50, multiplier: 0.5 },
 ];
 
 /** Fixed ILS pricing per collection tier */
