@@ -2,10 +2,12 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import PerfumeSearch from "@/components/PerfumeSearch";
+import AdminStockBadge from "@/components/AdminStockBadge";
 import { Product, ADMIN_PASSCODE, families, collections, formatPrice, getProductPrice } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
 import { matchesProductSearch } from "@/lib/search";
+import { nextDisplayOrder, parseDisplayOrder, parseStock } from "@/lib/inventory";
 import { isBase64Image, slugFromName, uploadPerfumeImage } from "@/lib/image-upload";
 
 const GALLERY = [
@@ -20,7 +22,7 @@ const COLLECTIONS = collections;
 type Draft = {
   name: string; name_ar: string; collection: string; family: string; gender: string;
   tagline: string; tagline_ar: string; description: string; description_ar: string;
-  price: string; price50: string; image: string; accent: string;
+  price: string; price50: string; stock: string; displayOrder: string; image: string; accent: string;
   top: string; heart: string; base: string; top_ar: string; heart_ar: string; base_ar: string;
   bestseller: boolean;
 };
@@ -28,7 +30,7 @@ type Draft = {
 const emptyDraft: Draft = {
   name: "", name_ar: "", collection: "General", family: "Woody", gender: "Unisex",
   tagline: "", tagline_ar: "", description: "", description_ar: "",
-  price: "120", price50: "70", image: GALLERY[3], accent: "#c6a15b",
+  price: "120", price50: "70", stock: "50", displayOrder: "0", image: GALLERY[3], accent: "#c6a15b",
   top: "", heart: "", base: "", top_ar: "", heart_ar: "", base_ar: "", bestseller: false,
 };
 
@@ -40,7 +42,7 @@ export default function AdminPage() {
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
 
-  const { products, add, update, remove, reset, saving } = useProducts();
+  const { products, add, update, remove, reset, saving, moveProduct, reorderProducts } = useProducts();
   const { t, dir } = useLang();
   const A = t.admin;
 
@@ -52,6 +54,8 @@ export default function AdminPage() {
   const [editSlug, setEditSlug] = useState<string | null>(null);
   const [draft, setDraft] = useState<Draft>(emptyDraft);
   const [query, setQuery] = useState("");
+  const [dragSlug, setDragSlug] = useState<string | null>(null);
+  const [orderError, setOrderError] = useState("");
 
   const visibleProducts = useMemo(
     () => products.filter((p) => matchesProductSearch(p, query)),
@@ -72,7 +76,7 @@ export default function AdminPage() {
   };
 
   const startAdd = () => {
-    setDraft(emptyDraft);
+    setDraft({ ...emptyDraft, displayOrder: String(nextDisplayOrder(products)) });
     setEditSlug(null);
     setSaveError("");
     setUploadError("");
@@ -88,6 +92,8 @@ export default function AdminPage() {
       tagline: p.tagline, tagline_ar: p.tagline_ar || "", description: p.description, description_ar: p.description_ar || "",
       price: String(p.price),
       price50: String(p.price50 ?? getProductPrice(p, 50)),
+      stock: String(p.stock ?? 0),
+      displayOrder: String(p.displayOrder ?? 0),
       image: p.image, accent: p.accent,
       top: join(p.notes.top), heart: join(p.notes.heart), base: join(p.notes.base),
       top_ar: join(p.notes_ar?.top), heart_ar: join(p.notes_ar?.heart), base_ar: join(p.notes_ar?.base),
@@ -112,6 +118,8 @@ export default function AdminPage() {
       description_ar: draft.description_ar.trim() || undefined,
       price: Number(draft.price) || 0,
       price50: Number.isFinite(price50) && price50 > 0 ? price50 : undefined,
+      stock: parseStock(draft.stock, 0),
+      displayOrder: parseDisplayOrder(draft.displayOrder) ?? 0,
       image: draft.image || GALLERY[0],
       accent: draft.accent,
       notes: { top: parse(draft.top), heart: parse(draft.heart), base: parse(draft.base) },
@@ -178,6 +186,39 @@ export default function AdminPage() {
 
   const set = (k: keyof Draft, v: string | boolean) => setDraft((d) => ({ ...d, [k]: v }));
 
+  const handleMove = async (slug: string, direction: "up" | "down") => {
+    if (saving || query.trim()) return;
+    setOrderError("");
+    try {
+      await moveProduct(slug, direction);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Could not reorder product";
+      setOrderError(message);
+    }
+  };
+
+  const handleDrop = async (targetSlug: string) => {
+    if (!dragSlug || dragSlug === targetSlug || query.trim() || saving) return;
+    const slugs = products.map((p) => p.slug);
+    const from = slugs.indexOf(dragSlug);
+    const to = slugs.indexOf(targetSlug);
+    if (from < 0 || to < 0) return;
+
+    const next = [...slugs];
+    next.splice(from, 1);
+    next.splice(to, 0, dragSlug);
+    setDragSlug(null);
+    setOrderError("");
+    try {
+      await reorderProducts(next);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Could not reorder products";
+      setOrderError(message);
+    }
+  };
+
+  const stockLabels = { in: A.stockIn, low: A.stockLow, out: A.stockOut };
+
   if (!authed) {
     return (
       <div dir={dir} style={{ minHeight: "100svh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
@@ -205,6 +246,25 @@ export default function AdminPage() {
       <style>{`
         .ag2 { display: grid; grid-template-columns: 1fr; gap: 14px; }
         .ag3 { display: grid; grid-template-columns: 1fr; gap: 14px; }
+        .admin-row {
+          display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+          border-top: 1px solid var(--line); flex-wrap: wrap; transition: background 0.2s ease;
+        }
+        .admin-row:first-child { border-top: none; }
+        .admin-row.dragging { opacity: 0.45; }
+        .admin-row.drag-over { background: rgba(198, 161, 91, 0.06); }
+        .admin-order-controls { display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
+        .admin-order-btn {
+          width: 34px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+          background: transparent; color: var(--cream); border: 1px solid var(--line); cursor: pointer;
+          font-size: 12px; padding: 0;
+        }
+        .admin-order-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        .admin-drag-handle {
+          width: 28px; height: 64px; display: inline-flex; align-items: center; justify-content: center;
+          color: var(--muted); cursor: grab; flex-shrink: 0; user-select: none; font-size: 16px;
+        }
+        .admin-drag-handle.disabled { opacity: 0.35; cursor: not-allowed; }
         @media (min-width: 560px) {
           .ag2 { grid-template-columns: 1fr 1fr; }
           .ag3 { grid-template-columns: 1fr 1fr 1fr; }
@@ -227,6 +287,10 @@ export default function AdminPage() {
           <p style={{ color: "#e0746a", fontSize: 12, marginBottom: 20, lineHeight: 1.6 }}>{saveError}</p>
         )}
 
+        {orderError && (
+          <p style={{ color: "#e0746a", fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>{orderError}</p>
+        )}
+
         <div style={{ marginBottom: 22 }}>
           <PerfumeSearch
             value={query}
@@ -234,31 +298,79 @@ export default function AdminPage() {
             placeholder={A.searchPlaceholder}
             ariaLabel={A.searchPlaceholder}
           />
+          <p style={{ fontSize: 11, color: "#6f6655", marginTop: 10, lineHeight: 1.6 }}>{A.dragHint}</p>
         </div>
 
         <div style={{ border: "1px solid var(--line)" }}>
-          {visibleProducts.map((p, i) => (
-            <div key={p.slug} style={{
-              display: "flex", alignItems: "center", gap: 16, padding: "14px 16px",
-              borderTop: i ? "1px solid var(--line)" : "none", flexWrap: "wrap",
-            }}>
-              <div style={{ position: "relative", width: 52, height: 64, background: "var(--noir-card)", flexShrink: 0 }}>
-                <Image src={p.image} alt={p.name} fill style={{ objectFit: "cover" }} sizes="52px" />
-              </div>
-              <div style={{ flex: 1, minWidth: 140 }}>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "var(--cream)", lineHeight: 1.2, wordBreak: "break-word" }}>
-                  {p.name} {p.bestseller && <span style={{ color: "var(--gold)", fontSize: 14 }}>★</span>}
+          {visibleProducts.map((p) => {
+            const globalIndex = products.findIndex((item) => item.slug === p.slug);
+            const canReorder = !query.trim() && !saving;
+            return (
+              <div
+                key={p.slug}
+                className={`admin-row${dragSlug === p.slug ? " dragging" : ""}`}
+                onDragOver={(e) => {
+                  if (!canReorder || !dragSlug) return;
+                  e.preventDefault();
+                  e.currentTarget.classList.add("drag-over");
+                }}
+                onDragLeave={(e) => e.currentTarget.classList.remove("drag-over")}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  e.currentTarget.classList.remove("drag-over");
+                  void handleDrop(p.slug);
+                }}
+              >
+                <div
+                  className={`admin-drag-handle${canReorder ? "" : " disabled"}`}
+                  draggable={canReorder}
+                  onDragStart={() => canReorder && setDragSlug(p.slug)}
+                  onDragEnd={() => setDragSlug(null)}
+                  aria-hidden="true"
+                >
+                  ⋮⋮
                 </div>
-                <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: 1 }}>
-                  {p.collection} · {p.family} · {p.gender} · {formatPrice(getProductPrice(p, 50))} / {formatPrice(p.price)}
+                <div className="admin-order-controls">
+                  <button
+                    type="button"
+                    className="admin-order-btn"
+                    onClick={() => { void handleMove(p.slug, "up"); }}
+                    disabled={!canReorder || globalIndex <= 0}
+                    aria-label={A.moveUp}
+                  >
+                    ▲
+                  </button>
+                  <button
+                    type="button"
+                    className="admin-order-btn"
+                    onClick={() => { void handleMove(p.slug, "down"); }}
+                    disabled={!canReorder || globalIndex < 0 || globalIndex >= products.length - 1}
+                    aria-label={A.moveDown}
+                  >
+                    ▼
+                  </button>
+                </div>
+                <div style={{ position: "relative", width: 52, height: 64, background: "var(--noir-card)", flexShrink: 0 }}>
+                  <Image src={p.image} alt={p.name} fill style={{ objectFit: "cover" }} sizes="52px" />
+                </div>
+                <div style={{ flex: 1, minWidth: 140 }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "var(--cream)", lineHeight: 1.2, wordBreak: "break-word" }}>
+                      {p.name} {p.bestseller && <span style={{ color: "var(--gold)", fontSize: 14 }}>★</span>}
+                    </div>
+                    <AdminStockBadge stock={p.stock ?? 0} labels={stockLabels} />
+                  </div>
+                  <div style={{ fontSize: 11, color: "var(--muted)", letterSpacing: 1, lineHeight: 1.6 }}>
+                    #{ (p.displayOrder ?? 0) + 1} · {p.collection} · {p.family} · {p.gender} · {formatPrice(getProductPrice(p, 50))} / {formatPrice(p.price)}
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button onClick={() => startEdit(p)} style={miniBtn} disabled={saving}>{A.edit}</button>
+                  <button onClick={() => { void handleDelete(p.slug); }} style={{ ...miniBtn, color: "#e0746a", borderColor: "rgba(224,116,106,0.4)" }} disabled={saving}>{A.delete}</button>
                 </div>
               </div>
-              <div style={{ display: "flex", gap: 8 }}>
-                <button onClick={() => startEdit(p)} style={miniBtn} disabled={saving}>{A.edit}</button>
-                <button onClick={() => { void handleDelete(p.slug); }} style={{ ...miniBtn, color: "#e0746a", borderColor: "rgba(224,116,106,0.4)" }} disabled={saving}>{A.delete}</button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
           {visibleProducts.length === 0 && (
             <p style={{ textAlign: "center", color: "var(--muted)", padding: "40px 16px", fontSize: 13 }}>
               {A.noResults}
@@ -303,6 +415,26 @@ export default function AdminPage() {
             <div className="ag2">
               <Field label={A.price100}><input style={inp} type="number" min="0" value={draft.price} onChange={(e) => set("price", e.target.value)} /></Field>
               <Field label={A.price50}><input style={inp} type="number" min="0" value={draft.price50} onChange={(e) => set("price50", e.target.value)} /></Field>
+              <Field label={A.stock}>
+                <input
+                  style={inp}
+                  type="number"
+                  min="0"
+                  step="1"
+                  value={draft.stock}
+                  onChange={(e) => set("stock", e.target.value.replace(/\D/g, ""))}
+                />
+              </Field>
+              <Field label={A.displayOrder}>
+                <input
+                  style={inp}
+                  type="number"
+                  min="0"
+                  step="1"
+                  value={draft.displayOrder}
+                  onChange={(e) => set("displayOrder", e.target.value.replace(/\D/g, ""))}
+                />
+              </Field>
               <Field label={A.accent}>
                 <input style={{ ...inp, padding: 6, height: 44 }} type="color" value={draft.accent} onChange={(e) => set("accent", e.target.value)} />
               </Field>

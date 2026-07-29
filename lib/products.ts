@@ -25,6 +25,8 @@ export interface Product {
   notes: Note;
   notes_ar?: Note;
   bestseller?: boolean;
+  stock?: number;          // inventory quantity (integer)
+  displayOrder?: number;   // manual sort order (ascending)
 }
 
 // WhatsApp requires international format without the leading local zero.

@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, ReactNode } from "react";
 import { products as seed, Product } from "@/lib/products";
+import { prepareCatalog, swapDisplayOrder, reorderBySlugs } from "@/lib/inventory";
 import { slugify } from "@/lib/slug";
 
 interface ProductsContextType {
@@ -13,6 +14,8 @@ interface ProductsContextType {
   remove: (slug: string) => Promise<void>;
   reset: () => Promise<void>;
   reload: () => Promise<void>;
+  moveProduct: (slug: string, direction: "up" | "down") => Promise<void>;
+  reorderProducts: (orderedSlugs: string[]) => Promise<void>;
 }
 
 const ProductsContext = createContext<ProductsContextType | null>(null);
@@ -25,14 +28,14 @@ async function fetchCatalog(): Promise<{ products: Product[]; storage: string }>
   if (!response.ok) throw new Error("Unable to load product catalogue");
   const data = await response.json();
   if (!Array.isArray(data.products)) throw new Error("Invalid catalogue response");
-  return { products: data.products as Product[], storage: data.storage ?? "unknown" };
+  return { products: prepareCatalog(data.products as Product[]), storage: data.storage ?? "unknown" };
 }
 
 async function saveCatalog(products: Product[]): Promise<{ products: Product[]; storage: string }> {
   const response = await fetch("/api/products", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ products }),
+    body: JSON.stringify({ products: prepareCatalog(products) }),
   });
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
@@ -41,7 +44,7 @@ async function saveCatalog(products: Product[]): Promise<{ products: Product[]; 
   if (!Array.isArray(data.products)) {
     throw new Error("Invalid save response from server");
   }
-  return { products: data.products as Product[], storage: data.storage ?? "unknown" };
+  return { products: prepareCatalog(data.products as Product[]), storage: data.storage ?? "unknown" };
 }
 
 function cacheCatalog(products: Product[]) {
@@ -53,7 +56,7 @@ function readCachedCatalog(): Product[] | null {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) && parsed.length ? parsed : null;
+    return Array.isArray(parsed) && parsed.length ? prepareCatalog(parsed as Product[]) : null;
   } catch {
     return null;
   }
@@ -67,8 +70,9 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
   itemsRef.current = items;
 
   const applyCatalog = useCallback((products: Product[]) => {
-    setItems(products);
-    cacheCatalog(products);
+    const ordered = prepareCatalog(products);
+    setItems(ordered);
+    cacheCatalog(ordered);
   }, []);
 
   const reload = useCallback(async () => {
@@ -98,7 +102,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
       } catch {
         if (!active) return;
         const cached = readCachedCatalog();
-        applyCatalog(cached ?? seed);
+        applyCatalog(cached ?? prepareCatalog(seed));
       } finally {
         if (active) setReady(true);
       }
@@ -123,7 +127,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
     let i = 2;
     const baseSlug = slug;
     while (existing.has(slug)) slug = `${baseSlug}-${i++}`;
-    const next = [{ ...p, slug }, ...prev];
+    const next = prepareCatalog([...prev, { ...p, slug }]);
     setItems(next);
     try {
       await persist(next);
@@ -135,7 +139,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
 
   const update = useCallback(async (slug: string, p: Product) => {
     const prev = itemsRef.current;
-    const next = prev.map((x) => (x.slug === slug ? { ...p, slug } : x));
+    const next = prepareCatalog(prev.map((x) => (x.slug === slug ? { ...p, slug } : x)));
     setItems(next);
     try {
       await persist(next);
@@ -147,7 +151,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
 
   const remove = useCallback(async (slug: string) => {
     const prev = itemsRef.current;
-    const next = prev.filter((x) => x.slug !== slug);
+    const next = prepareCatalog(prev.filter((x) => x.slug !== slug));
     setItems(next);
     try {
       await persist(next);
@@ -167,11 +171,48 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
     }
   }, [applyCatalog]);
 
+  const moveProduct = useCallback(async (slug: string, direction: "up" | "down") => {
+    const prev = itemsRef.current;
+    const next = swapDisplayOrder(prev, slug, direction);
+    if (next === prev) return;
+    setItems(next);
+    try {
+      await persist(next);
+    } catch (error) {
+      setItems(prev);
+      throw error;
+    }
+  }, [persist]);
+
+  const reorderProducts = useCallback(async (orderedSlugs: string[]) => {
+    const prev = itemsRef.current;
+    const next = reorderBySlugs(prev, orderedSlugs);
+    setItems(next);
+    try {
+      await persist(next);
+    } catch (error) {
+      setItems(prev);
+      throw error;
+    }
+  }, [persist]);
+
   const get = useCallback((slug: string) => items.find((p) => p.slug === slug), [items]);
 
   const value = useMemo(
-    () => ({ products: items, ready, saving, get, add, update, remove, reset, reload }),
-    [items, ready, saving, get, add, update, remove, reset, reload]
+    () => ({
+      products: items,
+      ready,
+      saving,
+      get,
+      add,
+      update,
+      remove,
+      reset,
+      reload,
+      moveProduct,
+      reorderProducts,
+    }),
+    [items, ready, saving, get, add, update, remove, reset, reload, moveProduct, reorderProducts]
   );
 
   return <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>;
