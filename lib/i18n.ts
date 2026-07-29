@@ -64,6 +64,8 @@ interface Dict {
     notesTop: string; notesHeart: string; notesBase: string; notesHint: string; bestseller: string;
     save: string; cancel: string; edit: string; delete: string; confirmDelete: string; reset: string;
     resetConfirm: string; localNote: string; uploadImage: string; or: string; searchPlaceholder: string; noResults: string;
+    stock: string; displayOrder: string; stockIn: string; stockLow: string; stockOut: string;
+    moveUp: string; moveDown: string; dragHint: string; order: string;
   };
 }
 
@@ -129,6 +131,8 @@ export const translations: Record<Lang, Dict> = {
       save: "Save", cancel: "Cancel", edit: "Edit", delete: "Delete", confirmDelete: "Delete this fragrance?", reset: "Reset catalogue",
       resetConfirm: "Reset the catalogue to the original fragrances? Your changes will be lost.", localNote: "For all customers to see admin edits, configure Supabase database environment variables on the deployed site.",
       uploadImage: "Upload image", or: "or", searchPlaceholder: "Search fragrances…", noResults: "No fragrances match your search.",
+      stock: "Stock quantity", displayOrder: "Display order", stockIn: "In stock", stockLow: "Low stock", stockOut: "Out of stock",
+      moveUp: "Move up", moveDown: "Move down", dragHint: "Drag rows to reorder (disabled while searching)", order: "Order",
     },
   },
   ar: {
@@ -192,6 +196,8 @@ export const translations: Record<Lang, Dict> = {
       save: "حفظ", cancel: "إلغاء", edit: "تعديل", delete: "حذف", confirmDelete: "حذف هذا العطر؟", reset: "إعادة ضبط الكتالوج",
       resetConfirm: "إعادة الكتالوج إلى العطور الأصلية؟ ستفقد تغييراتك.", localNote: "لكي يرى كل العملاء تعديلات الإدارة، يجب ضبط متغيرات قاعدة بيانات Supabase في الموقع المنشور.",
       uploadImage: "رفع صورة", or: "أو", searchPlaceholder: "ابحث في العطور…", noResults: "لا توجد عطور تطابق بحثك.",
+      stock: "كمية المخزون", displayOrder: "ترتيب العرض", stockIn: "متوفر", stockLow: "مخزون منخفض", stockOut: "نفد المخزون",
+      moveUp: "تحريك لأعلى", moveDown: "تحريك لأسفل", dragHint: "اسحب الصفوف لإعادة الترتيب (معطّل أثناء البحث)", order: "الترتيب",
     },
   },
 };

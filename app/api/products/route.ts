@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 import { Product, products as seedProducts } from "@/lib/products";
+import { parseDisplayOrder, parseStock, prepareCatalog } from "@/lib/inventory";
 import { isBase64Image, sanitizeProductImage } from "@/lib/storage";
 
 export const dynamic = "force-dynamic";
@@ -60,6 +61,8 @@ function normalizeProduct(value: unknown): Product | null {
   if (raw.price50 != null && (typeof raw.price50 !== "number" || !Number.isFinite(raw.price50))) {
     delete raw.price50;
   }
+  raw.stock = parseStock(raw.stock);
+  raw.displayOrder = parseDisplayOrder(raw.displayOrder) ?? 0;
   if (!isProduct(raw)) return null;
   return raw as Product;
 }
@@ -85,7 +88,12 @@ function isProduct(value: unknown): value is Product {
     !!p.notes &&
     Array.isArray(p.notes.top) &&
     Array.isArray(p.notes.heart) &&
-    Array.isArray(p.notes.base)
+    Array.isArray(p.notes.base) &&
+    typeof p.stock === "number" &&
+    Number.isFinite(p.stock) &&
+    p.stock >= 0 &&
+    typeof p.displayOrder === "number" &&
+    Number.isFinite(p.displayOrder)
   );
 }
 
@@ -93,7 +101,7 @@ function normalizeCatalog(products: unknown): Product[] | null {
   if (!Array.isArray(products)) return null;
   const normalized = products.map(normalizeProduct);
   if (normalized.some((p) => !p)) return null;
-  return normalized as Product[];
+  return prepareCatalog(normalized as Product[]);
 }
 
 async function redisCommand(command: unknown[]) {
@@ -183,7 +191,7 @@ async function readLocalCatalog(): Promise<Product[]> {
     const normalized = normalizeCatalog(products);
     if (normalized?.length) return normalized;
   } catch {}
-  return seedProducts;
+  return prepareCatalog(seedProducts);
 }
 
 async function writeLocalCatalog(products: Product[]) {
@@ -198,16 +206,18 @@ async function writeLocalCatalog(products: Product[]) {
 async function readCatalog(): Promise<{ products: Product[]; storage: StorageMode }> {
   if (supabaseConfig()) {
     const result = await readSupabaseCatalog();
-    if (result?.rowExists) return { products: result.products, storage: "supabase" };
-    await writeSupabaseCatalog(seedProducts);
-    return { products: seedProducts, storage: "supabase" };
+    if (result?.rowExists) return { products: prepareCatalog(result.products), storage: "supabase" };
+    const seeded = prepareCatalog(seedProducts);
+    await writeSupabaseCatalog(seeded);
+    return { products: seeded, storage: "supabase" };
   }
 
   if (redisConfig()) {
     const remote = await readRemoteCatalog();
-    if (remote) return { products: remote, storage: "redis" };
-    await writeRemoteCatalog(seedProducts);
-    return { products: seedProducts, storage: "redis" };
+    if (remote) return { products: prepareCatalog(remote), storage: "redis" };
+    const seeded = prepareCatalog(seedProducts);
+    await writeRemoteCatalog(seeded);
+    return { products: seeded, storage: "redis" };
   }
 
   return { products: await readLocalCatalog(), storage: "filesystem" };
