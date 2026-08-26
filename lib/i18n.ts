@@ -63,7 +63,9 @@ interface Dict {
     description: string; descriptionAr: string; price100: string; price50: string; image: string; accent: string;
     notesTop: string; notesHeart: string; notesBase: string; notesHint: string; bestseller: string;
     save: string; cancel: string; edit: string; delete: string; confirmDelete: string; reset: string;
-    resetConfirm: string; localNote: string; uploadImage: string; or: string; searchPlaceholder: string; noResults: string;
+    resetConfirm: string; resetBaseline: string; resetBaselineTitle: string; resetBaselineDescription: string;
+    resetBaselineVersion: string; resetBaselineCount: string; resetBaselineDate: string;
+    resetBaselineConfirmLabel: string; resetBaselineConfirmMismatch: string; localNote: string; uploadImage: string; or: string; searchPlaceholder: string; noResults: string;
     stock: string; displayOrder: string; stockIn: string; stockLow: string; stockOut: string;
     moveUp: string; moveDown: string; dragHint: string; order: string;
   };
@@ -129,7 +131,16 @@ export const translations: Record<Lang, Dict> = {
       description: "Description (EN)", descriptionAr: "Description (AR)", price100: "Price (100ml, ILS)", price50: "Price (50ml, ILS)", image: "Image URL / path", accent: "Accent color",
       notesTop: "Top notes", notesHeart: "Heart notes", notesBase: "Base notes", notesHint: "Separate notes with commas", bestseller: "Mark as bestseller",
       save: "Save", cancel: "Cancel", edit: "Edit", delete: "Delete", confirmDelete: "Delete this fragrance?", reset: "Reset catalogue",
-      resetConfirm: "Reset the catalogue to the original fragrances? Your changes will be lost.", localNote: "For all customers to see admin edits, configure Supabase database environment variables on the deployed site.",
+      resetConfirm: "Reset the catalogue to the original fragrances? Your changes will be lost.",
+      resetBaseline: "Reset to 103-product baseline",
+      resetBaselineTitle: "Reset to approved baseline",
+      resetBaselineDescription: "This will replace the current catalogue with the approved 103-product baseline. Your current catalogue changes will be lost. Storage images will not be deleted.",
+      resetBaselineVersion: "Baseline version",
+      resetBaselineCount: "Products",
+      resetBaselineDate: "Baseline date",
+      resetBaselineConfirmLabel: "Type RESET TO 103 BASELINE to confirm",
+      resetBaselineConfirmMismatch: "Confirmation phrase does not match.",
+      localNote: "For all customers to see admin edits, configure Supabase database environment variables on the deployed site.",
       uploadImage: "Upload image", or: "or", searchPlaceholder: "Search fragrances…", noResults: "No fragrances match your search.",
       stock: "Stock quantity", displayOrder: "Display order", stockIn: "In stock", stockLow: "Low stock", stockOut: "Out of stock",
       moveUp: "Move up", moveDown: "Move down", dragHint: "Drag rows to reorder (disabled while searching)", order: "Order",
@@ -194,7 +205,16 @@ export const translations: Record<Lang, Dict> = {
       description: "الوصف (إنجليزي)", descriptionAr: "الوصف (عربي)", price100: "السعر (١٠٠مل، شيكل)", price50: "السعر (٥٠مل، شيكل)", image: "رابط/مسار الصورة", accent: "اللون المميّز",
       notesTop: "مقدّمة العطر", notesHeart: "قلب العطر", notesBase: "قاعدة العطر", notesHint: "افصل بين النوتات بفواصل", bestseller: "تمييز كأفضل مبيعاً",
       save: "حفظ", cancel: "إلغاء", edit: "تعديل", delete: "حذف", confirmDelete: "حذف هذا العطر؟", reset: "إعادة ضبط الكتالوج",
-      resetConfirm: "إعادة الكتالوج إلى العطور الأصلية؟ ستفقد تغييراتك.", localNote: "لكي يرى كل العملاء تعديلات الإدارة، يجب ضبط متغيرات قاعدة بيانات Supabase في الموقع المنشور.",
+      resetConfirm: "إعادة الكتالوج إلى العطور الأصلية؟ ستفقد تغييراتك.",
+      resetBaseline: "إعادة ضبط إلى خط الأساس 103 منتج",
+      resetBaselineTitle: "إعادة ضبط إلى خط الأساس المعتمد",
+      resetBaselineDescription: "سيؤدي هذا إلى استبدال الكتالوج الحالي بخط الأساس المعتمد المكوّن من 103 منتجات. ستفقد تغييرات الكتالوج الحالية. لن تُحذف صور التخزين.",
+      resetBaselineVersion: "إصدار خط الأساس",
+      resetBaselineCount: "المنتجات",
+      resetBaselineDate: "تاريخ خط الأساس",
+      resetBaselineConfirmLabel: "اكتب RESET TO 103 BASELINE للتأكيد",
+      resetBaselineConfirmMismatch: "عبارة التأكيد غير صحيحة.",
+      localNote: "لكي يرى كل العملاء تعديلات الإدارة، يجب ضبط متغيرات قاعدة بيانات Supabase في الموقع المنشور.",
       uploadImage: "رفع صورة", or: "أو", searchPlaceholder: "ابحث في العطور…", noResults: "لا توجد عطور تطابق بحثك.",
       stock: "كمية المخزون", displayOrder: "ترتيب العرض", stockIn: "متوفر", stockLow: "مخزون منخفض", stockOut: "نفد المخزون",
       moveUp: "تحريك لأعلى", moveDown: "تحريك لأسفل", dragHint: "اسحب الصفوف لإعادة الترتيب (معطّل أثناء البحث)", order: "الترتيب",

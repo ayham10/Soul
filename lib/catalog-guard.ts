@@ -3,6 +3,9 @@ export const EMPTY_CATALOG_ERROR =
 
 export const EMPTY_CATALOG_WRITE_ERROR = "Refusing to write empty catalog to Supabase";
 
+export const CATALOG_ROW_MISSING_ERROR =
+  "Catalogue row not found. Restore the approved baseline through the admin panel.";
+
 export type SecurityRejectionReason =
   | "empty_catalog"
   | "unauthorized"

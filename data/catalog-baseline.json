@@ -1,0 +1,2904 @@
+{
+  "baselineVersion": "103-v1",
+  "products": [
+    {
+      "name": "Amouage - Purpose 50",
+      "slug": "amouage-purpose-50",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/amouage-purpose-50-1783627962643.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 500,
+      "accent": "#8a7a6a",
+      "family": "Woody",
+      "gender": "Unisex",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 0
+    },
+    {
+      "name": "Amouage - Interlude",
+      "slug": "amouage-interlude",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/amouage-interlude-1783628039387.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Woody",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 1
+    },
+    {
+      "name": "Jean Paul - Le Beau Le Parfum",
+      "slug": "jean-paul-le-beau-le-parfum",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/jean-paul-le-beau-le-parfum-1785269340829.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Woody",
+      "gender": "For Him",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 2
+    },
+    {
+      "name": "Amouage - Opus VII",
+      "slug": "amouage-opus-vii",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/amouage-opus-vii-1783628003040.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Oriental",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 3
+    },
+    {
+      "name": "212 VIP Black",
+      "slug": "carolina-herrera-212-vip-black",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/212-vip-black-1783629067120.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 4
+    },
+    {
+      "name": "Creed - Aventus",
+      "slug": "creed-aventus",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/creed-aventus-1783629465582.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Citrus",
+      "gender": "For Him",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 5
+    },
+    {
+      "name": "- Bad Boy",
+      "slug": "carolina-herrera-bad-boy",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/-bad-boy-1783627012074.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Sweet",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 6
+    },
+    {
+      "name": "Arabian Oud - Resala",
+      "slug": "arabian-oud-resala",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/arabian-oud-resala-1783631805349.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Oud",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 7
+    },
+    {
+      "name": "Angel Share",
+      "slug": "angel-share",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/angel-share-1785269025123.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Sweet",
+      "gender": "Unisex",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 8
+    },
+    {
+      "name": "Barakkat Rouge 540",
+      "slug": "barakkat-rouge-540",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/barakkat-rouge-540-1784235014100.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Sweet",
+      "gender": "Unisex",
+      "price50": 90,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 9
+    },
+    {
+      "name": "Black Afghano",
+      "slug": "nasomatto-black-afghano",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/black-afghano-1783544692496.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 200,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Woody",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Black Afghano",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 10
+    },
+    {
+      "name": "Yves Saint Laurent - Babycat",
+      "slug": "yves-saint-laurent-babycat",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/yves-saint-laurent-babycat-1783625614558.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Floral",
+      "gender": "Unisex",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 11
+    },
+    {
+      "name": "Britney Spears - Fantasy",
+      "slug": "britney-spears-fantasy",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/britney-spears-fantasy-1783633419798.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 55,
+      "accent": "#c47a35",
+      "family": "Floral",
+      "gender": "For Her",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 12
+    },
+    {
+      "name": "Burberry - Her",
+      "slug": "burberry-her",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/burberry-her-1783632615766.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Sweet",
+      "gender": "For Her",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 13
+    },
+    {
+      "name": "Burberry - Hero",
+      "slug": "burberry-hero",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/burberry-hero-1783632506388.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Oriental",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 14
+    },
+    {
+      "name": "Chanel - Bleu de Chanel",
+      "slug": "chanel-bleu-de-chanel",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/chanel-bleu-de-chanel-1783629221049.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 15
+    },
+    {
+      "name": "Chanel - Coco Mademoiselle",
+      "slug": "chanel-coco-mademoiselle",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/chanel-coco-mademoiselle-1783623979670.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Citrus",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 16
+    },
+    {
+      "name": "Creed - Aventus Absolu",
+      "slug": "creed-aventus-absolu",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/creed-aventus-absolu-1783629453003.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Citrus",
+      "gender": "For Him",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 17
+    },
+    {
+      "name": "Creed - Viking",
+      "slug": "creed-viking",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/creed-viking-1783629437421.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Citrus",
+      "gender": "For Him",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 18
+    },
+    {
+      "name": "de Marly - Athair",
+      "slug": "parfums-de-marly-athair",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-athair-1783627658212.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Sweet",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 19
+    },
+    {
+      "name": "de Marly - Kalan",
+      "slug": "parfums-de-marly-kalan",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-kalan-1783627625925.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Sweet",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 20
+    },
+    {
+      "name": "de Marly - Layton",
+      "slug": "parfums-de-marly-layton",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-layton-1783627906313.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Aquatic",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 21
+    },
+    {
+      "name": "Swiss Arabian - Shaghaf",
+      "slug": "swiss-arabian-shaghaf",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/swiss-arabian-shaghaf-1783631878218.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Oud",
+      "gender": "Unisex",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 22
+    },
+    {
+      "name": "de Marly - Delina",
+      "slug": "parfums-de-marly-delina",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-delina-1783626662208.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Citrus",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 23
+    },
+    {
+      "name": "de Marly - Pegasus",
+      "slug": "parfums-de-marly-pegasus",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-pegasus-1783627854838.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Oriental",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 24
+    },
+    {
+      "name": "Dior - Homme Intense",
+      "slug": "dior-homme-intense",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-homme-intense-1783632200580.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Musk",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 25
+    },
+    {
+      "name": "Dior - J'adore",
+      "slug": "dior-jadore",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-jadore-1783623921381.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Aquatic",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 26
+    },
+    {
+      "name": "Dior - Oud Ispahan",
+      "slug": "dior-oud-ispahan",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-oud-ispahan-1783632056665.png",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Oud",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 27
+    },
+    {
+      "name": "Dior - Sauvage",
+      "slug": "dior-sauvage",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-sauvage-1783629332822.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Aquatic",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 28
+    },
+    {
+      "name": "Dior - Sauvage Elixir",
+      "slug": "dior-sauvage-elixir",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-sauvage-elixir-1783629318179.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Musk",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 29
+    },
+    {
+      "name": "Dolce & Gabbana - Intense",
+      "slug": "dolce-gabbana-intense",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dolce-gabbana-intense-1783632251388.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Aquatic",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 30
+    },
+    {
+      "name": "Dolce & Gabbana - The One",
+      "slug": "dolce-gabbana-the-one",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dolce-gabbana-the-one-1783632131817.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 31
+    },
+    {
+      "name": "Dolce & Gabbana -The one royal night",
+      "slug": "dolce-gabbana-the-one-mysterious-night",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dolce-gabbana-the-one-royal-night-1783633040027.png",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Citrus",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 32
+    },
+    {
+      "name": "Dunhill - Desire Red",
+      "slug": "dunhill-desire-red",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dunhill-desire-red-1783632826121.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Floral",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 33
+    },
+    {
+      "name": "Elie Saab - ايلي صعب",
+      "slug": "elie-saab-",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/elie-saab--1784234396659.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Sweet",
+      "gender": "For Her",
+      "price50": 90,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 34
+    },
+    {
+      "name": "Felina",
+      "slug": "vilhelm-parfumerie-vilhelmina",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/felina-1783625724850.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Sweet",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 35
+    },
+    {
+      "name": "Ghoubar Al Thahab",
+      "slug": "ghoubar-al-thahab",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/ghoubar-al-thahab-1783632590767.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Musk",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 36
+    },
+    {
+      "name": "Giorgio Armani - Acqua Di Gio",
+      "slug": "giorgio-armani-acqua-di-gio",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-acqua-di-gio-1783627401479.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Aquatic",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 37
+    },
+    {
+      "name": "Giorgio Armani - Acqua Di Gio Profumo",
+      "slug": "giorgio-armani-acqua-di-gio-profumo",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-acqua-di-gio-profumo-1783627376808.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Aquatic",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 38
+    },
+    {
+      "name": "Giorgio Armani - Because It's You",
+      "slug": "giorgio-armani-because-its-you",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-because-its-you-1783623650017.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Sweet",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 39
+    },
+    {
+      "name": "Giorgio Armani - Code",
+      "slug": "giorgio-armani-code",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-code-1783627533969.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 40
+    },
+    {
+      "name": "Giorgio Armani - Code Profumo",
+      "slug": "giorgio-armani-code-profumo",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-code-profumo-1783627578465.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 41
+    },
+    {
+      "name": "Giorgio Armani - Si",
+      "slug": "giorgio-armani-si",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-si-1783623715989.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Sweet",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 42
+    },
+    {
+      "name": "Giorgio Armani - Stronger With You",
+      "slug": "giorgio-armani-stronger-with-you",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-stronger-with-you-1783630527646.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 43
+    },
+    {
+      "name": "Giorgio Armani - Stronger With You Intensely",
+      "slug": "giorgio-armani-stronger-with-you-intensely",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-stronger-with-you-intensely-1783630442005.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Oriental",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 44
+    },
+    {
+      "name": "Giorgio Armani - Stronger With You Leather",
+      "slug": "giorgio-armani-stronger-with-you-leather",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-stronger-with-you-leather-1783630594433.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Musk",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 45
+    },
+    {
+      "name": "Givenchy - Gentleman",
+      "slug": "givenchy-gentleman",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/givenchy-gentleman-1783624240082.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 46
+    },
+    {
+      "name": "Gucci - Gucci Oud",
+      "slug": "gucci-gucci-oud",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/gucci-gucci-oud-1783632035380.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Oud",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 47
+    },
+    {
+      "name": "Hugo Boss",
+      "slug": "hugo-boss",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/hugo-boss-1783629180512.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Citrus",
+      "gender": "For Him",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 48
+    },
+    {
+      "name": "Initio - Side Effect",
+      "slug": "initio-side-effect",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/initio-side-effect-1783632327064.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Woody",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 49
+    },
+    {
+      "name": "Invictus Elixir",
+      "slug": "paco-rabanne-invictus-victory-elixir",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/invictus-elixir-1783630072327.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Musk",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 50
+    },
+    {
+      "name": "Issey Miyake",
+      "slug": "issey-miyake",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/issey-miyake-1783625501468.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Aquatic",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 51
+    },
+    {
+      "name": "Jean Paul - Paradise",
+      "slug": "jean-paul-paradise",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/jean-paul-paradise-1783886606347.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Sweet",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "A signature composition, crafted with care.",
+      "displayOrder": 52
+    },
+    {
+      "name": "Jean Paul Gaultier - Le Male",
+      "slug": "jean-paul-gaultier-le-male",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/jean-paul-gaultier-le-male-1783629753465.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Oriental",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 53
+    },
+    {
+      "name": "Jean Paul Gaultier - Le Male Elixir",
+      "slug": "jean-paul-gaultier-le-male-elixir",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/jean-paul-gaultier-le-male-elixir-1783629657522.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Floral",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 54
+    },
+    {
+      "name": "Lancôme - Oud Bouquet",
+      "slug": "lancome-oud-bouquet",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/lancme-oud-bouquet-1783628181204.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Oud",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 55
+    },
+    {
+      "name": "Lattafa - Khamrah",
+      "slug": "lattafa-khamrah",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/lattafa-khamrah-1783631127586.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Sweet",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 56
+    },
+    {
+      "name": "Lattafa - Khamrah Qahwa",
+      "slug": "lattafa-khamrah-qahwa",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/lattafa-khamrah-qahwa-1783631115020.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Sweet",
+      "gender": "Unisex",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 57
+    },
+    {
+      "name": "Louis Vuitton - Afternoon Swim",
+      "slug": "louis-vuitton-afternoon-swim",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-afternoon-swim-1783544677594.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Citrus",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Louis Vuitton",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 58
+    },
+    {
+      "name": "Louis Vuitton - Imagination",
+      "slug": "louis-vuitton-imagination",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-imagination-1783544540322.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Louis Vuitton",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 59
+    },
+    {
+      "name": "Louis Vuitton - L'Immensité",
+      "slug": "louis-vuitton-limmensite",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-limmensit-1783544556993.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Citrus",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Louis Vuitton",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 60
+    },
+    {
+      "name": "Louis Vuitton - Ombre Nomade",
+      "slug": "louis-vuitton-ombre-nomade",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-ombre-nomade-1783544623644.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Oud",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Louis Vuitton",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 61
+    },
+    {
+      "name": "Louis Vuitton - Orage",
+      "slug": "louis-vuitton-orage",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-orage-1783544660348.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Louis Vuitton",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 62
+    },
+    {
+      "name": "Louis Vuitton - Pacific Chill",
+      "slug": "louis-vuitton-pacific-chill",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-pacific-chill-1783544514918.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Citrus",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Louis Vuitton",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 63
+    },
+    {
+      "name": "Louis Vuitton - Stellar Times",
+      "slug": "louis-vuitton-stellar-times",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-stellar-times-1783544584485.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Floral",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Louis Vuitton",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 64
+    },
+    {
+      "name": "MADAWI - مضاوي",
+      "slug": "madawi-",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/madawi--1784235157307.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Oud",
+      "gender": "Unisex",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 65
+    },
+    {
+      "name": "Mancera - Coco Vanille",
+      "slug": "mancera-coco-vanille",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/mancera-coco-vanille-1783623935586.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Floral",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 66
+    },
+    {
+      "name": "Mancera - Roses Vanille",
+      "slug": "mancera-roses-vanille",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/mancera-roses-vanille-1783623949606.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Sweet",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 67
+    },
+    {
+      "name": "Ms Dior",
+      "slug": "ms-dior",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/ms-dior-1783625352016.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Sweet",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 68
+    },
+    {
+      "name": "Mugler - Angel",
+      "slug": "mugler-angel",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/mugler-angel-1783544727971.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Sweet",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 69
+    },
+    {
+      "name": "Nishane - Ani",
+      "slug": "nishane-ani",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/nishane-ani-1783632431726.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Woody",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 70
+    },
+    {
+      "name": "Nishane - Hacivat",
+      "slug": "nishane-hacivat",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/nishane-hacivat-1783632443727.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 71
+    },
+    {
+      "name": "One Million Elixer",
+      "slug": "one-million-elixer",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/one-million-elixer-1783633130582.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "",
+      "displayOrder": 72
+    },
+    {
+      "name": "Oud Cadneza",
+      "slug": "oud-cadneza",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/oud-cadneza-1783634786530.png",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Oud",
+      "gender": "Unisex",
+      "price50": 90,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 73
+    },
+    {
+      "name": "Oud Maracuja",
+      "slug": "oud-maracuja",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/oud-maracuja-1783634622330.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 150,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Oud",
+      "gender": "Unisex",
+      "price50": 90,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 74
+    },
+    {
+      "name": "Paco Rabanne - Invictus",
+      "slug": "paco-rabanne-invictus",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/paco-rabanne-invictus-1783630101646.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Aquatic",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 75
+    },
+    {
+      "name": "Paco Rabanne - One Million",
+      "slug": "paco-rabanne-one-million",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/paco-rabanne-one-million-1783632906093.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Citrus",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 76
+    },
+    {
+      "name": "Prada - Paradoxe",
+      "slug": "prada-paradoxe",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/prada-paradoxe-1783623966912.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Sweet",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 77
+    },
+    {
+      "name": "Rochas",
+      "slug": "rochas-moustache",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/rochas-1783631834866.png",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Sweet",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 78
+    },
+    {
+      "name": "Scandal",
+      "slug": "scandal",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/scandal-1785269168964.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Floral",
+      "gender": "For Her",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 79
+    },
+    {
+      "name": "Scandal",
+      "slug": "jean-paul-gaultier-scandal",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/scandal-1783630289177.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Floral",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 80
+    },
+    {
+      "name": "Scandal Absolu",
+      "slug": "jean-paul-gaultier-scandal-absolu",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/scandal-absolu-1783630403731.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Floral",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 81
+    },
+    {
+      "name": "Silver Scent",
+      "slug": "jacques-bogart-silver-scent",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/silver-scent-1783632691214.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Floral",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 82
+    },
+    {
+      "name": "Thomas Kosmala - No. 4",
+      "slug": "thomas-kosmala-no-4",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/thomas-kosmala-no-4-1783624210833.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Floral",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 83
+    },
+    {
+      "name": "Tom Ford - Black Orchid",
+      "slug": "tom-ford-black-orchid",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-black-orchid-1783628704321.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Oud",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 84
+    },
+    {
+      "name": "Tom Ford - Electric Cherry",
+      "slug": "tom-ford-electric-cherry",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-electric-cherry-1785269082268.jpg",
+      "notes": {
+        "top": [],
+        "base": [],
+        "heart": []
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Sweet",
+      "gender": "Unisex",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection.",
+      "displayOrder": 85
+    },
+    {
+      "name": "Tom Ford - Myrrhe Mystère",
+      "slug": "tom-ford-myrrhe-mystere",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-myrrhe-mystre-1783628279874.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Citrus",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 86
+    },
+    {
+      "name": "Tom Ford - Noir",
+      "slug": "tom-ford-noir",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-noir-1783628997514.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Sweet",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 87
+    },
+    {
+      "name": "Tom Ford - Ombré Leather",
+      "slug": "tom-ford-ombre-leather",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-ombr-leather-1783628488564.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#8a7a6a",
+      "family": "Woody",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 88
+    },
+    {
+      "name": "Tom Ford - Oud Wood",
+      "slug": "tom-ford-oud-wood",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-oud-wood-1783628447001.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c6a15b",
+      "family": "Oud",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 89
+    },
+    {
+      "name": "Tom Ford - Soleil Blanc",
+      "slug": "tom-ford-soleil-blanc",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-soleil-blanc-1783628242980.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Floral",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 90
+    },
+    {
+      "name": "Tom Ford - Tobacco Vanille",
+      "slug": "tom-ford-tobacco-vanille",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-tobacco-vanille-1783628321542.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Oriental",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 91
+    },
+    {
+      "name": "Valentino - Born In Roma (Green)",
+      "slug": "valentino-born-in-roma-green",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/valentino-born-in-roma-green-1783630148384.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b5854a",
+      "family": "Floral",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 92
+    },
+    {
+      "name": "Valentino - Born In Roma (Women)",
+      "slug": "valentino-born-in-roma-women",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/valentino-born-in-roma-women-1783624226669.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#b9a98c",
+      "family": "Floral",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 93
+    },
+    {
+      "name": "Valentino - Born In Roma Uomo",
+      "slug": "valentino-born-in-roma-uomo",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/valentino-born-in-roma-uomo-1783630216046.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Sweet",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 94
+    },
+    {
+      "name": "Versace - Blue Jeans",
+      "slug": "versace-blue-jeans",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/versace-blue-jeans-1783632814022.png",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Woody",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 95
+    },
+    {
+      "name": "Versace - Eros",
+      "slug": "versace-eros",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/versace-eros-1783629257768.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#5e8ca0",
+      "family": "Oriental",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 96
+    },
+    {
+      "name": "Viktor & Rolf - Spicebomb",
+      "slug": "viktor-rolf-spicebomb",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/viktor-rolf-spicebomb-1783632702527.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Citrus",
+      "gender": "For Him",
+      "price50": 70,
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 97
+    },
+    {
+      "name": "Xerjoff - Alexandria II",
+      "slug": "xerjoff-alexandria-ii",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/xerjoff-alexandria-ii-1783625570148.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Floral",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 98
+    },
+    {
+      "name": "Xerjoff - Erba Pura (Accento)",
+      "slug": "xerjoff-erba-pura-accento",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/xerjoff-erba-pura-accento-1783623736504.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#cdab5e",
+      "family": "Citrus",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 99
+    },
+    {
+      "name": "Yves Saint Laurent - Black Opium",
+      "slug": "yves-saint-laurent-black-opium",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/yves-saint-laurent-black-opium-1783623623740.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c47a35",
+      "family": "Sweet",
+      "gender": "For Her",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "Women",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 100
+    },
+    {
+      "name": "Yves Saint Laurent - Y",
+      "slug": "yves-saint-laurent-y",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/yves-saint-laurent-y-1783625512702.jpg",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Sweet",
+      "gender": "For Him",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 101
+    },
+    {
+      "name": "مشاعر",
+      "slug": "mashaer",
+      "image": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/fragrance-1783632346249.png",
+      "notes": {
+        "top": [
+          "Bergamot",
+          "Citrus"
+        ],
+        "base": [
+          "Musk",
+          "Wood"
+        ],
+        "heart": [
+          "Floral Accord",
+          "Spice"
+        ]
+      },
+      "price": 120,
+      "stock": 50,
+      "accent": "#c98a8a",
+      "family": "Sweet",
+      "gender": "Unisex",
+      "tagline": "A signature composition, crafted with care.",
+      "bestseller": false,
+      "collection": "General",
+      "description": "An exceptional fragrance from our curated collection. Available in 50ml and 100ml.",
+      "displayOrder": 102
+    }
+  ]
+}
