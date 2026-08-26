@@ -2,6 +2,14 @@ import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
 import { Product, products as seedProducts } from "@/lib/products";
+import { requireAdminSession } from "@/lib/catalog-auth";
+import {
+  EMPTY_CATALOG_ERROR,
+  assertNonEmptyCatalog,
+  getRequestId,
+  logSecurityRejection,
+} from "@/lib/catalog-guard";
+import { writeSupabaseCatalog } from "@/lib/catalog-supabase-write";
 import { parseDisplayOrder, parseStock, prepareCatalog } from "@/lib/inventory";
 import { isBase64Image, sanitizeProductImage } from "@/lib/storage";
 
@@ -160,29 +168,6 @@ async function readSupabaseCatalog(): Promise<{ products: Product[]; rowExists: 
   return { products: normalized, rowExists: true };
 }
 
-async function writeSupabaseCatalog(products: Product[]) {
-  const config = supabaseConfig();
-  if (!config) throw new Error("Supabase is not configured");
-
-  const url = `${config.url}/rest/v1/${SUPABASE_CATALOG_TABLE}?on_conflict=id`;
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      ...supabaseHeaders(config),
-      Prefer: "resolution=merge-duplicates,return=minimal",
-    },
-    body: JSON.stringify({
-      id: SUPABASE_CATALOG_ID,
-      products,
-      updated_at: new Date().toISOString(),
-    }),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Supabase catalogue write failed: ${response.status}`);
-  }
-}
-
 async function readLocalCatalog(): Promise<Product[]> {
   try {
     const raw = await fs.readFile(DATA_FILE, "utf8");
@@ -247,12 +232,38 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
+  const endpoint = "PUT /api/products";
+  const requestId = getRequestId(request);
+  const auth = requireAdminSession(request);
+
+  if (!auth.ok) {
+    logSecurityRejection({
+      endpoint,
+      reason: auth.status === 503 ? "auth_not_configured" : "unauthorized",
+      authenticated: false,
+      requestId,
+      event: "admin_access_rejected",
+    });
+    return NextResponse.json({ error: auth.error }, { status: auth.status });
+  }
+
   const body = await request.json().catch(() => null);
   const products = body?.products;
 
   if (!Array.isArray(products)) {
     return NextResponse.json({ error: "Invalid catalogue payload." }, { status: 400 });
   }
+
+  if (products.length === 0) {
+    logSecurityRejection({
+      endpoint,
+      reason: "empty_catalog",
+      authenticated: true,
+      requestId,
+    });
+    return NextResponse.json({ error: EMPTY_CATALOG_ERROR }, { status: 400 });
+  }
+
   const normalized = normalizeCatalog(products);
   if (!normalized) {
     return NextResponse.json(
@@ -260,6 +271,19 @@ export async function PUT(request: Request) {
       { status: 400 }
     );
   }
+
+  try {
+    assertNonEmptyCatalog(normalized);
+  } catch {
+    logSecurityRejection({
+      endpoint,
+      reason: "empty_catalog",
+      authenticated: true,
+      requestId,
+    });
+    return NextResponse.json({ error: EMPTY_CATALOG_ERROR }, { status: 400 });
+  }
+
   if (normalized.some((p) => isBase64Image(p.image))) {
     return NextResponse.json(
       { error: "Catalogue contains embedded Base64 images. Upload images to Storage first, then save again." },

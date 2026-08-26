@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "tsx --test lib/__tests__/**/*.test.ts && node --test scripts/__tests__/**/*.test.mjs",
+    "backup": "node scripts/backup-all.mjs",
+    "verify:backup": "node scripts/verify-backup.mjs",
+    "restore:backup": "node scripts/restore-backup.mjs"
   },
   "dependencies": {
     "next": "16.2.3",
@@ -19,6 +23,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
+    "tsx": "^4.20.5",
     "typescript": "^5"
   }
 }

@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, ReactNode } from "react";
 import { products as seed, Product } from "@/lib/products";
+import { assertCanRemoveFromCatalog } from "@/lib/catalog-remove";
 import { prepareCatalog, swapDisplayOrder, reorderBySlugs } from "@/lib/inventory";
 import { slugify } from "@/lib/slug";
 
@@ -35,6 +36,7 @@ async function saveCatalog(products: Product[]): Promise<{ products: Product[]; 
   const response = await fetch("/api/products", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
+    credentials: "include",
     body: JSON.stringify({ products: prepareCatalog(products) }),
   });
   const data = await response.json().catch(() => ({}));
@@ -151,6 +153,7 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
 
   const remove = useCallback(async (slug: string) => {
     const prev = itemsRef.current;
+    assertCanRemoveFromCatalog(prev.length);
     const next = prepareCatalog(prev.filter((x) => x.slug !== slug));
     setItems(next);
     try {

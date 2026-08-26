@@ -19,6 +19,7 @@ export async function uploadPerfumeImage(file: File, slugHint?: string): Promise
 
   const response = await fetch("/api/storage/upload", {
     method: "POST",
+    credentials: "include",
     body: formData,
   });
 
@@ -37,6 +38,7 @@ export async function deletePerfumeImage(url: string): Promise<void> {
 
   const response = await fetch("/api/storage/delete", {
     method: "DELETE",
+    credentials: "include",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ url }),
   });

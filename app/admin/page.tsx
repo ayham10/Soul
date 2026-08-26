@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import PerfumeSearch from "@/components/PerfumeSearch";
 import AdminStockBadge from "@/components/AdminStockBadge";
-import { Product, ADMIN_PASSCODE, families, collections, formatPrice, getProductPrice } from "@/lib/products";
+import { Product, families, collections, formatPrice, getProductPrice } from "@/lib/products";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
 import { matchesProductSearch } from "@/lib/search";
@@ -63,16 +63,40 @@ export default function AdminPage() {
   );
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    try { if (sessionStorage.getItem("soul-admin-ok") === "1") setAuthed(true); } catch {}
+    let active = true;
+    (async () => {
+      try {
+        const response = await fetch("/api/admin/login", { credentials: "include", cache: "no-store" });
+        if (!active || !response.ok) return;
+        const data = await response.json();
+        if (data.authenticated) {
+          setAuthed(true);
+          try { sessionStorage.setItem("soul-admin-ok", "1"); } catch {}
+        }
+      } catch {}
+    })();
+    return () => { active = false; };
   }, []);
 
-  const submitPass = (e: React.FormEvent) => {
+  const submitPass = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (pass === ADMIN_PASSCODE) {
-      setAuthed(true);
-      try { sessionStorage.setItem("soul-admin-ok", "1"); } catch {}
-    } else { setPassErr(true); }
+    setPassErr(false);
+    try {
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ passcode: pass }),
+      });
+      if (response.ok) {
+        setAuthed(true);
+        try { sessionStorage.setItem("soul-admin-ok", "1"); } catch {}
+      } else {
+        setPassErr(true);
+      }
+    } catch {
+      setPassErr(true);
+    }
   };
 
   const startAdd = () => {
