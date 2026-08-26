@@ -13,7 +13,7 @@ interface ProductsContextType {
   add: (p: Product) => Promise<void>;
   update: (slug: string, p: Product) => Promise<void>;
   remove: (slug: string) => Promise<void>;
-  reset: () => Promise<void>;
+  restoreToBaseline: () => Promise<{ ok?: boolean; productCount?: number; baselineVersion?: string }>;
   reload: () => Promise<void>;
   moveProduct: (slug: string, direction: "up" | "down") => Promise<void>;
   reorderProducts: (orderedSlugs: string[]) => Promise<void>;
@@ -164,15 +164,25 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
     }
   }, [persist]);
 
-  const reset = useCallback(async () => {
+  const restoreToBaseline = useCallback(async () => {
     setSaving(true);
     try {
-      const { products: saved } = await saveCatalog(seed);
-      applyCatalog(saved);
+      const response = await fetch("/api/admin/baseline-restore", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(data?.error || "Unable to restore catalogue baseline");
+      }
+      await reload();
+      return data as { ok?: boolean; productCount?: number; baselineVersion?: string };
     } finally {
       setSaving(false);
     }
-  }, [applyCatalog]);
+  }, [reload]);
 
   const moveProduct = useCallback(async (slug: string, direction: "up" | "down") => {
     const prev = itemsRef.current;
@@ -210,12 +220,12 @@ export function ProductsProvider({ children }: { children: ReactNode }) {
       add,
       update,
       remove,
-      reset,
+      restoreToBaseline,
       reload,
       moveProduct,
       reorderProducts,
     }),
-    [items, ready, saving, get, add, update, remove, reset, reload, moveProduct, reorderProducts]
+    [items, ready, saving, get, add, update, remove, restoreToBaseline, reload, moveProduct, reorderProducts]
   );
 
   return <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>;

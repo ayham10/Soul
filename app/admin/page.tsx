@@ -42,7 +42,7 @@ export default function AdminPage() {
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
 
-  const { products, add, update, remove, reset, saving, moveProduct, reorderProducts } = useProducts();
+  const { products, add, update, remove, restoreToBaseline, saving, moveProduct, reorderProducts } = useProducts();
   const { t, dir } = useLang();
   const A = t.admin;
 
@@ -56,6 +56,15 @@ export default function AdminPage() {
   const [query, setQuery] = useState("");
   const [dragSlug, setDragSlug] = useState<string | null>(null);
   const [orderError, setOrderError] = useState("");
+  const [baselineInfo, setBaselineInfo] = useState<{
+    baselineVersion: string;
+    productCount: number;
+    createdAt: string;
+    confirmationPhrase: string;
+  } | null>(null);
+  const [resetOpen, setResetOpen] = useState(false);
+  const [resetConfirmText, setResetConfirmText] = useState("");
+  const [resetError, setResetError] = useState("");
 
   const visibleProducts = useMemo(
     () => products.filter((p) => matchesProductSearch(p, query)),
@@ -77,6 +86,27 @@ export default function AdminPage() {
     })();
     return () => { active = false; };
   }, []);
+
+  useEffect(() => {
+    if (!authed) return;
+    let active = true;
+    (async () => {
+      try {
+        const response = await fetch("/api/admin/baseline-restore", { credentials: "include", cache: "no-store" });
+        if (!active || !response.ok) return;
+        const data = await response.json();
+        if (data?.baselineVersion && data?.productCount) {
+          setBaselineInfo({
+            baselineVersion: data.baselineVersion,
+            productCount: data.productCount,
+            createdAt: data.createdAt,
+            confirmationPhrase: data.confirmationPhrase,
+          });
+        }
+      } catch {}
+    })();
+    return () => { active = false; };
+  }, [authed]);
 
   const submitPass = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -197,14 +227,27 @@ export default function AdminPage() {
     }
   };
 
-  const handleReset = async () => {
-    if (!confirm(A.resetConfirm) || saving) return;
+  const openBaselineReset = () => {
+    setResetError("");
+    setResetConfirmText("");
+    setResetOpen(true);
+  };
+
+  const handleBaselineReset = async () => {
+    if (saving || !baselineInfo) return;
+    if (resetConfirmText.trim() !== baselineInfo.confirmationPhrase) {
+      setResetError(A.resetBaselineConfirmMismatch);
+      return;
+    }
+    setResetError("");
     setSaveError("");
     try {
-      await reset();
+      await restoreToBaseline();
+      setResetOpen(false);
+      setResetConfirmText("");
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Could not reset catalogue";
-      setSaveError(message);
+      const message = error instanceof Error ? error.message : "Could not restore catalogue baseline";
+      setResetError(message);
     }
   };
 
@@ -302,7 +345,7 @@ export default function AdminPage() {
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <button onClick={startAdd} className="btn-gold" disabled={saving}>+ {A.addProduct}</button>
-            <button onClick={() => { void handleReset(); }} className="btn-ghost" disabled={saving}>{A.reset}</button>
+            <button onClick={openBaselineReset} className="btn-ghost" disabled={saving || !baselineInfo}>{A.resetBaseline}</button>
           </div>
         </div>
         <div style={{ fontSize: 13, color: "var(--muted)", marginBottom: 8 }}>{products.length} {A.count}</div>
@@ -313,6 +356,12 @@ export default function AdminPage() {
 
         {orderError && (
           <p style={{ color: "#e0746a", fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>{orderError}</p>
+        )}
+
+        {baselineInfo && (
+          <div style={{ fontSize: 12, color: "#8a816f", marginBottom: 20, lineHeight: 1.7 }}>
+            {A.resetBaselineVersion}: {baselineInfo.baselineVersion} · {A.resetBaselineCount}: {baselineInfo.productCount} · {A.resetBaselineDate}: {new Date(baselineInfo.createdAt).toLocaleDateString()}
+          </div>
         )}
 
         <div style={{ marginBottom: 22 }}>
@@ -520,6 +569,34 @@ export default function AdminPage() {
                 {saving ? `${A.save}…` : A.save}
               </button>
               <button onClick={() => setOpen(false)} className="btn-ghost" style={{ flex: 1 }}>{A.cancel}</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {resetOpen && baselineInfo && (
+        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.72)", zIndex: 100, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+          <div style={{ width: "100%", maxWidth: 520, background: "var(--ink)", border: "1px solid var(--line)", padding: 28 }}>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, color: "var(--cream)", marginBottom: 12 }}>{A.resetBaselineTitle}</h2>
+            <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.7, marginBottom: 18 }}>{A.resetBaselineDescription}</p>
+            <div style={{ fontSize: 12, color: "#8a816f", marginBottom: 18, lineHeight: 1.7 }}>
+              {A.resetBaselineVersion}: {baselineInfo.baselineVersion}<br />
+              {A.resetBaselineCount}: {baselineInfo.productCount}<br />
+              {A.resetBaselineDate}: {new Date(baselineInfo.createdAt).toLocaleString()}
+            </div>
+            <label style={lbl}>{A.resetBaselineConfirmLabel}</label>
+            <input
+              value={resetConfirmText}
+              onChange={(e) => { setResetConfirmText(e.target.value); setResetError(""); }}
+              style={inp}
+              autoFocus
+            />
+            {resetError && <div style={{ color: "#e0746a", fontSize: 12, marginTop: 10 }}>{resetError}</div>}
+            <div style={{ display: "flex", gap: 12, marginTop: 22 }}>
+              <button onClick={() => { void handleBaselineReset(); }} className="btn-gold" style={{ flex: 1 }} disabled={saving}>
+                {saving ? `${A.resetBaseline}…` : A.resetBaseline}
+              </button>
+              <button onClick={() => { setResetOpen(false); setResetConfirmText(""); setResetError(""); }} className="btn-ghost" style={{ flex: 1 }} disabled={saving}>{A.cancel}</button>
             </div>
           </div>
         </div>

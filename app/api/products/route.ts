@@ -6,6 +6,7 @@ import { requireAdminSession } from "@/lib/catalog-auth";
 import {
   EMPTY_CATALOG_ERROR,
   assertNonEmptyCatalog,
+  CATALOG_ROW_MISSING_ERROR,
   getRequestId,
   logSecurityRejection,
 } from "@/lib/catalog-guard";
@@ -192,17 +193,13 @@ async function readCatalog(): Promise<{ products: Product[]; storage: StorageMod
   if (supabaseConfig()) {
     const result = await readSupabaseCatalog();
     if (result?.rowExists) return { products: prepareCatalog(result.products), storage: "supabase" };
-    const seeded = prepareCatalog(seedProducts);
-    await writeSupabaseCatalog(seeded);
-    return { products: seeded, storage: "supabase" };
+    throw new Error(CATALOG_ROW_MISSING_ERROR);
   }
 
   if (redisConfig()) {
     const remote = await readRemoteCatalog();
     if (remote) return { products: prepareCatalog(remote), storage: "redis" };
-    const seeded = prepareCatalog(seedProducts);
-    await writeRemoteCatalog(seeded);
-    return { products: seeded, storage: "redis" };
+    throw new Error(CATALOG_ROW_MISSING_ERROR);
   }
 
   return { products: await readLocalCatalog(), storage: "filesystem" };
@@ -224,11 +221,17 @@ async function writeCatalog(products: Product[]) {
 }
 
 export async function GET() {
-  const { products, storage } = await readCatalog();
-  return NextResponse.json(
-    { products, storage },
-    { headers: { "Cache-Control": "no-store, max-age=0" } }
-  );
+  try {
+    const { products, storage } = await readCatalog();
+    return NextResponse.json(
+      { products, storage },
+      { headers: { "Cache-Control": "no-store, max-age=0" } }
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unable to load product catalogue";
+    const status = message === CATALOG_ROW_MISSING_ERROR ? 503 : 500;
+    return NextResponse.json({ error: message, products: [], storage: "supabase" }, { status });
+  }
 }
 
 export async function PUT(request: Request) {

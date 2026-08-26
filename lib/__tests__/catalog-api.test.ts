@@ -1,10 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it, beforeEach, afterEach } from "node:test";
 import { createAdminSessionToken } from "../catalog-auth";
-import { EMPTY_CATALOG_ERROR } from "../catalog-guard";
+import { EMPTY_CATALOG_ERROR, CATALOG_ROW_MISSING_ERROR } from "../catalog-guard";
 import { prepareCatalog, reorderBySlugs, swapDisplayOrder } from "../inventory";
-import { products as seedProducts } from "../products";
-import { applyTestAuthEnv, adminSessionCookie, sampleProduct } from "./helpers";
+import { applyTestAuthEnv, applyTestSupabaseEnv, adminSessionCookie, sampleProduct } from "./helpers";
 
 describe("catalog operations", () => {
   beforeEach(() => {
@@ -44,9 +43,49 @@ describe("catalog operations", () => {
     assert.deepEqual(reordered.map((product) => product.slug), ["c", "a", "b"]);
   });
 
-  it("still supports reset semantics using the non-empty seed catalog", () => {
-    const resetCatalog = prepareCatalog(seedProducts);
-    assert.ok(resetCatalog.length > 0);
+  it("still supports baseline-sized non-empty catalog operations", () => {
+    const products = prepareCatalog([
+      sampleProduct({ slug: "a", displayOrder: 0 }),
+      sampleProduct({ slug: "b", displayOrder: 1, name: "Second" }),
+    ]);
+    assert.equal(products.length, 2);
+  });
+});
+
+describe("GET /api/products auto-seed safety", () => {
+  let GET: (request: Request) => Promise<Response>;
+  const originalFetch = global.fetch;
+
+  beforeEach(async () => {
+    applyTestSupabaseEnv();
+    ({ GET } = await import("../../app/api/products/route"));
+  });
+
+  afterEach(() => {
+    global.fetch = originalFetch;
+  });
+
+  it("does not silently write the old seed catalog when the Supabase row is missing", async () => {
+    let writeCalled = false;
+    global.fetch = (async (input, init) => {
+      const url = String(input);
+      const method = init?.method || "GET";
+      if (url.includes("/rest/v1/soul_catalog") && method === "POST") {
+        writeCalled = true;
+        return new Response(null, { status: 200 });
+      }
+      if (url.includes("/rest/v1/soul_catalog")) {
+        return new Response("[]", { status: 200 });
+      }
+      return new Response("{}", { status: 404 });
+    }) as typeof fetch;
+
+    const response = await GET(new Request("http://localhost/api/products"));
+    assert.equal(response.status, 503);
+    const body = await response.json();
+    assert.equal(body.error, CATALOG_ROW_MISSING_ERROR);
+    assert.deepEqual(body.products, []);
+    assert.equal(writeCalled, false);
   });
 });
 
