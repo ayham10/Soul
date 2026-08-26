@@ -1,0 +1,1273 @@
+{
+  "backupVersion": 1,
+  "createdAt": "2026-08-26T05:27:24.589Z",
+  "source": "agent-snapshot-103",
+  "table": "public.soul_catalog",
+  "catalogId": "default",
+  "supabaseUpdatedAt": null,
+  "catalogUrl": "snapshot:/tmp/live-catalog.json",
+  "backupDirectory": "2026-08-26-103-before-deletion",
+  "productCount": 103,
+  "uniqueImages": 103,
+  "downloadedImages": 103,
+  "failedImages": 0,
+  "verified": true,
+  "status": "complete",
+  "images": [
+    {
+      "storagePath": "amouage-purpose-50-1783627962643.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/amouage-purpose-50-1783627962643.jpg",
+      "localPath": "images/perfumes/amouage-purpose-50-1783627962643.jpg",
+      "referencedBySlugs": [
+        "amouage-purpose-50"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 247743,
+      "sha256": "90a15af7527367f21a13794839663b4b38f8fbd202d3eec084f22344b738cc6c"
+    },
+    {
+      "storagePath": "amouage-interlude-1783628039387.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/amouage-interlude-1783628039387.jpg",
+      "localPath": "images/perfumes/amouage-interlude-1783628039387.jpg",
+      "referencedBySlugs": [
+        "amouage-interlude"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 212712,
+      "sha256": "ab3677936eb9a5c0517bf80a7685cad52b0b758372f73bd72d051fa5b0b67c88"
+    },
+    {
+      "storagePath": "jean-paul-le-beau-le-parfum-1785269340829.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/jean-paul-le-beau-le-parfum-1785269340829.jpg",
+      "localPath": "images/perfumes/jean-paul-le-beau-le-parfum-1785269340829.jpg",
+      "referencedBySlugs": [
+        "jean-paul-le-beau-le-parfum"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 447400,
+      "sha256": "97148a6786fe11932d1a3347e4760c4ef95a5cae433f2fc017773f32bdd575c0"
+    },
+    {
+      "storagePath": "amouage-opus-vii-1783628003040.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/amouage-opus-vii-1783628003040.jpg",
+      "localPath": "images/perfumes/amouage-opus-vii-1783628003040.jpg",
+      "referencedBySlugs": [
+        "amouage-opus-vii"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 361047,
+      "sha256": "3f9c38369cb5535c647f147a3de88c925c1e1ae509ed69b39cc247a9e60d3db2"
+    },
+    {
+      "storagePath": "212-vip-black-1783629067120.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/212-vip-black-1783629067120.jpg",
+      "localPath": "images/perfumes/212-vip-black-1783629067120.jpg",
+      "referencedBySlugs": [
+        "carolina-herrera-212-vip-black"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 97136,
+      "sha256": "7bd1a2569dec70b02030c4fd53ffc3f15c338ce623efdb3de18cf80655c168f3"
+    },
+    {
+      "storagePath": "creed-aventus-1783629465582.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/creed-aventus-1783629465582.jpg",
+      "localPath": "images/perfumes/creed-aventus-1783629465582.jpg",
+      "referencedBySlugs": [
+        "creed-aventus"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 281258,
+      "sha256": "589628f72b3a20d0e53630ffaa50ad0ce4fc35ef211189dc5812a2753b664b34"
+    },
+    {
+      "storagePath": "-bad-boy-1783627012074.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/-bad-boy-1783627012074.jpg",
+      "localPath": "images/perfumes/-bad-boy-1783627012074.jpg",
+      "referencedBySlugs": [
+        "carolina-herrera-bad-boy"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 177008,
+      "sha256": "9a7aed2fd3c66392d6b23ba2b2ac2812db2981ba978161b4311b13108f7e16c3"
+    },
+    {
+      "storagePath": "arabian-oud-resala-1783631805349.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/arabian-oud-resala-1783631805349.jpg",
+      "localPath": "images/perfumes/arabian-oud-resala-1783631805349.jpg",
+      "referencedBySlugs": [
+        "arabian-oud-resala"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 165555,
+      "sha256": "f1911468ba67b614fe1c367d9a7dbca946636e309e862462034fef0e4db965c4"
+    },
+    {
+      "storagePath": "angel-share-1785269025123.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/angel-share-1785269025123.jpg",
+      "localPath": "images/perfumes/angel-share-1785269025123.jpg",
+      "referencedBySlugs": [
+        "angel-share"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 176493,
+      "sha256": "3d19bdda41d1003f2eb40e4b2a7c39bb5ba56aecd6324795cde421de9813e474"
+    },
+    {
+      "storagePath": "barakkat-rouge-540-1784235014100.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/barakkat-rouge-540-1784235014100.jpg",
+      "localPath": "images/perfumes/barakkat-rouge-540-1784235014100.jpg",
+      "referencedBySlugs": [
+        "barakkat-rouge-540"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 67926,
+      "sha256": "1d20468c6c70a9292f6e9239dabfe94bcbc869d21eb4cb9ff80dce360f214a27"
+    },
+    {
+      "storagePath": "black-afghano-1783544692496.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/black-afghano-1783544692496.jpg",
+      "localPath": "images/perfumes/black-afghano-1783544692496.jpg",
+      "referencedBySlugs": [
+        "nasomatto-black-afghano"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 208056,
+      "sha256": "57f9a5a2e22a3615450f9c9dee1cd1997042f022816893a8c8f7ddf752bcd40b"
+    },
+    {
+      "storagePath": "yves-saint-laurent-babycat-1783625614558.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/yves-saint-laurent-babycat-1783625614558.jpg",
+      "localPath": "images/perfumes/yves-saint-laurent-babycat-1783625614558.jpg",
+      "referencedBySlugs": [
+        "yves-saint-laurent-babycat"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 300076,
+      "sha256": "a5dd6d56033cdd15d0dcc1ffda3d0ff695d1ee014c097766bbeb5f7fc5192262"
+    },
+    {
+      "storagePath": "britney-spears-fantasy-1783633419798.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/britney-spears-fantasy-1783633419798.jpg",
+      "localPath": "images/perfumes/britney-spears-fantasy-1783633419798.jpg",
+      "referencedBySlugs": [
+        "britney-spears-fantasy"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 208802,
+      "sha256": "518eb1113d21fda7ed0b8989fc068cf3cf5ebe7b7ebcfbd604c16ff2ed77afc9"
+    },
+    {
+      "storagePath": "burberry-her-1783632615766.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/burberry-her-1783632615766.jpg",
+      "localPath": "images/perfumes/burberry-her-1783632615766.jpg",
+      "referencedBySlugs": [
+        "burberry-her"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 276250,
+      "sha256": "aecb9b6bf9d20e10e35375dab9b71cccefdd7e7bbe797489e7c7c152a35e5ee0"
+    },
+    {
+      "storagePath": "burberry-hero-1783632506388.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/burberry-hero-1783632506388.jpg",
+      "localPath": "images/perfumes/burberry-hero-1783632506388.jpg",
+      "referencedBySlugs": [
+        "burberry-hero"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 250604,
+      "sha256": "208362a1b91e603e195dce6972ccd4a4b58ba4c333ad72119722a01dedbb4a7d"
+    },
+    {
+      "storagePath": "chanel-bleu-de-chanel-1783629221049.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/chanel-bleu-de-chanel-1783629221049.jpg",
+      "localPath": "images/perfumes/chanel-bleu-de-chanel-1783629221049.jpg",
+      "referencedBySlugs": [
+        "chanel-bleu-de-chanel"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 141714,
+      "sha256": "09c9268a666bdf81c0dfb6257ef1b6d66d1a6b7622e8b6254bb7f0243768c735"
+    },
+    {
+      "storagePath": "chanel-coco-mademoiselle-1783623979670.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/chanel-coco-mademoiselle-1783623979670.jpg",
+      "localPath": "images/perfumes/chanel-coco-mademoiselle-1783623979670.jpg",
+      "referencedBySlugs": [
+        "chanel-coco-mademoiselle"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 172240,
+      "sha256": "71e68b5e88442abb9cba616da373e38f3536732ed4bf36e295de3d33c1bc2e21"
+    },
+    {
+      "storagePath": "creed-aventus-absolu-1783629453003.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/creed-aventus-absolu-1783629453003.jpg",
+      "localPath": "images/perfumes/creed-aventus-absolu-1783629453003.jpg",
+      "referencedBySlugs": [
+        "creed-aventus-absolu"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 143213,
+      "sha256": "594672730ddbf5f2149d373adc56b8b63b51e0a0123e9a282180b2874c56552d"
+    },
+    {
+      "storagePath": "creed-viking-1783629437421.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/creed-viking-1783629437421.jpg",
+      "localPath": "images/perfumes/creed-viking-1783629437421.jpg",
+      "referencedBySlugs": [
+        "creed-viking"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 64466,
+      "sha256": "e79455a0d74d2af9a4174fe13bbd824f8ef00d045f48954422dffbc57ebf1398"
+    },
+    {
+      "storagePath": "de-marly-athair-1783627658212.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-athair-1783627658212.jpg",
+      "localPath": "images/perfumes/de-marly-athair-1783627658212.jpg",
+      "referencedBySlugs": [
+        "parfums-de-marly-athair"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 195741,
+      "sha256": "fea868a90b932805b35d55774e0fdf42d73a26689cb71fd40f2005f3a2017797"
+    },
+    {
+      "storagePath": "de-marly-kalan-1783627625925.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-kalan-1783627625925.jpg",
+      "localPath": "images/perfumes/de-marly-kalan-1783627625925.jpg",
+      "referencedBySlugs": [
+        "parfums-de-marly-kalan"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 266353,
+      "sha256": "dcff43479f7bf5f644da52288b243441fefed483d83c194f37f509fecdb36d36"
+    },
+    {
+      "storagePath": "de-marly-layton-1783627906313.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-layton-1783627906313.jpg",
+      "localPath": "images/perfumes/de-marly-layton-1783627906313.jpg",
+      "referencedBySlugs": [
+        "parfums-de-marly-layton"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 244203,
+      "sha256": "5056f4a035cd981fd1e7ac9f47275c5365a446e803bb4aaaf99114087a073cf0"
+    },
+    {
+      "storagePath": "swiss-arabian-shaghaf-1783631878218.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/swiss-arabian-shaghaf-1783631878218.jpg",
+      "localPath": "images/perfumes/swiss-arabian-shaghaf-1783631878218.jpg",
+      "referencedBySlugs": [
+        "swiss-arabian-shaghaf"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 198452,
+      "sha256": "310030897f20122cb4e92bcd50f1c86abbebfd0da58fde765fdf091b5c9bb18f"
+    },
+    {
+      "storagePath": "de-marly-delina-1783626662208.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-delina-1783626662208.jpg",
+      "localPath": "images/perfumes/de-marly-delina-1783626662208.jpg",
+      "referencedBySlugs": [
+        "parfums-de-marly-delina"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 259026,
+      "sha256": "35f4742b019580775892d567391dbd3678811e242005b6beddcf9d913d712945"
+    },
+    {
+      "storagePath": "de-marly-pegasus-1783627854838.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/de-marly-pegasus-1783627854838.jpg",
+      "localPath": "images/perfumes/de-marly-pegasus-1783627854838.jpg",
+      "referencedBySlugs": [
+        "parfums-de-marly-pegasus"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 78362,
+      "sha256": "bb203868ef9cb495117fc883d5e0a9f59d3169c9ef759bc5875636d227955976"
+    },
+    {
+      "storagePath": "dior-homme-intense-1783632200580.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-homme-intense-1783632200580.jpg",
+      "localPath": "images/perfumes/dior-homme-intense-1783632200580.jpg",
+      "referencedBySlugs": [
+        "dior-homme-intense"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 251131,
+      "sha256": "ebfce1eb35b2dea6f006c26d56e3b3eae6789b56c1e8f63d1b96b3cd7e5f008b"
+    },
+    {
+      "storagePath": "dior-jadore-1783623921381.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-jadore-1783623921381.jpg",
+      "localPath": "images/perfumes/dior-jadore-1783623921381.jpg",
+      "referencedBySlugs": [
+        "dior-jadore"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 78419,
+      "sha256": "f8b970fac8e54e5286f5fbe68b534e87caf17ba685dc101af3f44d348bdf464e"
+    },
+    {
+      "storagePath": "dior-oud-ispahan-1783632056665.png",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-oud-ispahan-1783632056665.png",
+      "localPath": "images/perfumes/dior-oud-ispahan-1783632056665.png",
+      "referencedBySlugs": [
+        "dior-oud-ispahan"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 2148381,
+      "sha256": "909dececd5685d7dd63bde777d5220a8c82398f4dc182148a18dbec570b2d214"
+    },
+    {
+      "storagePath": "dior-sauvage-1783629332822.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-sauvage-1783629332822.jpg",
+      "localPath": "images/perfumes/dior-sauvage-1783629332822.jpg",
+      "referencedBySlugs": [
+        "dior-sauvage"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 81431,
+      "sha256": "81f42a696e5bd0407c0a41193a538fe08342174997da40361ce2714acbd3a05d"
+    },
+    {
+      "storagePath": "dior-sauvage-elixir-1783629318179.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dior-sauvage-elixir-1783629318179.jpg",
+      "localPath": "images/perfumes/dior-sauvage-elixir-1783629318179.jpg",
+      "referencedBySlugs": [
+        "dior-sauvage-elixir"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 166480,
+      "sha256": "cb2d583c6c8537ecf22961512795526b149cd5d9c1134dbe4a546cad53d21ef0"
+    },
+    {
+      "storagePath": "dolce-gabbana-intense-1783632251388.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dolce-gabbana-intense-1783632251388.jpg",
+      "localPath": "images/perfumes/dolce-gabbana-intense-1783632251388.jpg",
+      "referencedBySlugs": [
+        "dolce-gabbana-intense"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 1077034,
+      "sha256": "372051ec05b4b0de3ada3d58921d49162c12dcbb654ccf90deb8eacde16fe599"
+    },
+    {
+      "storagePath": "dolce-gabbana-the-one-1783632131817.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dolce-gabbana-the-one-1783632131817.jpg",
+      "localPath": "images/perfumes/dolce-gabbana-the-one-1783632131817.jpg",
+      "referencedBySlugs": [
+        "dolce-gabbana-the-one"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 223758,
+      "sha256": "971c22d29e6e0fb1f98b7ca6442a5817e224ccf9708f1f979181706b0bbea9f8"
+    },
+    {
+      "storagePath": "dolce-gabbana-the-one-royal-night-1783633040027.png",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dolce-gabbana-the-one-royal-night-1783633040027.png",
+      "localPath": "images/perfumes/dolce-gabbana-the-one-royal-night-1783633040027.png",
+      "referencedBySlugs": [
+        "dolce-gabbana-the-one-mysterious-night"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 1618034,
+      "sha256": "a745772d42d0af72c15b2cb1b00f7887018e54111342f3a312de886f6a914fe8"
+    },
+    {
+      "storagePath": "dunhill-desire-red-1783632826121.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/dunhill-desire-red-1783632826121.jpg",
+      "localPath": "images/perfumes/dunhill-desire-red-1783632826121.jpg",
+      "referencedBySlugs": [
+        "dunhill-desire-red"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 77202,
+      "sha256": "15a32f56bf394e2e72b6b4dbf7e3381a5279b2508152b26b58701db05b1e5ddb"
+    },
+    {
+      "storagePath": "elie-saab--1784234396659.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/elie-saab--1784234396659.jpg",
+      "localPath": "images/perfumes/elie-saab--1784234396659.jpg",
+      "referencedBySlugs": [
+        "elie-saab-"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 178939,
+      "sha256": "c971940aa5c385edd9daf23b184016fb7e205bb8dcd34f91f0005fde8aa4316c"
+    },
+    {
+      "storagePath": "felina-1783625724850.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/felina-1783625724850.jpg",
+      "localPath": "images/perfumes/felina-1783625724850.jpg",
+      "referencedBySlugs": [
+        "vilhelm-parfumerie-vilhelmina"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 389587,
+      "sha256": "96f81d94a8cbbfacc56308bee4de3dae03df82ae1ca6f2d5a3d938c31257586e"
+    },
+    {
+      "storagePath": "ghoubar-al-thahab-1783632590767.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/ghoubar-al-thahab-1783632590767.jpg",
+      "localPath": "images/perfumes/ghoubar-al-thahab-1783632590767.jpg",
+      "referencedBySlugs": [
+        "ghoubar-al-thahab"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 225166,
+      "sha256": "74208b95754924867a1b40d9b947a67cb7e9f23a73363f2742ae4ee50c9e8a52"
+    },
+    {
+      "storagePath": "giorgio-armani-acqua-di-gio-1783627401479.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-acqua-di-gio-1783627401479.jpg",
+      "localPath": "images/perfumes/giorgio-armani-acqua-di-gio-1783627401479.jpg",
+      "referencedBySlugs": [
+        "giorgio-armani-acqua-di-gio"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 210541,
+      "sha256": "2492c5aff4fd779a8337a61d4e560aaf2d609b04d84904e2588d0a17aedfd5e0"
+    },
+    {
+      "storagePath": "giorgio-armani-acqua-di-gio-profumo-1783627376808.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-acqua-di-gio-profumo-1783627376808.jpg",
+      "localPath": "images/perfumes/giorgio-armani-acqua-di-gio-profumo-1783627376808.jpg",
+      "referencedBySlugs": [
+        "giorgio-armani-acqua-di-gio-profumo"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 130881,
+      "sha256": "8dc3c1fb05d6210afbb810dd10b6add948f463951dbb91fae6b869bc40f53abc"
+    },
+    {
+      "storagePath": "giorgio-armani-because-its-you-1783623650017.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-because-its-you-1783623650017.jpg",
+      "localPath": "images/perfumes/giorgio-armani-because-its-you-1783623650017.jpg",
+      "referencedBySlugs": [
+        "giorgio-armani-because-its-you"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 150469,
+      "sha256": "c8bcdc7b21a808f387d9560069136c3cca8a59d45fb288f360339c0dedf9d8a3"
+    },
+    {
+      "storagePath": "giorgio-armani-code-1783627533969.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-code-1783627533969.jpg",
+      "localPath": "images/perfumes/giorgio-armani-code-1783627533969.jpg",
+      "referencedBySlugs": [
+        "giorgio-armani-code"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 197334,
+      "sha256": "8500490c9b9436d4d02f98858588e7868718ce50c63764b1908d624f9170ef20"
+    },
+    {
+      "storagePath": "giorgio-armani-code-profumo-1783627578465.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-code-profumo-1783627578465.jpg",
+      "localPath": "images/perfumes/giorgio-armani-code-profumo-1783627578465.jpg",
+      "referencedBySlugs": [
+        "giorgio-armani-code-profumo"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 110290,
+      "sha256": "6b8a53559cda37af14b5e652bc558aa4c34e2887da5f2a086f0254a260f79f87"
+    },
+    {
+      "storagePath": "giorgio-armani-si-1783623715989.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-si-1783623715989.jpg",
+      "localPath": "images/perfumes/giorgio-armani-si-1783623715989.jpg",
+      "referencedBySlugs": [
+        "giorgio-armani-si"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 213354,
+      "sha256": "7cd6c7603a4ebc3b96f99290a02f8754980103a9f5d9bc5a053e15827a42d140"
+    },
+    {
+      "storagePath": "giorgio-armani-stronger-with-you-1783630527646.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-stronger-with-you-1783630527646.jpg",
+      "localPath": "images/perfumes/giorgio-armani-stronger-with-you-1783630527646.jpg",
+      "referencedBySlugs": [
+        "giorgio-armani-stronger-with-you"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 239254,
+      "sha256": "272d25987a0014309f95bd8996892064cee31b830607d7159f73612ddb8f4383"
+    },
+    {
+      "storagePath": "giorgio-armani-stronger-with-you-intensely-1783630442005.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-stronger-with-you-intensely-1783630442005.jpg",
+      "localPath": "images/perfumes/giorgio-armani-stronger-with-you-intensely-1783630442005.jpg",
+      "referencedBySlugs": [
+        "giorgio-armani-stronger-with-you-intensely"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 275913,
+      "sha256": "bf80465f9ba5849fae3c2f7f832bc74bff1601b7bf533a49f018597d239ed7f3"
+    },
+    {
+      "storagePath": "giorgio-armani-stronger-with-you-leather-1783630594433.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/giorgio-armani-stronger-with-you-leather-1783630594433.jpg",
+      "localPath": "images/perfumes/giorgio-armani-stronger-with-you-leather-1783630594433.jpg",
+      "referencedBySlugs": [
+        "giorgio-armani-stronger-with-you-leather"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 102356,
+      "sha256": "815bf62572c7d29823d288311b799945511cc8835b6740226952efb851a50690"
+    },
+    {
+      "storagePath": "givenchy-gentleman-1783624240082.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/givenchy-gentleman-1783624240082.jpg",
+      "localPath": "images/perfumes/givenchy-gentleman-1783624240082.jpg",
+      "referencedBySlugs": [
+        "givenchy-gentleman"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 213823,
+      "sha256": "0419234745ffece57f68b2d071b810829c3e72669314ac211f1ce75c2bf4d8cd"
+    },
+    {
+      "storagePath": "gucci-gucci-oud-1783632035380.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/gucci-gucci-oud-1783632035380.jpg",
+      "localPath": "images/perfumes/gucci-gucci-oud-1783632035380.jpg",
+      "referencedBySlugs": [
+        "gucci-gucci-oud"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 111726,
+      "sha256": "0d9bd4b7e64519171d0073240ae3bae58070d995e2acf211e505c40482d0885a"
+    },
+    {
+      "storagePath": "hugo-boss-1783629180512.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/hugo-boss-1783629180512.jpg",
+      "localPath": "images/perfumes/hugo-boss-1783629180512.jpg",
+      "referencedBySlugs": [
+        "hugo-boss"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 158161,
+      "sha256": "57fb35146d951d0916baecb1c309954ab22223401963a091d6b3d8df64e39115"
+    },
+    {
+      "storagePath": "initio-side-effect-1783632327064.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/initio-side-effect-1783632327064.jpg",
+      "localPath": "images/perfumes/initio-side-effect-1783632327064.jpg",
+      "referencedBySlugs": [
+        "initio-side-effect"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 151749,
+      "sha256": "212c9792687be88a26fc782d183c5538a11f72d53df1dec681906d7727c5c5a5"
+    },
+    {
+      "storagePath": "invictus-elixir-1783630072327.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/invictus-elixir-1783630072327.jpg",
+      "localPath": "images/perfumes/invictus-elixir-1783630072327.jpg",
+      "referencedBySlugs": [
+        "paco-rabanne-invictus-victory-elixir"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 185844,
+      "sha256": "ccbb65a3ae33f25e1b8a8c96cbc7c49c0a2efb271a0b8088757658ae97c204ba"
+    },
+    {
+      "storagePath": "issey-miyake-1783625501468.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/issey-miyake-1783625501468.jpg",
+      "localPath": "images/perfumes/issey-miyake-1783625501468.jpg",
+      "referencedBySlugs": [
+        "issey-miyake"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 157241,
+      "sha256": "1e17622bcc0fa6ca80569ba15b3243b7215e26efea5fa971773468d4c7e53cf7"
+    },
+    {
+      "storagePath": "jean-paul-paradise-1783886606347.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/jean-paul-paradise-1783886606347.jpg",
+      "localPath": "images/perfumes/jean-paul-paradise-1783886606347.jpg",
+      "referencedBySlugs": [
+        "jean-paul-paradise"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 154967,
+      "sha256": "0a3734ef1355600e59e8307eeb79d9b321fd827d55d6d43f04a9c2167344b550"
+    },
+    {
+      "storagePath": "jean-paul-gaultier-le-male-1783629753465.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/jean-paul-gaultier-le-male-1783629753465.jpg",
+      "localPath": "images/perfumes/jean-paul-gaultier-le-male-1783629753465.jpg",
+      "referencedBySlugs": [
+        "jean-paul-gaultier-le-male"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 166652,
+      "sha256": "ab4261f628c1984fc3d41a988f0b5c582814af517f37661fc3d9e6cb5daf9a59"
+    },
+    {
+      "storagePath": "jean-paul-gaultier-le-male-elixir-1783629657522.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/jean-paul-gaultier-le-male-elixir-1783629657522.jpg",
+      "localPath": "images/perfumes/jean-paul-gaultier-le-male-elixir-1783629657522.jpg",
+      "referencedBySlugs": [
+        "jean-paul-gaultier-le-male-elixir"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 472979,
+      "sha256": "a9f31a4c3ebae98ff5c972e87c91c652a808458bcc020809d840d0266fb3d376"
+    },
+    {
+      "storagePath": "lancme-oud-bouquet-1783628181204.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/lancme-oud-bouquet-1783628181204.jpg",
+      "localPath": "images/perfumes/lancme-oud-bouquet-1783628181204.jpg",
+      "referencedBySlugs": [
+        "lancome-oud-bouquet"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 191079,
+      "sha256": "e08df54593903af750b8cbca0ee0d74fff1bd4f7d51908da1a062d61f2e2c3dc"
+    },
+    {
+      "storagePath": "lattafa-khamrah-1783631127586.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/lattafa-khamrah-1783631127586.jpg",
+      "localPath": "images/perfumes/lattafa-khamrah-1783631127586.jpg",
+      "referencedBySlugs": [
+        "lattafa-khamrah"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 346698,
+      "sha256": "8420fc2396dc316e3b309ed8448c330b864d55d78788940cc7d1c18e906fedc0"
+    },
+    {
+      "storagePath": "lattafa-khamrah-qahwa-1783631115020.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/lattafa-khamrah-qahwa-1783631115020.jpg",
+      "localPath": "images/perfumes/lattafa-khamrah-qahwa-1783631115020.jpg",
+      "referencedBySlugs": [
+        "lattafa-khamrah-qahwa"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 185653,
+      "sha256": "a9b47149ce2a7e81ba97b967e98a3aa3a9fa0b257d0b91e074044e3cdc86ae64"
+    },
+    {
+      "storagePath": "louis-vuitton-afternoon-swim-1783544677594.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-afternoon-swim-1783544677594.jpg",
+      "localPath": "images/perfumes/louis-vuitton-afternoon-swim-1783544677594.jpg",
+      "referencedBySlugs": [
+        "louis-vuitton-afternoon-swim"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 458897,
+      "sha256": "c921f390eab8683ac7b42b15a2432d3030c6471715366052befd829407d5fc13"
+    },
+    {
+      "storagePath": "louis-vuitton-imagination-1783544540322.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-imagination-1783544540322.jpg",
+      "localPath": "images/perfumes/louis-vuitton-imagination-1783544540322.jpg",
+      "referencedBySlugs": [
+        "louis-vuitton-imagination"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 112625,
+      "sha256": "507a62d786e11ef131409d00b3462cc2ef586ec03c3c74e51e25448b704292e1"
+    },
+    {
+      "storagePath": "louis-vuitton-limmensit-1783544556993.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-limmensit-1783544556993.jpg",
+      "localPath": "images/perfumes/louis-vuitton-limmensit-1783544556993.jpg",
+      "referencedBySlugs": [
+        "louis-vuitton-limmensite"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 115418,
+      "sha256": "a8f0f9fb59a1be27cc0b54ec370704a3b42bc1591231da18322d8f0cf17a5b55"
+    },
+    {
+      "storagePath": "louis-vuitton-ombre-nomade-1783544623644.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-ombre-nomade-1783544623644.jpg",
+      "localPath": "images/perfumes/louis-vuitton-ombre-nomade-1783544623644.jpg",
+      "referencedBySlugs": [
+        "louis-vuitton-ombre-nomade"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 162006,
+      "sha256": "9875696eea50b616ef8dd1f8cc16fd9d4eb250814e9af702c4ffc15e3f5cd510"
+    },
+    {
+      "storagePath": "louis-vuitton-orage-1783544660348.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-orage-1783544660348.jpg",
+      "localPath": "images/perfumes/louis-vuitton-orage-1783544660348.jpg",
+      "referencedBySlugs": [
+        "louis-vuitton-orage"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 244861,
+      "sha256": "d2424b397de10211603a17c557472ed61c09a18b15909fd764d9323d00808ad7"
+    },
+    {
+      "storagePath": "louis-vuitton-pacific-chill-1783544514918.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-pacific-chill-1783544514918.jpg",
+      "localPath": "images/perfumes/louis-vuitton-pacific-chill-1783544514918.jpg",
+      "referencedBySlugs": [
+        "louis-vuitton-pacific-chill"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 293386,
+      "sha256": "be201e8ce8c7ad6aa4f90e33ffd97a8d0dd1ea1a6558427090fdc063425eb94d"
+    },
+    {
+      "storagePath": "louis-vuitton-stellar-times-1783544584485.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/louis-vuitton-stellar-times-1783544584485.jpg",
+      "localPath": "images/perfumes/louis-vuitton-stellar-times-1783544584485.jpg",
+      "referencedBySlugs": [
+        "louis-vuitton-stellar-times"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 198538,
+      "sha256": "960e02c91f4c7fd59414151efb72b26d36bfe341e4119fd4f821b8d1c255f3b9"
+    },
+    {
+      "storagePath": "madawi--1784235157307.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/madawi--1784235157307.jpg",
+      "localPath": "images/perfumes/madawi--1784235157307.jpg",
+      "referencedBySlugs": [
+        "madawi-"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 82257,
+      "sha256": "bda728bfca14bbddeee90be5b5276e54726dba5c562c9ea2a54f54490aae5342"
+    },
+    {
+      "storagePath": "mancera-coco-vanille-1783623935586.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/mancera-coco-vanille-1783623935586.jpg",
+      "localPath": "images/perfumes/mancera-coco-vanille-1783623935586.jpg",
+      "referencedBySlugs": [
+        "mancera-coco-vanille"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 252165,
+      "sha256": "38c1252b1c7028c85e3ed560a97ce188adffcb72fcd0d32d0a50d7f663dc14ef"
+    },
+    {
+      "storagePath": "mancera-roses-vanille-1783623949606.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/mancera-roses-vanille-1783623949606.jpg",
+      "localPath": "images/perfumes/mancera-roses-vanille-1783623949606.jpg",
+      "referencedBySlugs": [
+        "mancera-roses-vanille"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 168919,
+      "sha256": "cfd052940ee58f4a024ffc36f7cbe5e09c028dec1ba3655e397913569d48588f"
+    },
+    {
+      "storagePath": "ms-dior-1783625352016.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/ms-dior-1783625352016.jpg",
+      "localPath": "images/perfumes/ms-dior-1783625352016.jpg",
+      "referencedBySlugs": [
+        "ms-dior"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 211038,
+      "sha256": "eac1f0ad14ea5bc3af4556a1758430a468158100448e00430c25a02a52c17245"
+    },
+    {
+      "storagePath": "mugler-angel-1783544727971.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/mugler-angel-1783544727971.jpg",
+      "localPath": "images/perfumes/mugler-angel-1783544727971.jpg",
+      "referencedBySlugs": [
+        "mugler-angel"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 273877,
+      "sha256": "d686dfc0d0cdaad84b188b073c3ed63380bf69f3cf2d03e705fab5dc170dbf8e"
+    },
+    {
+      "storagePath": "nishane-ani-1783632431726.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/nishane-ani-1783632431726.jpg",
+      "localPath": "images/perfumes/nishane-ani-1783632431726.jpg",
+      "referencedBySlugs": [
+        "nishane-ani"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 98787,
+      "sha256": "c3d7387d67c9ad4530f5e5337363d24311cbe0cec52e16ebae91b908bfae1e22"
+    },
+    {
+      "storagePath": "nishane-hacivat-1783632443727.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/nishane-hacivat-1783632443727.jpg",
+      "localPath": "images/perfumes/nishane-hacivat-1783632443727.jpg",
+      "referencedBySlugs": [
+        "nishane-hacivat"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 270568,
+      "sha256": "dbdd417a2641c85ddff97225b468f1125d3a5cb70c8ce3d1196c5dea8aeedc54"
+    },
+    {
+      "storagePath": "one-million-elixer-1783633130582.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/one-million-elixer-1783633130582.jpg",
+      "localPath": "images/perfumes/one-million-elixer-1783633130582.jpg",
+      "referencedBySlugs": [
+        "one-million-elixer"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 223724,
+      "sha256": "5b034aa7dabe6f1eb19f88cdd6b79324d9a393a87e6adf0c8e318124781da7e3"
+    },
+    {
+      "storagePath": "oud-cadneza-1783634786530.png",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/oud-cadneza-1783634786530.png",
+      "localPath": "images/perfumes/oud-cadneza-1783634786530.png",
+      "referencedBySlugs": [
+        "oud-cadneza"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 1388675,
+      "sha256": "0f31999b8515ace537aff6ffadb11fd3aabb124b7dcf4aac9a6012a981b4d256"
+    },
+    {
+      "storagePath": "oud-maracuja-1783634622330.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/oud-maracuja-1783634622330.jpg",
+      "localPath": "images/perfumes/oud-maracuja-1783634622330.jpg",
+      "referencedBySlugs": [
+        "oud-maracuja"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 234791,
+      "sha256": "ace376a57c72a4089021cf1e9e7e1ad7195b09ed37b96ca5f6f38021f47dd1ed"
+    },
+    {
+      "storagePath": "paco-rabanne-invictus-1783630101646.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/paco-rabanne-invictus-1783630101646.jpg",
+      "localPath": "images/perfumes/paco-rabanne-invictus-1783630101646.jpg",
+      "referencedBySlugs": [
+        "paco-rabanne-invictus"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 283842,
+      "sha256": "37a5227a813ebc0995f83563de4cc57563e61b6fab52e4b7e38e301705b666bb"
+    },
+    {
+      "storagePath": "paco-rabanne-one-million-1783632906093.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/paco-rabanne-one-million-1783632906093.jpg",
+      "localPath": "images/perfumes/paco-rabanne-one-million-1783632906093.jpg",
+      "referencedBySlugs": [
+        "paco-rabanne-one-million"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 163287,
+      "sha256": "20c5ed6758916396a0f6d29d805f76dd0363957f9d6735a4f0133b2345422c45"
+    },
+    {
+      "storagePath": "prada-paradoxe-1783623966912.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/prada-paradoxe-1783623966912.jpg",
+      "localPath": "images/perfumes/prada-paradoxe-1783623966912.jpg",
+      "referencedBySlugs": [
+        "prada-paradoxe"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 257407,
+      "sha256": "c51ad81859121ac32f7fa89f1183d1296f9d71dc3532f4862024374e5577b92a"
+    },
+    {
+      "storagePath": "rochas-1783631834866.png",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/rochas-1783631834866.png",
+      "localPath": "images/perfumes/rochas-1783631834866.png",
+      "referencedBySlugs": [
+        "rochas-moustache"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 1087651,
+      "sha256": "39997fec0f4c2086f377d327c8ae5585ce042ba4fbfb8f0ee502f48fab59920c"
+    },
+    {
+      "storagePath": "scandal-1785269168964.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/scandal-1785269168964.jpg",
+      "localPath": "images/perfumes/scandal-1785269168964.jpg",
+      "referencedBySlugs": [
+        "scandal"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 307687,
+      "sha256": "aba8d859154a47e70a4075aaace89b839b97f1daf304710e66e041720cab9289"
+    },
+    {
+      "storagePath": "scandal-1783630289177.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/scandal-1783630289177.jpg",
+      "localPath": "images/perfumes/scandal-1783630289177.jpg",
+      "referencedBySlugs": [
+        "jean-paul-gaultier-scandal"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 345063,
+      "sha256": "3c888a32a86b9969fd47a8f0f9fca883c9ecb1afe46bbe0f3aae57339dc2092b"
+    },
+    {
+      "storagePath": "scandal-absolu-1783630403731.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/scandal-absolu-1783630403731.jpg",
+      "localPath": "images/perfumes/scandal-absolu-1783630403731.jpg",
+      "referencedBySlugs": [
+        "jean-paul-gaultier-scandal-absolu"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 201107,
+      "sha256": "1a9a40e6c388111d2aefffa3ed99bf46234845e146ea89b19f813d85f65c6538"
+    },
+    {
+      "storagePath": "silver-scent-1783632691214.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/silver-scent-1783632691214.jpg",
+      "localPath": "images/perfumes/silver-scent-1783632691214.jpg",
+      "referencedBySlugs": [
+        "jacques-bogart-silver-scent"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 148832,
+      "sha256": "878bda7ace48a618f7ec83e01ce000ed3e9b4948b1bcf0c179e702c64734026e"
+    },
+    {
+      "storagePath": "thomas-kosmala-no-4-1783624210833.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/thomas-kosmala-no-4-1783624210833.jpg",
+      "localPath": "images/perfumes/thomas-kosmala-no-4-1783624210833.jpg",
+      "referencedBySlugs": [
+        "thomas-kosmala-no-4"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 266768,
+      "sha256": "b7c9db80921fc1ce2882b2510fa9f90b14e0874b6cabda247517e2efee55b5c3"
+    },
+    {
+      "storagePath": "tom-ford-black-orchid-1783628704321.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-black-orchid-1783628704321.jpg",
+      "localPath": "images/perfumes/tom-ford-black-orchid-1783628704321.jpg",
+      "referencedBySlugs": [
+        "tom-ford-black-orchid"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 219316,
+      "sha256": "40eaa88a767c8cd2a46c8c15f9bc80e1b0503d0accd6d9d4918c6f5998f9ef04"
+    },
+    {
+      "storagePath": "tom-ford-electric-cherry-1785269082268.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-electric-cherry-1785269082268.jpg",
+      "localPath": "images/perfumes/tom-ford-electric-cherry-1785269082268.jpg",
+      "referencedBySlugs": [
+        "tom-ford-electric-cherry"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 153263,
+      "sha256": "fb10104887c2bec55c544abbad7a3e5ff987eda0459d4f0486c4cdac12aa1aa4"
+    },
+    {
+      "storagePath": "tom-ford-myrrhe-mystre-1783628279874.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-myrrhe-mystre-1783628279874.jpg",
+      "localPath": "images/perfumes/tom-ford-myrrhe-mystre-1783628279874.jpg",
+      "referencedBySlugs": [
+        "tom-ford-myrrhe-mystere"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 215364,
+      "sha256": "4bb8bac28137ea775abeb9f72d5171f548cb8e7dd4106435900478768f55b08a"
+    },
+    {
+      "storagePath": "tom-ford-noir-1783628997514.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-noir-1783628997514.jpg",
+      "localPath": "images/perfumes/tom-ford-noir-1783628997514.jpg",
+      "referencedBySlugs": [
+        "tom-ford-noir"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 171776,
+      "sha256": "fa7d2be52cc66cd7eb7842f13df034263eeeee8d2ef028f05dfcb883833c18c5"
+    },
+    {
+      "storagePath": "tom-ford-ombr-leather-1783628488564.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-ombr-leather-1783628488564.jpg",
+      "localPath": "images/perfumes/tom-ford-ombr-leather-1783628488564.jpg",
+      "referencedBySlugs": [
+        "tom-ford-ombre-leather"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 216382,
+      "sha256": "2b333f03b907d26ffa68fb228b4f69aea344fc97b867fcbbeea9801fb4cde6f2"
+    },
+    {
+      "storagePath": "tom-ford-oud-wood-1783628447001.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-oud-wood-1783628447001.jpg",
+      "localPath": "images/perfumes/tom-ford-oud-wood-1783628447001.jpg",
+      "referencedBySlugs": [
+        "tom-ford-oud-wood"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 224780,
+      "sha256": "cfa6db7b97d065215939f3a9b9352c335a7f92a95b6c0e725044a8d0bc3b9ac5"
+    },
+    {
+      "storagePath": "tom-ford-soleil-blanc-1783628242980.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-soleil-blanc-1783628242980.jpg",
+      "localPath": "images/perfumes/tom-ford-soleil-blanc-1783628242980.jpg",
+      "referencedBySlugs": [
+        "tom-ford-soleil-blanc"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 172745,
+      "sha256": "0735f28a94304866d9738f827ba4248764af3b880d1415babd619009bdd1f4fc"
+    },
+    {
+      "storagePath": "tom-ford-tobacco-vanille-1783628321542.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/tom-ford-tobacco-vanille-1783628321542.jpg",
+      "localPath": "images/perfumes/tom-ford-tobacco-vanille-1783628321542.jpg",
+      "referencedBySlugs": [
+        "tom-ford-tobacco-vanille"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 229002,
+      "sha256": "8405c052f06a72813eff0d293c1da3f06f525b7d3ba53bb44dfe8506542019ef"
+    },
+    {
+      "storagePath": "valentino-born-in-roma-green-1783630148384.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/valentino-born-in-roma-green-1783630148384.jpg",
+      "localPath": "images/perfumes/valentino-born-in-roma-green-1783630148384.jpg",
+      "referencedBySlugs": [
+        "valentino-born-in-roma-green"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 204967,
+      "sha256": "1d68c6395273937990611944e8100170a8e3166531d92b1ec9a9230eb0373213"
+    },
+    {
+      "storagePath": "valentino-born-in-roma-women-1783624226669.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/valentino-born-in-roma-women-1783624226669.jpg",
+      "localPath": "images/perfumes/valentino-born-in-roma-women-1783624226669.jpg",
+      "referencedBySlugs": [
+        "valentino-born-in-roma-women"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 230942,
+      "sha256": "f0b3e3c89bbdfe70994df1b2ee2eb401d8eafc8f96c71abfc3d2e8f2c42130f9"
+    },
+    {
+      "storagePath": "valentino-born-in-roma-uomo-1783630216046.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/valentino-born-in-roma-uomo-1783630216046.jpg",
+      "localPath": "images/perfumes/valentino-born-in-roma-uomo-1783630216046.jpg",
+      "referencedBySlugs": [
+        "valentino-born-in-roma-uomo"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 383363,
+      "sha256": "fea6e401a6ae64a3e0384b0a1569e839718879070478d9d62d16436cfe4e7fa1"
+    },
+    {
+      "storagePath": "versace-blue-jeans-1783632814022.png",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/versace-blue-jeans-1783632814022.png",
+      "localPath": "images/perfumes/versace-blue-jeans-1783632814022.png",
+      "referencedBySlugs": [
+        "versace-blue-jeans"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 1644163,
+      "sha256": "fff856bf327a381c11c8d1c61abf59c92447d263677b0b748de835e7b9cc3306"
+    },
+    {
+      "storagePath": "versace-eros-1783629257768.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/versace-eros-1783629257768.jpg",
+      "localPath": "images/perfumes/versace-eros-1783629257768.jpg",
+      "referencedBySlugs": [
+        "versace-eros"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 117555,
+      "sha256": "5f735731c1460b9c7914f2e4ad24ac99e59aeab97a02f4b0cfa1f1959c72455e"
+    },
+    {
+      "storagePath": "viktor-rolf-spicebomb-1783632702527.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/viktor-rolf-spicebomb-1783632702527.jpg",
+      "localPath": "images/perfumes/viktor-rolf-spicebomb-1783632702527.jpg",
+      "referencedBySlugs": [
+        "viktor-rolf-spicebomb"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 180521,
+      "sha256": "5210c9d3428d3c273774ccbf6b71e7e11499a9ee6eec6a2fe077d4ecbb335818"
+    },
+    {
+      "storagePath": "xerjoff-alexandria-ii-1783625570148.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/xerjoff-alexandria-ii-1783625570148.jpg",
+      "localPath": "images/perfumes/xerjoff-alexandria-ii-1783625570148.jpg",
+      "referencedBySlugs": [
+        "xerjoff-alexandria-ii"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 197566,
+      "sha256": "8b97bcaec0e9f442bfc720c715d5b0bb223d0615c78d97918116968f37cd64be"
+    },
+    {
+      "storagePath": "xerjoff-erba-pura-accento-1783623736504.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/xerjoff-erba-pura-accento-1783623736504.jpg",
+      "localPath": "images/perfumes/xerjoff-erba-pura-accento-1783623736504.jpg",
+      "referencedBySlugs": [
+        "xerjoff-erba-pura-accento"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 350541,
+      "sha256": "9eea16e67be55753127b609c73c82ee83b1a2dc3366168796e1f827552ebe58c"
+    },
+    {
+      "storagePath": "yves-saint-laurent-black-opium-1783623623740.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/yves-saint-laurent-black-opium-1783623623740.jpg",
+      "localPath": "images/perfumes/yves-saint-laurent-black-opium-1783623623740.jpg",
+      "referencedBySlugs": [
+        "yves-saint-laurent-black-opium"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 185839,
+      "sha256": "d0ec160c6bbd0b5c798cedb6bac7bc6b28d6e46409bb9f2fe31b036e575d842b"
+    },
+    {
+      "storagePath": "yves-saint-laurent-y-1783625512702.jpg",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/yves-saint-laurent-y-1783625512702.jpg",
+      "localPath": "images/perfumes/yves-saint-laurent-y-1783625512702.jpg",
+      "referencedBySlugs": [
+        "yves-saint-laurent-y"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 199184,
+      "sha256": "e98677ef107dd24817e19e11d822049ddbefe9ead6242e41a637957aef05cbe5"
+    },
+    {
+      "storagePath": "fragrance-1783632346249.png",
+      "originalUrl": "https://muuhuninvjliavbfhpgc.supabase.co/storage/v1/object/public/perfumes/fragrance-1783632346249.png",
+      "localPath": "images/perfumes/fragrance-1783632346249.png",
+      "referencedBySlugs": [
+        "mashaer"
+      ],
+      "downloaded": true,
+      "skippedExisting": false,
+      "bytes": 1776662,
+      "sha256": "43b97685068b5dfa993428edbe29c83c096e6347be4bd471a7ff780c5be8c8e8"
+    }
+  ],
+  "failures": [],
+  "snapshotMeta": {
+    "preservedFrom": "/tmp/live-catalog.json",
+    "comparedAgainstBackup": "backups/2026-08-26",
+    "removedFromLiveCatalogCount": 10,
+    "removedSlugs": [
+      "amouage-interlude",
+      "amouage-opus-vii",
+      "amouage-purpose-50",
+      "angel-share",
+      "britney-spears-fantasy",
+      "burberry-her",
+      "carolina-herrera-212-vip-black",
+      "carolina-herrera-bad-boy",
+      "creed-aventus",
+      "jean-paul-le-beau-le-parfum"
+    ]
+  },
+  "verifiedAt": "2026-08-26T05:27:24.623Z"
+}

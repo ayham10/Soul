@@ -26,6 +26,8 @@ yarn-debug.log*
 /backups/**
 !/backups/README.md
 !/backups/.gitkeep
+!/backups/2026-08-26-103-before-deletion/
+!/backups/2026-08-26-103-before-deletion/**
 
 # typescript
 *.tsbuildinfo
