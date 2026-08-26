@@ -32,9 +32,6 @@ export interface Product {
 // WhatsApp requires international format without the leading local zero.
 export const SHOP_WHATSAPP = "972532286019";
 
-// Passcode for the /admin product manager (demo). Change before going live.
-export const ADMIN_PASSCODE = "soul2024";
-
 export const SIZES = [
   { ml: 100, multiplier: 1 },
   { ml: 50, multiplier: 0.5 },
