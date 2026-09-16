@@ -38,13 +38,163 @@ export default function HomePage() {
         .hero-title { font-size: clamp(48px, 11vw, 128px); }
         .hero-sub { font-size: clamp(13px, 1.6vw, 16px); }
         .hero-scroll { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 2; text-align: center; }
-        .hero-discover {
-          margin-top: 18px; background: none; border: none; cursor: pointer;
-          color: rgba(255,255,255,0.72); font-family: 'Noto Naskh Arabic', serif;
-          font-size: 15px; letter-spacing: 0.2px; padding: 0;
-          transition: color 0.25s ease, transform 0.25s ease;
+        .hero-cta-stack {
+          margin-top: 38px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0;
+          animation: heroCtaReveal 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
         }
-        .hero-discover:hover { color: var(--gold); transform: translateY(2px); }
+        .hero-cta-row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 12px;
+        }
+        .hero-cta {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 52px;
+          padding: 15px 30px;
+          text-decoration: none;
+          cursor: pointer;
+          overflow: hidden;
+          isolation: isolate;
+          font-family: 'Noto Naskh Arabic', 'Cormorant Garamond', serif;
+          font-size: clamp(15px, 3.6vw, 17px);
+          font-weight: 500;
+          line-height: 1.2;
+          transition:
+            color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+            background 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+            transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .hero-cta__label { position: relative; z-index: 1; }
+        .hero-cta--primary {
+          color: #1a140a;
+          border: 1px solid rgba(227, 199, 137, 0.55);
+          background:
+            linear-gradient(135deg, rgba(227, 199, 137, 0.98) 0%, rgba(198, 161, 91, 0.94) 48%, rgba(156, 124, 63, 0.92) 100%);
+          box-shadow:
+            0 14px 40px rgba(0, 0, 0, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        }
+        .hero-cta--primary::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.28) 50%, transparent 65%);
+          transform: translateX(-120%);
+          transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+          z-index: 0;
+        }
+        .hero-cta--primary:hover::before,
+        .hero-cta--primary:focus-visible::before { transform: translateX(120%); }
+        .hero-cta--primary:hover,
+        .hero-cta--primary:focus-visible {
+          transform: translateY(-2px);
+          box-shadow:
+            0 18px 48px rgba(0, 0, 0, 0.34),
+            0 0 0 1px rgba(227, 199, 137, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.28);
+        }
+        .hero-cta--primary:active { transform: translateY(0); }
+        .hero-cta--secondary {
+          color: rgba(239, 231, 216, 0.92);
+          background: rgba(7, 6, 5, 0.22);
+          border: 1px solid rgba(198, 161, 91, 0.42);
+          backdrop-filter: blur(6px);
+          box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        }
+        .hero-cta--secondary:hover,
+        .hero-cta--secondary:focus-visible {
+          color: var(--gold-light);
+          border-color: rgba(227, 199, 137, 0.72);
+          background: rgba(198, 161, 91, 0.08);
+          transform: translateY(-2px);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+        }
+        .hero-cta--secondary:active { transform: translateY(0); }
+        .hero-cta:focus-visible {
+          outline: 1px solid var(--gold-light);
+          outline-offset: 3px;
+        }
+        .hero-scroll-ind {
+          margin-top: 26px;
+          padding: 8px 2px 0;
+          border: none;
+          background: none;
+          cursor: pointer;
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          color: rgba(255, 255, 255, 0.62);
+          transition: color 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .hero-scroll-ind:hover,
+        .hero-scroll-ind:focus-visible { color: var(--gold-light); }
+        .hero-scroll-ind:focus-visible {
+          outline: 1px solid rgba(198, 161, 91, 0.45);
+          outline-offset: 6px;
+        }
+        .hero-scroll-ind__text {
+          font-family: 'Noto Naskh Arabic', serif;
+          font-size: 15px;
+          font-weight: 500;
+          line-height: 1.4;
+        }
+        .hero-scroll-ind__track {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          width: 18px;
+        }
+        .hero-scroll-ind__line {
+          width: 1px;
+          height: 34px;
+          background: linear-gradient(to bottom, rgba(198, 161, 91, 0.05), rgba(198, 161, 91, 0.75));
+          transform-origin: top center;
+          animation: heroScrollLine 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        }
+        .hero-scroll-ind__chev {
+          width: 8px;
+          height: 8px;
+          border-right: 1px solid var(--gold);
+          border-bottom: 1px solid var(--gold);
+          transform: rotate(45deg);
+          margin-top: -4px;
+          animation: heroScrollChevron 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+          opacity: 0.85;
+        }
+        @keyframes heroCtaReveal {
+          from { opacity: 0; transform: translateY(22px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heroScrollChevron {
+          0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.55; }
+          50% { transform: rotate(45deg) translateY(7px); opacity: 1; }
+        }
+        @keyframes heroScrollLine {
+          0%, 100% { transform: scaleY(0.72); opacity: 0.45; }
+          50% { transform: scaleY(1); opacity: 1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-cta-stack { animation: none; opacity: 1; transform: none; }
+          .hero-scroll-ind__line,
+          .hero-scroll-ind__chev { animation: none; opacity: 0.75; }
+          .hero-cta--primary::before { display: none; }
+          .hero-cta--primary:hover,
+          .hero-cta--primary:focus-visible,
+          .hero-cta--secondary:hover,
+          .hero-cta--secondary:focus-visible { transform: none; }
+        }
         .split { display: grid; grid-template-columns: 1fr; gap: 0; }
         @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
         .trio { display: grid; grid-template-columns: 1fr; gap: 28px; }
@@ -88,6 +238,10 @@ export default function HomePage() {
           .hero-title { font-size: clamp(44px, 15vw, 64px); line-height: 0.96; }
           .hero-sub { font-size: 14px; line-height: 1.75; margin-top: 22px !important; }
           .hero-scroll { display: none; }
+          .hero-cta-stack { margin-top: 30px; width: 100%; max-width: 340px; }
+          .hero-cta-row { flex-direction: column; align-items: stretch; width: 100%; gap: 10px; }
+          .hero-cta { width: 100%; min-height: 50px; padding: 14px 22px; }
+          .hero-scroll-ind { margin-top: 22px; align-self: center; }
           .wellness-copy { padding: 58px 18px 46px; }
           .wellness-card { min-height: 460px; border-inline-start: none; border-top: 1px solid var(--line); padding: 24px 18px; }
         }
@@ -127,13 +281,26 @@ export default function HomePage() {
           <p className="hero-sub" style={{ color: "rgba(255,255,255,0.78)", maxWidth: 460, lineHeight: 1.8, marginTop: 26, animation: "fadeUp 0.9s ease 0.2s both" }}>
             {t.hero.sub}
           </p>
-          <div className="hero-cta" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 0, marginTop: 38, animation: "fadeUp 0.9s ease 0.3s both" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
-              <Link href="/shop" className="btn-gold">{t.hero.shop}</Link>
-              <Link href="/about" className="btn-ghost">{t.hero.story}</Link>
+          <div className="hero-cta-stack">
+            <div className="hero-cta-row">
+              <Link href="/shop" className="hero-cta hero-cta--primary">
+                <span className="hero-cta__label">{t.hero.shop}</span>
+              </Link>
+              <Link href="/about" className="hero-cta hero-cta--secondary">
+                <span className="hero-cta__label">{t.hero.story}</span>
+              </Link>
             </div>
-            <button type="button" className="hero-discover" onClick={scrollToOfferings}>
-              {t.hero.discoverMore}
+            <button
+              type="button"
+              className="hero-scroll-ind"
+              onClick={scrollToOfferings}
+              aria-label={`${t.hero.discoverMore} — ${t.hero.scroll}`}
+            >
+              <span className="hero-scroll-ind__text">{t.hero.discoverMore}</span>
+              <span className="hero-scroll-ind__track" aria-hidden="true">
+                <span className="hero-scroll-ind__line" />
+                <span className="hero-scroll-ind__chev" />
+              </span>
             </button>
           </div>
         </div>
