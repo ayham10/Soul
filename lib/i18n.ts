@@ -89,7 +89,7 @@ export const translations: Record<Lang, Dict> = {
       eyebrow: "Maison de Parfum · Land of Olives",
       line1: "Adorn yourself", italic: "with scent.",
       sub: "Some perfumes are not merely a fragrance; they are identity, history, and a story told without words.",
-      shop: "Shop the Collection", story: "Our Tale", scroll: "Scroll", discoverMore: "Discover more ↓",
+      shop: "Shop the Collection", story: "Our Tale", scroll: "Scroll", discoverMore: "Discover more",
     },
     offerings: {
       eyebrow: "Beyond fragrance",
@@ -204,7 +204,7 @@ export const translations: Record<Lang, Dict> = {
       eyebrow: "دار العطور · أرض الزيتون",
       line1: "تأنّق", italic: "بعُطرك.",
       sub: "بعض العطور ليست مجرد رائحة، بل هي هويةٌ، وتاريخٌ، وحكايةٌ تُروى دون كلمات.",
-      shop: "تسوّق المجموعة", story: "حكايتنا", scroll: "مرّر", discoverMore: "اكتشف المزيد ↓",
+      shop: "تسوّق المجموعة", story: "حكايتنا", scroll: "مرّر", discoverMore: "اكتشف المزيد",
     },
     offerings: {
       eyebrow: "ما بعد العطر",
