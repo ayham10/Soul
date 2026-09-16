@@ -22,7 +22,10 @@ function supabaseHeaders(config: NonNullable<ReturnType<typeof supabaseConfig>>)
 
 export async function writeSupabaseCatalog(products: Product[]) {
   assertNonEmptyCatalog(products);
+  await writeSupabaseCatalogRow(SUPABASE_CATALOG_ID, products);
+}
 
+export async function writeSupabaseCatalogRow(catalogId: string, products: unknown[]) {
   const config = supabaseConfig();
   if (!config) throw new Error("Supabase is not configured");
 
@@ -34,7 +37,7 @@ export async function writeSupabaseCatalog(products: Product[]) {
       Prefer: "resolution=merge-duplicates,return=minimal",
     },
     body: JSON.stringify({
-      id: SUPABASE_CATALOG_ID,
+      id: catalogId,
       products,
       updated_at: new Date().toISOString(),
     }),

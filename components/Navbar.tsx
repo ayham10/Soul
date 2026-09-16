@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useCart } from "@/lib/cart";
 import { useLang } from "@/lib/lang";
 import { Lang } from "@/lib/i18n";
+import { SOUL_OFFERINGS_SECTION_ID } from "@/lib/soul-offerings";
 
 function LangButton({ lang, toggle, onClick }: { lang: Lang; toggle: () => void; onClick?: () => void }) {
   return (
@@ -29,12 +30,26 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const links = [
+  type NavItem = { href: string; label: string; sectionId?: string };
+  const links: NavItem[] = [
     { href: "/", label: t.nav.home },
     { href: "/shop", label: t.nav.collection },
     { href: "/#wellness", label: t.nav.wellness },
     { href: "/about", label: t.nav.story },
   ];
+  const mobileLinks: NavItem[] = [
+    ...links,
+    { href: `/#${SOUL_OFFERINGS_SECTION_ID}`, label: t.nav.offerings, sectionId: SOUL_OFFERINGS_SECTION_ID },
+  ];
+
+  const scrollToSection = (sectionId: string) => {
+    setMenuOpen(false);
+    if (pathname === "/") {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    window.location.href = `/#${sectionId}`;
+  };
 
   const overHero = pathname === "/";
 
@@ -151,11 +166,23 @@ export default function Navbar() {
       </nav>
 
       <div className={`mobile-panel${menuOpen ? " open" : ""}`}>
-        {links.map((l) => (
-          <Link key={l.href} href={l.href} className="mobile-link" onClick={() => setMenuOpen(false)}>
-            {l.label}
-          </Link>
-        ))}
+        {mobileLinks.map((l) =>
+          l.sectionId ? (
+            <button
+              key={l.href}
+              type="button"
+              className="mobile-link"
+              style={{ width: "100%", textAlign: "inherit", background: "none", border: "none", cursor: "pointer" }}
+              onClick={() => scrollToSection(l.sectionId!)}
+            >
+              {l.label}
+            </button>
+          ) : (
+            <Link key={l.href} href={l.href} className="mobile-link" onClick={() => setMenuOpen(false)}>
+              {l.label}
+            </Link>
+          )
+        )}
         <Link href="/shop" className="btn-gold" style={{ marginTop: 32 }} onClick={() => setMenuOpen(false)}>
           {t.nav.shopCta}
         </Link>
