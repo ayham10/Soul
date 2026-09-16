@@ -3,6 +3,7 @@ import "./globals.css";
 import { CartProvider } from "@/lib/cart";
 import { LangProvider } from "@/lib/lang";
 import { ProductsProvider } from "@/lib/store";
+import { OfferingsProvider } from "@/lib/offerings-store";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <LangProvider>
           <ProductsProvider>
+            <OfferingsProvider>
             <CartProvider>
               <Intro />
               <Navbar />
@@ -39,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <main>{children}</main>
               <Footer />
             </CartProvider>
+            </OfferingsProvider>
           </ProductsProvider>
         </LangProvider>
       </body>

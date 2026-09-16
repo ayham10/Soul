@@ -9,6 +9,7 @@ import { useLang } from "@/lib/lang";
 import { matchesProductSearch } from "@/lib/search";
 import { nextDisplayOrder, parseDisplayOrder, parseStock } from "@/lib/inventory";
 import { isBase64Image, slugFromName, uploadPerfumeImage } from "@/lib/image-upload";
+import AdminOfferingsPanel from "@/components/admin/AdminOfferingsPanel";
 
 const GALLERY = [
   "/images/p-noir-oud.png", "/images/p-rose-elixir.png", "/images/p-citrus-aura.png",
@@ -65,6 +66,7 @@ export default function AdminPage() {
   const [resetOpen, setResetOpen] = useState(false);
   const [resetConfirmText, setResetConfirmText] = useState("");
   const [resetError, setResetError] = useState("");
+  const [adminTab, setAdminTab] = useState<"perfumes" | "offerings">("perfumes");
 
   const visibleProducts = useMemo(
     () => products.filter((p) => matchesProductSearch(p, query)),
@@ -338,6 +340,27 @@ export default function AdminPage() {
         }
       `}</style>
       <div className="wrap" style={{ padding: "0 20px 90px" }}>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 28 }}>
+          <button
+            type="button"
+            className={adminTab === "perfumes" ? "btn-gold" : "btn-ghost"}
+            onClick={() => setAdminTab("perfumes")}
+          >
+            {A.products}
+          </button>
+          <button
+            type="button"
+            className={adminTab === "offerings" ? "btn-gold" : "btn-ghost"}
+            onClick={() => setAdminTab("offerings")}
+          >
+            {t.adminOfferings.tab}
+          </button>
+        </div>
+
+        {adminTab === "offerings" ? (
+          <AdminOfferingsPanel />
+        ) : (
+        <>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "flex-end", justifyContent: "space-between", marginBottom: 8 }}>
           <div>
             <div className="eyebrow">{A.subtitle}</div>
@@ -450,9 +473,10 @@ export default function AdminPage() {
             </p>
           )}
         </div>
-      </div>
+        </>
+        )}
 
-      {open && (
+      {adminTab === "perfumes" && open && (
         <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 2000, background: "rgba(0,0,0,0.7)", display: "flex", alignItems: "flex-start", justifyContent: "center", overflowY: "auto", padding: "5vh 16px" }}>
           <div onClick={(e) => e.stopPropagation()} dir={dir} style={{ width: "100%", maxWidth: 720, background: "var(--noir-soft)", border: "1px solid var(--line)", padding: "clamp(22px,4vw,40px)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
@@ -574,7 +598,7 @@ export default function AdminPage() {
         </div>
       )}
 
-      {resetOpen && baselineInfo && (
+      {adminTab === "perfumes" && resetOpen && baselineInfo && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.72)", zIndex: 100, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
           <div style={{ width: "100%", maxWidth: 520, background: "var(--ink)", border: "1px solid var(--line)", padding: 28 }}>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, color: "var(--cream)", marginBottom: 12 }}>{A.resetBaselineTitle}</h2>
@@ -601,6 +625,7 @@ export default function AdminPage() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

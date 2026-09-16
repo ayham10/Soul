@@ -6,10 +6,16 @@ import ProductCard from "@/components/ProductCard";
 import { useProducts } from "@/lib/store";
 import { useLang } from "@/lib/lang";
 import { SHOP_WHATSAPP, formatPrice } from "@/lib/products";
+import SoulOfferingsSection from "@/components/SoulOfferingsSection";
+import { SOUL_OFFERINGS_SECTION_ID } from "@/lib/soul-offerings";
 
 export default function HomePage() {
   const { products } = useProducts();
   const { t } = useLang();
+
+  const scrollToOfferings = () => {
+    document.getElementById(SOUL_OFFERINGS_SECTION_ID)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const bestsellers = products.filter((p) => p.bestseller);
   const featured = (bestsellers.length ? bestsellers : products).slice(0, 3);
@@ -32,6 +38,13 @@ export default function HomePage() {
         .hero-title { font-size: clamp(48px, 11vw, 128px); }
         .hero-sub { font-size: clamp(13px, 1.6vw, 16px); }
         .hero-scroll { position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 2; text-align: center; }
+        .hero-discover {
+          margin-top: 18px; background: none; border: none; cursor: pointer;
+          color: rgba(255,255,255,0.72); font-family: 'Noto Naskh Arabic', serif;
+          font-size: 15px; letter-spacing: 0.2px; padding: 0;
+          transition: color 0.25s ease, transform 0.25s ease;
+        }
+        .hero-discover:hover { color: var(--gold); transform: translateY(2px); }
         .split { display: grid; grid-template-columns: 1fr; gap: 0; }
         @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
         .trio { display: grid; grid-template-columns: 1fr; gap: 28px; }
@@ -114,9 +127,14 @@ export default function HomePage() {
           <p className="hero-sub" style={{ color: "rgba(255,255,255,0.78)", maxWidth: 460, lineHeight: 1.8, marginTop: 26, animation: "fadeUp 0.9s ease 0.2s both" }}>
             {t.hero.sub}
           </p>
-          <div className="hero-cta" style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 38, animation: "fadeUp 0.9s ease 0.3s both" }}>
-            <Link href="/shop" className="btn-gold">{t.hero.shop}</Link>
-            <Link href="/about" className="btn-ghost">{t.hero.story}</Link>
+          <div className="hero-cta" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 0, marginTop: 38, animation: "fadeUp 0.9s ease 0.3s both" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
+              <Link href="/shop" className="btn-gold">{t.hero.shop}</Link>
+              <Link href="/about" className="btn-ghost">{t.hero.story}</Link>
+            </div>
+            <button type="button" className="hero-discover" onClick={scrollToOfferings}>
+              {t.hero.discoverMore}
+            </button>
           </div>
         </div>
 
@@ -125,6 +143,8 @@ export default function HomePage() {
           <div style={{ width: 1, height: 40, background: "linear-gradient(to bottom, var(--gold), transparent)", margin: "0 auto" }} />
         </div>
       </section>
+
+      <SoulOfferingsSection />
 
       {/* ============ MARQUEE ============ */}
       <div style={{ background: "#070605", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)", padding: "18px 0", overflow: "hidden" }}>

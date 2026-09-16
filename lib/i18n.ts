@@ -28,8 +28,9 @@ export function genderLabel(gender: string, lang: Lang) {
 
 interface Dict {
   dir: "ltr" | "rtl";
-  nav: { home: string; collection: string; wellness: string; story: string; admin: string; shopCta: string; tagline: string; brandSub: string };
-  hero: { eyebrow: string; line1: string; italic: string; sub: string; shop: string; story: string; scroll: string };
+  nav: { home: string; collection: string; wellness: string; offerings: string; story: string; admin: string; shopCta: string; tagline: string; brandSub: string };
+  hero: { eyebrow: string; line1: string; italic: string; sub: string; shop: string; story: string; scroll: string; discoverMore: string };
+  offerings: { eyebrow: string; title: string; sub: string };
   marquee: string[];
   featured: { eyebrow: string; title: string; titleEm: string; sub: string; viewAll: string };
   storyBlock: { eyebrow: string; title: string; titleEm: string; p1: string; p2: string; cta: string };
@@ -69,17 +70,31 @@ interface Dict {
     stock: string; displayOrder: string; stockIn: string; stockLow: string; stockOut: string;
     moveUp: string; moveDown: string; dragHint: string; order: string;
   };
+  adminOfferings: {
+    tab: string; title: string; subtitle: string; count: string; add: string; edit: string; delete: string;
+    save: string; cancel: string; empty: string; hidden: string; onRequest: string; confirmDelete: string;
+    itemTitle: string; itemTitleAr: string; description: string; descriptionAr: string; price: string;
+    priceLabel: string; priceLabelAr: string; priceLabelHint: string; status: string; ctaText: string;
+    ctaTextAr: string; ctaHref: string; ctaHrefHint: string; image: string; uploadImage: string;
+    displayOrder: string; published: string; uploadBeforeSave: string; uploadFailed: string;
+    saveFailed: string; deleteFailed: string;
+  };
 }
 
 export const translations: Record<Lang, Dict> = {
   en: {
     dir: "ltr",
-    nav: { home: "Home", collection: "The Collection", wellness: "Wellness", story: "Our Tale", admin: "Admin", shopCta: "Shop the Collection", tagline: "Maison de Parfum", brandSub: "Crafted in the Land of Olives · Worldwide Shipping" },
+    nav: { home: "Home", collection: "The Collection", wellness: "Wellness", offerings: "Products & Services", story: "Our Tale", admin: "Admin", shopCta: "Shop the Collection", tagline: "Maison de Parfum", brandSub: "Crafted in the Land of Olives · Worldwide Shipping" },
     hero: {
       eyebrow: "Maison de Parfum · Land of Olives",
       line1: "Adorn yourself", italic: "with scent.",
       sub: "Some perfumes are not merely a fragrance; they are identity, history, and a story told without words.",
-      shop: "Shop the Collection", story: "Our Tale", scroll: "Scroll",
+      shop: "Shop the Collection", story: "Our Tale", scroll: "Scroll", discoverMore: "Discover more ↓",
+    },
+    offerings: {
+      eyebrow: "Beyond fragrance",
+      title: "SOUL Products & Services",
+      sub: "Curated offerings from the SOUL atelier — wellness, care, and bespoke services beyond the perfume collection.",
     },
     marquee: ["Oud", "Rose", "Amber", "Citrus", "Musk", "Marine", "Saffron", "Vanilla"],
     featured: { eyebrow: "Signature Scents", title: "The", titleEm: "Collection", sub: "Eight compositions, each an obsession. Discover the fragrances our clients return to again and again.", viewAll: "View All Fragrances" },
@@ -145,15 +160,56 @@ export const translations: Record<Lang, Dict> = {
       stock: "Stock quantity", displayOrder: "Display order", stockIn: "In stock", stockLow: "Low stock", stockOut: "Out of stock",
       moveUp: "Move up", moveDown: "Move down", dragHint: "Drag rows to reorder (disabled while searching)", order: "Order",
     },
+    adminOfferings: {
+      tab: "SOUL Products & Services",
+      title: "SOUL Products & Services",
+      subtitle: "Additional offerings",
+      count: "items",
+      add: "Add item",
+      edit: "Edit",
+      delete: "Delete",
+      save: "Save",
+      cancel: "Cancel",
+      empty: "No products or services yet. Add your first item from the admin panel.",
+      hidden: "Hidden",
+      onRequest: "On request",
+      confirmDelete: "Delete this item?",
+      itemTitle: "Title (EN)",
+      itemTitleAr: "Title (AR)",
+      description: "Description (EN)",
+      descriptionAr: "Description (AR)",
+      price: "Price (ILS, optional)",
+      priceLabel: "Custom price label (EN)",
+      priceLabelAr: "Custom price label (AR)",
+      priceLabelHint: "e.g. On request",
+      status: "Availability",
+      ctaText: "CTA text (EN)",
+      ctaTextAr: "CTA text (AR)",
+      ctaHref: "CTA link (optional)",
+      ctaHrefHint: "Leave empty to use WhatsApp",
+      image: "Image URL",
+      uploadImage: "Upload image",
+      displayOrder: "Display order",
+      published: "Published on homepage",
+      uploadBeforeSave: "Upload the image to Storage before saving.",
+      uploadFailed: "Image upload failed",
+      saveFailed: "Could not save item",
+      deleteFailed: "Could not delete item",
+    },
   },
   ar: {
     dir: "rtl",
-    nav: { home: "الرئيسية", collection: "المجموعة", wellness: "العناية", story: "حكايتنا", admin: "الإدارة", shopCta: "تسوّق المجموعة", tagline: "دار العطور", brandSub: "صُنع في أرض الزيتون · شحن لكل العالم" },
+    nav: { home: "الرئيسية", collection: "المجموعة", wellness: "العناية", offerings: "منتجات وخدمات", story: "حكايتنا", admin: "الإدارة", shopCta: "تسوّق المجموعة", tagline: "دار العطور", brandSub: "صُنع في أرض الزيتون · شحن لكل العالم" },
     hero: {
       eyebrow: "دار العطور · أرض الزيتون",
       line1: "تأنّق", italic: "بعُطرك.",
       sub: "بعض العطور ليست مجرد رائحة، بل هي هويةٌ، وتاريخٌ، وحكايةٌ تُروى دون كلمات.",
-      shop: "تسوّق المجموعة", story: "حكايتنا", scroll: "مرّر",
+      shop: "تسوّق المجموعة", story: "حكايتنا", scroll: "مرّر", discoverMore: "اكتشف المزيد ↓",
+    },
+    offerings: {
+      eyebrow: "ما بعد العطر",
+      title: "منتجات وخدمات SOUL",
+      sub: "عروض مختارة من أتيليه سول — عناية، خدمات، ومنتجات راقية بعيداً عن مجموعة العطور.",
     },
     marquee: ["عود", "ورد", "عنبر", "حمضيات", "مسك", "بحري", "زعفران", "فانيلا"],
     featured: { eyebrow: "عطور مميّزة", title: "", titleEm: "المجموعة", sub: "٨ تركيبات، كلٌّ منها شغف. اكتشف العطور التي يعود إليها عملاؤنا مرّة بعد مرّة.", viewAll: "عرض كل العطور" },
@@ -218,6 +274,42 @@ export const translations: Record<Lang, Dict> = {
       uploadImage: "رفع صورة", or: "أو", searchPlaceholder: "ابحث في العطور…", noResults: "لا توجد عطور تطابق بحثك.",
       stock: "كمية المخزون", displayOrder: "ترتيب العرض", stockIn: "متوفر", stockLow: "مخزون منخفض", stockOut: "نفد المخزون",
       moveUp: "تحريك لأعلى", moveDown: "تحريك لأسفل", dragHint: "اسحب الصفوف لإعادة الترتيب (معطّل أثناء البحث)", order: "الترتيب",
+    },
+    adminOfferings: {
+      tab: "منتجات وخدمات SOUL",
+      title: "منتجات وخدمات SOUL",
+      subtitle: "عروض إضافية",
+      count: "عناصر",
+      add: "إضافة عنصر",
+      edit: "تعديل",
+      delete: "حذف",
+      save: "حفظ",
+      cancel: "إلغاء",
+      empty: "لا توجد منتجات أو خدمات بعد. أضف أول عنصر من لوحة الإدارة.",
+      hidden: "مخفي",
+      onRequest: "حسب الطلب",
+      confirmDelete: "حذف هذا العنصر؟",
+      itemTitle: "العنوان (إنجليزي)",
+      itemTitleAr: "العنوان (عربي)",
+      description: "الوصف (إنجليزي)",
+      descriptionAr: "الوصف (عربي)",
+      price: "السعر (شيكل، اختياري)",
+      priceLabel: "نص سعر مخصص (إنجليزي)",
+      priceLabelAr: "نص سعر مخصص (عربي)",
+      priceLabelHint: "مثال: حسب الطلب",
+      status: "التوفر",
+      ctaText: "نص الزر (إنجليزي)",
+      ctaTextAr: "نص الزر (عربي)",
+      ctaHref: "رابط الزر (اختياري)",
+      ctaHrefHint: "اتركه فارغاً لاستخدام واتساب",
+      image: "رابط الصورة",
+      uploadImage: "رفع صورة",
+      displayOrder: "ترتيب العرض",
+      published: "منشور في الصفحة الرئيسية",
+      uploadBeforeSave: "ارفع الصورة إلى التخزين قبل الحفظ.",
+      uploadFailed: "فشل رفع الصورة",
+      saveFailed: "تعذّر حفظ العنصر",
+      deleteFailed: "تعذّر حذف العنصر",
     },
   },
 };
